@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>input标签</title>
+</head>
+<body>
+    <!-- type="text"是一个单行文本输入框 -->
+    用户名：<input type="text"><br />
+    <!-- type="password"是一个密码输入框 -->
+    密码：<input type="password"><br />
+    <!-- 显示出value的值 -->
+    用户名：<input type="text" value="请输入您的用户名" /><br />
+    <!-- type="radio"指的是单选按钮 规定name为sex -->
+    性别：男<input type="radio" name="sex" /><br />
+    性别：女<input type="radio" name="sex" /><br />
+    <!-- 练习name的分类，以便传输数据时不会出错 -->
+    用户名：<input type="text" name="username" value="请输入您的用户名"/><br />
+    昵称：<input type="text" name="name" value="请输入您的昵称" /><br />
+    <!-- 练习复选按钮 -->
+    爱好：<br />
+    睡觉<input type="checkbox" name="hobby" /><br />
+    打游戏<input type="checkbox" name="hobby" /><br />
+    看视频<input type="checkbox" name="hobby" /><br />
+    打代码<input type="checkbox" name="hobby" /><br />
+    <!-- 默认选择状态 -->
+    性别<br />
+    女<input type="radio" name="sexd" checked="checked" /><br />
+    男<input type="radio" name="sexd" /><br />
+    保密<input type="radio" name="sexd" /><br />
+    <!-- 普通按钮需要写value值才会显示具体内容 -->
+    <input type="button" value="注册！点我哦">普通按钮<br />
+    <!-- 提交按钮直接就显示出来是提交键，不用刻意去写value=提交，同样可以修改value的值-->
+    <input type="submit">提交按钮<br />
+    <!-- 重置按钮直接就显示出来是重置键，不用刻意去写value=重置，同样可以修改value的值-->
+    <input type="reset">重置按钮<br />
+    <!-- 图片形式提交按钮，必须包含src属性 -->
+    <input type="image" src="../images/btn.png"><br />
+    <!-- 上传头像 -->
+    上传头像：<br />
+    <input type="file"><br />
+
+</body>
+</html>
