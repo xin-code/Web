@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>label标签</title>
+</head>
+<body>
+    <!-- 点击前面汉字“用户名”可以直接跳转到后面的输入框内 -->
+    <h2>第一种方法：label包含input外面</h2>
+    <label>用户名：<input type="text" value="请输入用户名" /></label>
+    <h2>第二种方法：用label的for以及input的id进行绑定（类似锚点）</h2>
+    <label for="username">用户名</label>
+    <input type="text" value="用户名" id="username" />
+</body>
+</html>
