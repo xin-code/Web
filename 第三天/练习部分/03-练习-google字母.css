@@ -1,0 +1,18 @@
+.blue {
+    color: darkcyan;
+}
+.red {
+    color: tomato;
+}
+.orange {
+    color: orange;
+}
+.green {
+    color: green;
+}
+.font100{
+    font-size: 100px;
+}
+* {
+   margin-left: 110px;
+}
