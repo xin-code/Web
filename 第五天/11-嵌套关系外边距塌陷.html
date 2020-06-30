@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>嵌套关系外边距塌陷</title>
+    <style>
+        .father{
+            width: 500px;
+            height: 500px;
+            background-color: blue;
+            /* 第一种解决方法：给父级指定一个上边框 */
+            /* border-top: 1px solid transparent; */
+            /* 第二种方法：给父级指定一个内边距值 */
+            /* padding-top: 1px; */
+            /* 第三种方法：给父级overflow: hidden; */
+            overflow: hidden;
+        }
+        .son {
+            width: 200px;
+            height: 200px;
+            background-color: green;
+            margin-top: 100px;
+        }
+    </style>
+</head>
+<body>
+    <div class="father">
+        <div class="son"></div>
+    </div>
+</body>
+</html>
