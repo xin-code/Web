@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>新闻列表</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        .xinwen {
+            width: 298px;
+            height: 197px;
+            border:1px solid #ccc;
+            margin: 100px auto;
+            background-image: url(images/line.jpg);
+            padding: 15px;
+        }
+        .xinwen h3{
+            border-bottom: 1px solid black;
+            padding: 5px 0;
+            margin-bottom: 10px;
+        }
+        li {
+            list-style: none;
+        }
+        .xinwen ul li {
+            height: 30px;
+            border-bottom: 1px dashed #ccc;
+            line-height: 30px;
+            background: url(images/arr.jpg) no-repeat;
+            background-position: left center;
+        }
+        .xinwen ul li a{
+            color: #ccc;
+            font-size: 9px;
+            text-decoration: none;
+            padding: 0 15px;
+        }
+        .xinwen ul li a:hover{
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="xinwen">
+        <!-- 标题盒子 -->
+        <h3>最新文章/New Article</h3>
+        <!-- 列表盒子 -->
+        <ul>
+            <li><a href="#">携手奋斗奔小康——2020，吹响决胜全面小康的号角</a></li>
+            <li><a href="#">经济学家:新冠病毒令拉美更团结 中国将成复苏动力</a></li>
+            <li><a href="#">党旗在抗疫一线高高飘扬  走向我们的小康生活</a></li>
+            <li><a href="#">林郑月娥：欢迎全国人大常委会通过港区国安法</a></li>
+            <li><a href="#">特朗普转发某个视频后删除，网民对事后辩解不买账</a></li>
+        </ul>
+
+    </div>
+</body>
+</html>
