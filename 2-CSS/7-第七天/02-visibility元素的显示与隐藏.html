@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>visibility元素的显示与隐藏</title>
+    <style>
+        .one {
+            width: 200px;
+            height: 200px;
+            background-color: red;
+        }
+        .two {
+            width: 200px;
+            height: 200px;
+            background-color: yellow;
+            visibility: hidden;
+            /* visibility仅仅只是隐藏元素，但还是保留原来的位置 */
+            /* visible显示元素，hidden隐藏元素 */
+        }
+        .three {
+            width: 200px;
+            height: 200px;
+            background-color: green;
+        }
+    </style>
+</head>
+<body>
+    <div class="one"></div>
+    <div class="two"></div>
+    <div class="three"></div>
+</body>
+</html>
