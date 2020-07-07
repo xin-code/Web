@@ -1,0 +1,203 @@
+/* main模块 */
+.main {
+    width: 980px;
+    height: 455px;
+    margin:10px 0 0 219px;
+}
+/* 轮播图 */
+.focus {
+    position: relative;
+    width: 721px;
+    height: 455px;
+}
+.arrow-l,
+.arrow-r {
+    position: absolute;
+    float: left;
+    top: 50%;
+    margin-top: -20px;
+    width: 24px;
+    height: 40px;
+    background: rgba(0, 0, 0, .3);
+    text-align: center;
+    line-height: 40px;
+    color: #fff;
+    font-family: 'icomoon';
+    font-size: 18px;
+}
+/* 左箭头 */
+.arrow-l {
+    left: 0;
+    border-radius: 0 12px 12px 0;
+}
+/* 右箭头 */
+.arrow-r {
+    right: 0;
+    border-radius: 12px 0 0 12px;
+}
+/* 轮播图小圆点 */
+.circle {
+    position: absolute;
+    bottom: 10px;
+    left: 50px;
+}
+.circle li {
+    float: left;
+    width: 5px;
+    height: 5px;
+    /* background-color: #fff; */
+    border: 2px solid rgba(255, 255, 255, .5);
+    border-radius: 50%;
+    margin-left: 5px;
+    cursor: pointer;
+}
+.current {
+    background-color: #fff;
+}
+/* 品优购快报 */
+.newsflash {
+    width: 250px;
+    height: 455px;
+}
+.news {
+    height: 160px;
+    border: 1px solid #ccc;
+}
+/* 品优购快报-头部 */
+.news-hd {
+    height: 32px;
+    border-bottom: 1px dotted #ccc;
+    font-size: 14px;
+    line-height: 32px;
+    padding: 0 15px;
+}
+.news-hd a {
+    float: right;
+    font-size: 12px;
+    font-family: 'icomoon';
+}
+/* 品优购快报-列表 */
+.news-bd {
+    padding: 10px 0 0 10px;
+}
+.news-bd li {
+    height: 23px;
+}
+/* 生活服务-小图标 */
+.lifeservice {
+    height: 209px;
+    border: 1px solid #ccc;
+    border-top: none;
+    overflow: hidden;
+}
+.lifeservice ul {
+    width: 252px;
+}
+.lifeservice li {
+    position: relative;
+    float: left;
+    width: 62px;
+    height: 70px;
+    border-right: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+}
+.lifeservice li a {
+    overflow: hidden;
+    display: block;
+    height: 100%;
+}
+.service_ico {
+    display: block;
+    width: 24px;
+    height: 24px;
+    margin: 10px auto;
+}
+.service_ico_huafei {
+    background: url(../img/icons.png) no-repeat -17px -16px;
+}
+.service_ico_jipiao {
+    background: url(../img/icons.png) no-repeat -80px -18px;
+}
+.service_ico_movie {
+    background: url(../img/icons.png) no-repeat -141px -17px;
+}
+.service_ico_game {
+    background: url(../img/icons.png) no-repeat -206px -16px;
+}
+.service_ico_caipiao {
+    background: url(../img/icons.png) no-repeat -17px -88px;
+}
+.service_ico_jiayouka {
+    background: url(../img/icons.png) no-repeat -77px -88px;
+}
+.service_ico_hotal {
+    background: url(../img/icons.png) no-repeat -141px -88px;
+}
+.service_ico_train {
+    background: url(../img/icons.png) no-repeat -206px -88px;
+}
+.service_ico_zhongchou {
+    background: url(../img/icons.png) no-repeat -17px -156px;
+}
+.service_ico_licai {
+    background: url(../img/icons.png) no-repeat -79px -159px;
+}
+.service_ico_lipinka {
+    background: url(../img/icons.png) no-repeat -141px -156px;
+}
+.service_ico_baitiao {
+    background: url(../img/icons.png) no-repeat -206px -160px;
+}
+.lifeservice li p {
+    text-align: center;
+}
+/* 折扣推荐 */
+.lifeservice .discount {
+    position: absolute;
+    left: 50px;
+    top: 0;
+    width: 12px;
+    height: 15px;
+    background:url(../img/discount.jpg) no-repeat;
+}
+/* ad广告区 */
+.bargain {
+    margin-top: 8px;
+    height: 76px;
+}
+/* recommend推荐模块 */
+.recommend {
+    margin-top: 11px;
+    height: 163px;
+}
+/* recommend 左边头部模块 */
+.recom-hd {
+    width: 200px;
+    height: 163px;
+    background-color: #5c5251;
+    text-align: center;
+}
+.recom-hd img {
+    margin: 30px 0 10px 0;
+}
+.recom-hd p {
+    font-size: 18px;
+    color: #fff;
+}
+/* recommend 右边身体模块 */
+.recom-bd {
+    width: 1000px;
+    height: 163px;
+    background-color: #ebebeb;
+}
+.recom-bd li {
+    float: left;
+    height: 145px;
+    width: 249px;
+    border-right: 1px solid #ccc;
+    margin-top: 10px;
+}
+/* 最后一个盒子不要边框 */
+.recom-bd .last_recom {
+    border-right: 0;
+}
