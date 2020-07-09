@@ -1,0 +1,183 @@
+/* 列表页-手机页面的CSS样式表 */
+.secondkill {
+    position: absolute;
+    top: 40px;
+    left: 186px;
+    height: 32px;
+    border-left: 1px solid #b1191a;
+    padding: 5px 0 0 15px;
+}
+/* nav导航栏 */
+/* 左侧 */
+.sk_list li {
+    float: left;
+    line-height: 45px;
+    margin: 0 30px;
+}
+.sk_list li a {
+    font-size: 16px;
+    font-weight: 700;
+    color: black;
+    font-family: '黑体';
+}
+.sk_list li a:hover {
+    color:#b1191a;
+}
+/* 右侧 */
+.sk_con li {
+    float: left;
+    line-height: 45px;
+    margin: 0 23px;
+}
+.sk_con li a {
+    font-size: 14px;
+    font-family: 'icomoon';
+}
+/* 右侧最后一个 缩进*/
+.sk_con_last {
+    padding-right: 42px;
+}
+/* 秒杀-内容区 */
+/* 头部 */
+.sk_content_hd {
+    height: 120px;
+}
+/* 身体 */
+.sk_content_bd {
+    overflow: hidden;
+    margin-top: 25px;
+}
+/* 因为有的图片被挤下去了，对ul进行扩大，比父级宽度要宽 则可以解决问题 */
+.sk_content_bd ul {
+    width: 1213px;
+}
+/* 商品总体格式 */
+.sk_goods {
+    position: relative;
+    float: left;
+    width: 288px;
+    height: 458px;
+    margin: 0 13px 15px 0;
+    border: 1px solid transparent;
+}
+.sk_goods:hover {
+    border: 1px solid #e12228;
+}
+.sk_goods_up {
+    transition: all 2s;
+}
+.sk_goods_up:hover {
+    padding-top: -10px;
+}
+/* 文字区域 */
+.sk_goods_title {
+    font-size: 14px;
+    height: 20px;
+    color: #666;
+    font-weight: 400;
+    line-height: 20px;
+    padding:10px;
+}
+/* 价格区域 */
+.sk_goods_price {
+    padding: 15px 10px 0;
+}
+/* 红色价格区域 */
+.sk_goods_price em {
+    font-size: 22px;
+    color: #e60012;
+    font-weight: 700;
+}
+/* 原价区域 */
+.sk_goods_price del {
+    font-size: 14px;
+    font-weight: 700;
+    color: #a4a4a4;
+}
+.sk_goods_progress {
+    padding: 0 10px;
+}
+/* 销售数字变成红色 */
+.sk_goods_progress em,
+.sk_goods_progress i {
+    color: #b1191a;
+}
+.progress {
+    /* 块级元素变成行内块元素 */
+    display: inline-block;
+    width: 130px;
+    height: 10px;
+    border: 1px solid #e12228;
+    margin: 0 5px;
+    /* 垂直居中 */
+    vertical-align: middle;
+    border-radius: 5px;
+}
+.progress_in {
+    width: 87%;
+    height: 10px;
+    background-color: #f24349;
+}
+.sk_goods_buy {
+    /* 原本是行内元素，变成块级元素 */
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 50px;
+    background-color: #b1191a;
+    font-size: 20px;
+    color: #fff;
+    text-align: center;
+    line-height: 50px;
+}
+/* 商品图片位置上移 */
+.sk_goods img{
+    transition: all .2s;
+}
+.sk_goods img:hover {
+    margin-top: -3px;
+}
+/* 分页管理 */
+.page {
+    margin: 40px 0;
+    /* text-align: center;这个指的是行内元素和行内块元素都可以居中对齐 */
+    text-align: center;
+}
+/* 左侧页码 */
+.page_num a {
+    display: inline-block;
+    width: 36px;
+    height: 36px;
+    border: 1px solid #ccc;
+    background-color: #f7f7f7;
+    line-height: 36px;
+}
+.page_num .page_num_prev,
+.page_num .page_num_next {
+    width: 83px;
+}
+.page_num .page_more,
+.page_num .page_current {
+    border: 1px solid transparent;
+    background-color: transparent;
+}
+/* 右侧跳转 */
+.page_skip input {
+    width: 36px;
+    height: 36px;
+    border: 1px solid #ccc;
+    text-align: center;
+    transition: all .5s;
+}
+/* 焦点选择器，对输入框进行变宽处理和边框处理 */
+.page_skip input:focus,
+.page_skip input:hover {
+    width: 150px;
+    border: 1px solid red;
+}
+.page_skip button {
+    width: 54px;
+    height: 36px;
+    border: 1px solid #ccc;
+    background-color: #f7f7f7;
+}

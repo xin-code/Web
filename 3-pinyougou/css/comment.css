@@ -33,6 +33,7 @@
 }
 .shortcut li {
     float: left;
+    margin-right: 15px;
 }
 .fr .icomoon {
     font-family: 'icomoon';
@@ -112,6 +113,7 @@
     background-color: #f7f7f7;
     border: 1px solid #dfdfdf;
     text-align: center;
+    cursor: pointer;
 }
 .shopcar .car {
     font-family: 'icomoon';
@@ -162,6 +164,10 @@
     line-height: 31px;
     margin-left: 1px;
     padding:0 10px;
+    transition: all .3s;
+}
+.menu_item:hover{
+    padding-left: 20px;
 }
 .menu_item a {
     font-style: 14px;
@@ -241,7 +247,6 @@
 
 .mod_help {
     height: 187px;
-    background-color: pink;
     border-bottom: 1px solid #ccc;
 }
 .mod_help_item {

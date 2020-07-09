@@ -1,3 +1,4 @@
+/* 首页的CSS样式表 */
 /* main模块 */
 .main {
     width: 980px;
@@ -164,6 +165,7 @@
 .bargain {
     margin-top: 8px;
     height: 76px;
+    cursor: pointer;
 }
 /* recommend推荐模块 */
 .recommend {
@@ -200,4 +202,105 @@
 /* 最后一个盒子不要边框 */
 .recom-bd .last_recom {
     border-right: 0;
+}
+/* floor楼层区 */
+/* 每个楼的头部 */
+.box-hd {
+    height: 30px;
+    border-bottom: 2px solid #c81623;
+    margin-top: 25px;
+}
+/* 左侧文字部分 */
+.box-hd h3 {
+    font-size: 18px;
+    color: #cc353e;
+}
+/* 居中对齐 */
+.box-hd ul {
+    line-height: 30px;
+}
+/* 每个li标签都左浮动 */
+.box-hd ul li {
+    float: left;
+}
+/* 每个a左右15px */
+.box-hd ul li a {
+    margin: 0 15px;
+}
+/* 每个楼身体部分 */
+.box-bd {
+    height: 360px;
+    /* 超出版心的部分可以隐藏掉 */
+    overflow: hidden;
+}
+/* 楼身上所有的图片 进行CSS3过渡动画的变换 */
+/* 过渡写在：谁需要做动画，就在谁处进行书写transition:all */
+.box-bd img {
+    transition: all .3s;
+}
+/* 当经过图片的时候，经过1秒后往左走10像素 */
+.box-bd img:hover {
+    margin-left: -10px;
+}
+.tab_con li {
+    float: left;
+    height: 360px;
+}
+/* 具体每个盒子的大小 */
+/* 一号盒子 */
+.w209 {
+    width: 209px;
+    background-color: #f9f9f9;
+}
+.tab_con_list {
+    overflow: hidden;
+    margin-bottom: 1px;
+}
+.tab_con_list li {
+    width: 66px;
+    height: 32px;
+    line-height: 32px;
+    border-bottom: 1px solid #ccc;
+    margin: 0 10px;
+    text-align: center;
+}
+/* 二号盒子 */
+.w329 {
+    width: 329px;
+}
+/* 三号盒子 */
+.w219 {
+    width: 219px;
+    border-right: 1px solid #ccc;
+}
+/* 四五号盒子 */
+.w220 {
+    width: 220px;
+    border-right: 1px solid #ccc;
+}
+.tab_con_item {
+    border-bottom:1px solid #ccc;
+}
+/* 电梯导航 */
+.fixedtool {
+    position: fixed;
+    left: 50%;
+    margin-left: -676px;
+    top: 150px;
+    width: 66px;
+    background-color: #fff;
+}
+.fixedtool li {
+    font-size: 12px;
+    height: 32px;
+    border-bottom: 1px solid #ccc;
+    line-height: 32px;
+    text-align: center;
+}
+.fixedtool_cur {
+    background-color: #c81623;
+}
+/* 电梯导航字体变成白色 */
+.fixedtool_cur a {
+    color: #fff;
 }
