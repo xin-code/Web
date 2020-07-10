@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,37 +9,42 @@
         .one {
             width: 100px;
             height: 100px;
-            border:1px solid red;
+            border: 1px solid red;
             overflow: visible;
             /* overflow中默认是visible溢出部分可以显示 */
         }
+        
         .two {
             width: 100px;
             height: 100px;
-            border:1px solid red;
+            border: 1px solid red;
             overflow: hidden;
             /* overflow默认隐藏hidden溢出部分的文字 */
         }
+        
         .three {
             width: 100px;
             height: 100px;
-            border:1px solid red;
+            border: 1px solid red;
             overflow: scroll;
             /* 不管是否溢出，总是显示滚动条 */
         }
+        
         .four {
             width: 100px;
             height: 100px;
-            border:1px solid red;
+            border: 1px solid red;
             overflow: auto;
             /* 如果超出border大小，自动出现滚动条。如果没有超出大小，则不会出现滚动条 */
         }
     </style>
 </head>
+
 <body>
     <div class="one">overflow溢出部分的显示与隐藏overflow溢出部分的显示与隐藏overflow溢出部分的显示与隐藏</div>
     <div class="two">overflow溢出部分的显示与隐藏overflow溢出部分的显示与隐藏overflow溢出部分的显示与隐藏</div>
     <div class="three">overflow溢出部分的显示与隐藏</div>
     <div class="four">overflow溢出部分的显示与隐藏overflow溢出部分的显示与隐藏overflow溢出部分的显示与隐藏</div>
 </body>
+
 </html>

@@ -1,16 +1,23 @@
 /* 首页的CSS样式表 */
+
+
 /* main模块 */
+
 .main {
     width: 980px;
     height: 455px;
-    margin:10px 0 0 219px;
+    margin: 10px 0 0 219px;
 }
+
+
 /* 轮播图 */
+
 .focus {
     position: relative;
     width: 721px;
     height: 455px;
 }
+
 .arrow-l,
 .arrow-r {
     position: absolute;
@@ -26,22 +33,32 @@
     font-family: 'icomoon';
     font-size: 18px;
 }
+
+
 /* 左箭头 */
+
 .arrow-l {
     left: 0;
     border-radius: 0 12px 12px 0;
 }
+
+
 /* 右箭头 */
+
 .arrow-r {
     right: 0;
     border-radius: 12px 0 0 12px;
 }
+
+
 /* 轮播图小圆点 */
+
 .circle {
     position: absolute;
     bottom: 10px;
     left: 50px;
 }
+
 .circle li {
     float: left;
     width: 5px;
@@ -52,19 +69,27 @@
     margin-left: 5px;
     cursor: pointer;
 }
+
 .current {
     background-color: #fff;
 }
+
+
 /* 品优购快报 */
+
 .newsflash {
     width: 250px;
     height: 455px;
 }
+
 .news {
     height: 160px;
     border: 1px solid #ccc;
 }
+
+
 /* 品优购快报-头部 */
+
 .news-hd {
     height: 32px;
     border-bottom: 1px dotted #ccc;
@@ -72,28 +97,38 @@
     line-height: 32px;
     padding: 0 15px;
 }
+
 .news-hd a {
     float: right;
     font-size: 12px;
     font-family: 'icomoon';
 }
+
+
 /* 品优购快报-列表 */
+
 .news-bd {
     padding: 10px 0 0 10px;
 }
+
 .news-bd li {
     height: 23px;
 }
+
+
 /* 生活服务-小图标 */
+
 .lifeservice {
     height: 209px;
     border: 1px solid #ccc;
     border-top: none;
     overflow: hidden;
 }
+
 .lifeservice ul {
     width: 252px;
 }
+
 .lifeservice li {
     position: relative;
     float: left;
@@ -102,96 +137,129 @@
     border-right: 1px solid #ccc;
     border-bottom: 1px solid #ccc;
 }
+
 .lifeservice li a {
     overflow: hidden;
     display: block;
     height: 100%;
 }
+
 .service_ico {
     display: block;
     width: 24px;
     height: 24px;
     margin: 10px auto;
 }
+
 .service_ico_huafei {
     background: url(../img/icons.png) no-repeat -17px -16px;
 }
+
 .service_ico_jipiao {
     background: url(../img/icons.png) no-repeat -80px -18px;
 }
+
 .service_ico_movie {
     background: url(../img/icons.png) no-repeat -141px -17px;
 }
+
 .service_ico_game {
     background: url(../img/icons.png) no-repeat -206px -16px;
 }
+
 .service_ico_caipiao {
     background: url(../img/icons.png) no-repeat -17px -88px;
 }
+
 .service_ico_jiayouka {
     background: url(../img/icons.png) no-repeat -77px -88px;
 }
+
 .service_ico_hotal {
     background: url(../img/icons.png) no-repeat -141px -88px;
 }
+
 .service_ico_train {
     background: url(../img/icons.png) no-repeat -206px -88px;
 }
+
 .service_ico_zhongchou {
     background: url(../img/icons.png) no-repeat -17px -156px;
 }
+
 .service_ico_licai {
     background: url(../img/icons.png) no-repeat -79px -159px;
 }
+
 .service_ico_lipinka {
     background: url(../img/icons.png) no-repeat -141px -156px;
 }
+
 .service_ico_baitiao {
     background: url(../img/icons.png) no-repeat -206px -160px;
 }
+
 .lifeservice li p {
     text-align: center;
 }
+
+
 /* 折扣推荐 */
+
 .lifeservice .discount {
     position: absolute;
     left: 50px;
     top: 0;
     width: 12px;
     height: 15px;
-    background:url(../img/discount.jpg) no-repeat;
+    background: url(../img/discount.jpg) no-repeat;
 }
+
+
 /* ad广告区 */
+
 .bargain {
     margin-top: 8px;
     height: 76px;
     cursor: pointer;
 }
+
+
 /* recommend推荐模块 */
+
 .recommend {
     margin-top: 11px;
     height: 163px;
 }
+
+
 /* recommend 左边头部模块 */
+
 .recom-hd {
     width: 200px;
     height: 163px;
     background-color: #5c5251;
     text-align: center;
 }
+
 .recom-hd img {
     margin: 30px 0 10px 0;
 }
+
 .recom-hd p {
     font-size: 18px;
     color: #fff;
 }
+
+
 /* recommend 右边身体模块 */
+
 .recom-bd {
     width: 1000px;
     height: 163px;
     background-color: #ebebeb;
 }
+
 .recom-bd li {
     float: left;
     height: 145px;
@@ -199,63 +267,102 @@
     border-right: 1px solid #ccc;
     margin-top: 10px;
 }
+
+
 /* 最后一个盒子不要边框 */
+
 .recom-bd .last_recom {
     border-right: 0;
 }
+
+
 /* floor楼层区 */
+
+
 /* 每个楼的头部 */
+
 .box-hd {
     height: 30px;
     border-bottom: 2px solid #c81623;
     margin-top: 25px;
 }
+
+
 /* 左侧文字部分 */
+
 .box-hd h3 {
     font-size: 18px;
     color: #cc353e;
 }
+
+
 /* 居中对齐 */
+
 .box-hd ul {
     line-height: 30px;
 }
+
+
 /* 每个li标签都左浮动 */
+
 .box-hd ul li {
     float: left;
 }
+
+
 /* 每个a左右15px */
+
 .box-hd ul li a {
     margin: 0 15px;
 }
+
+
 /* 每个楼身体部分 */
+
 .box-bd {
     height: 360px;
     /* 超出版心的部分可以隐藏掉 */
     overflow: hidden;
 }
+
+
 /* 楼身上所有的图片 进行CSS3过渡动画的变换 */
+
+
 /* 过渡写在：谁需要做动画，就在谁处进行书写transition:all */
+
 .box-bd img {
     transition: all .3s;
 }
+
+
 /* 当经过图片的时候，经过1秒后往左走10像素 */
+
 .box-bd img:hover {
     margin-left: -10px;
 }
+
 .tab_con li {
     float: left;
     height: 360px;
 }
+
+
 /* 具体每个盒子的大小 */
+
+
 /* 一号盒子 */
+
 .w209 {
     width: 209px;
     background-color: #f9f9f9;
 }
+
 .tab_con_list {
     overflow: hidden;
     margin-bottom: 1px;
 }
+
 .tab_con_list li {
     width: 66px;
     height: 32px;
@@ -264,24 +371,37 @@
     margin: 0 10px;
     text-align: center;
 }
+
+
 /* 二号盒子 */
+
 .w329 {
     width: 329px;
 }
+
+
 /* 三号盒子 */
+
 .w219 {
     width: 219px;
     border-right: 1px solid #ccc;
 }
+
+
 /* 四五号盒子 */
+
 .w220 {
     width: 220px;
     border-right: 1px solid #ccc;
 }
+
 .tab_con_item {
-    border-bottom:1px solid #ccc;
+    border-bottom: 1px solid #ccc;
 }
+
+
 /* 电梯导航 */
+
 .fixedtool {
     position: fixed;
     left: 50%;
@@ -290,6 +410,7 @@
     width: 66px;
     background-color: #fff;
 }
+
 .fixedtool li {
     font-size: 12px;
     height: 32px;
@@ -297,10 +418,14 @@
     line-height: 32px;
     text-align: center;
 }
+
 .fixedtool_cur {
     background-color: #c81623;
 }
+
+
 /* 电梯导航字体变成白色 */
+
 .fixedtool_cur a {
     color: #fff;
 }

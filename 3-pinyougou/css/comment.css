@@ -1,45 +1,59 @@
 /* 公共样式 */
+
 .fl {
     float: left;
 }
+
 .fr {
     float: right;
 }
+
+
 /* 版心 */
+
 .w {
     width: 1200px;
     margin: 0 auto;
 }
+
+
 /* 字体红色 */
+
 .style-red {
     color: #c81623;
 }
+
+
 /* 特殊字体icomoon */
+
 @font-face {
-        font-family: 'icomoon';
-        src:  url('../fonts/icomoon.eot?7kkyc2');
-        src:  url('../fonts/icomoon.eot?7kkyc2#iefix') format('embedded-opentype'),
-        url('../fonts/icomoon.ttf?7kkyc2') format('truetype'),
-        url('../fonts/icomoon.woff?7kkyc2') format('woff'),
-        url('../fonts/icomoon.svg?7kkyc2#icomoon') format('svg');
+    font-family: 'icomoon';
+    src: url('../fonts/icomoon.eot?7kkyc2');
+    src: url('../fonts/icomoon.eot?7kkyc2#iefix') format('embedded-opentype'), url('../fonts/icomoon.ttf?7kkyc2') format('truetype'), url('../fonts/icomoon.woff?7kkyc2') format('woff'), url('../fonts/icomoon.svg?7kkyc2#icomoon') format('svg');
     font-weight: normal;
     font-style: normal;
 }
+
+
 /* 快速导航栏 start */
+
 .shortcut {
     height: 30px;
     line-height: 30px;
     background-color: #f1f1f1;
 }
+
 .shortcut li {
     float: left;
     margin-right: 15px;
 }
+
 .fr .icomoon {
     font-family: 'icomoon';
     font-size: 16px;
     line-height: 26px;
 }
+
 .spacer {
     width: 1px;
     height: 12px;
@@ -47,11 +61,14 @@
     margin: 9px 14px;
 }
 
+
 /* header start */
+
 .header {
     position: relative;
     height: 105px;
 }
+
 .logo {
     position: absolute;
     left: 0;
@@ -59,6 +76,7 @@
     height: 55px;
     width: 175px;
 }
+
 .logo a {
     /* 隐藏a标签里面的字体 */
     /* 1.font-size: 0; */
@@ -70,11 +88,13 @@
     text-indent: -999em;
     background: url(../img/logo.png) no-repeat;
 }
+
 .search {
     position: absolute;
     top: 27px;
     left: 347px;
 }
+
 .searchtext {
     float: left;
     width: 445px;
@@ -83,6 +103,7 @@
     padding-left: 10px;
     border: 2px solid #b1191a;
 }
+
 .btn {
     float: left;
     width: 82px;
@@ -98,10 +119,12 @@
     top: 69px;
     left: 347px;
 }
+
 .hotwords a {
     float: left;
     margin: 0 10px;
 }
+
 .shopcar {
     position: absolute;
     right: 64px;
@@ -115,15 +138,18 @@
     text-align: center;
     cursor: pointer;
 }
+
 .shopcar .car {
     font-family: 'icomoon';
     color: #d94f4f;
     margin-right: 7px;
 }
+
 .shopcar .arrow {
     font-family: 'icomoon';
     margin-left: 15px;
 }
+
 .count {
     position: absolute;
     top: -5px;
@@ -135,16 +161,23 @@
     color: #fff;
     border-radius: 7px 7px 7px 0;
 }
+
+
 /* nav导航栏 star */
+
 .nav {
     height: 45px;
     border-bottom: 2px solid #b1191a;
 }
+
+
 /* 左侧盒子 */
+
 .dropdown {
     width: 209px;
     height: 45px;
 }
+
 .dropdown .dt {
     height: 45px;
     background-color: #b1191a;
@@ -154,47 +187,60 @@
     color: #fff;
     text-align: center;
 }
+
 .dropdown .dd {
     height: 465px;
     background-color: #c81623;
     margin-top: 2px;
 }
+
 .menu_item {
     height: 31px;
     line-height: 31px;
     margin-left: 1px;
-    padding:0 10px;
+    padding: 0 10px;
     transition: all .3s;
 }
-.menu_item:hover{
+
+.menu_item:hover {
     padding-left: 20px;
 }
+
 .menu_item a {
     font-style: 14px;
     color: #fff;
 }
+
 .menu_item i {
     float: right;
     font-family: 'icomoon';
     font-size: 18px;
     color: #fff;
 }
+
 .menu_item:hover {
     background-color: #fff;
 }
+
 .menu_item:hover a {
     color: #c81623;
 }
-.menu_item a:hover{
+
+.menu_item a:hover {
     color: black;
 }
+
+
 /* 右侧盒子 */
+
 .navitems {
     margin-left: 10px;
 }
+
 .navitems li {
     float: left;
 }
+
 .navitems li a {
     display: block;
     height: 45px;
@@ -203,78 +249,96 @@
     padding: 0 25px;
 }
 
+
 /* footer start */
+
 .footer {
     height: 386px;
     background-color: #f5f5f5;
     padding-top: 30px;
 }
+
 .mod_service {
     height: 79px;
     border-bottom: 1px solid #ccc;
 }
+
 .mod_service li {
     float: left;
     width: 240px;
     height: 79px;
 }
-.mod_service_icon  {
+
+.mod_service_icon {
     float: left;
     height: 50px;
     width: 50px;
-    margin-left:35px;
+    margin-left: 35px;
 }
+
 .mod_service_tit {
     float: left;
     margin-left: 5px;
 }
+
 .mod_service_zheng {
-    background:url(../img/icons.png)no-repeat -253px -3px;
+    background: url(../img/icons.png)no-repeat -253px -3px;
 }
 
 .mod_service_kuai {
-    background:url(../img/icons.png)no-repeat -254px -53px;
+    background: url(../img/icons.png)no-repeat -254px -53px;
 }
+
 .mod_service_bao {
-    background:url(../img/icons.png)no-repeat -255px -106px;
+    background: url(../img/icons.png)no-repeat -255px -106px;
 }
+
 .mod_service_xun {
-    background:url(../img/icons.png)no-repeat -258px -156px;
+    background: url(../img/icons.png)no-repeat -258px -156px;
 }
+
 .mod_service_wen {
-    background:url(../img/icons.png)no-repeat -256px -208px;
+    background: url(../img/icons.png)no-repeat -256px -208px;
 }
 
 .mod_help {
     height: 187px;
     border-bottom: 1px solid #ccc;
 }
+
 .mod_help_item {
     float: left;
     width: 150px;
     padding: 10px 0 0 50px;
 }
+
 .mod_help_item dt {
     height: 33px;
     font-size: 16px;
 }
+
 .mod_help_item dd {
     height: 24px;
     font-size: 12px;
 }
+
 .mod_help_app dt,
 .mod_help_app p {
     padding-left: 15px;
 }
+
 .mod_help_app img {
     margin: 7px 0;
 }
+
 .mod_copyright {
     text-align: center;
 }
+
 .mod_copyright_item {
     margin: 20px 0 15px 0;
 }
+
 .mod_copyright_info {
     line-height: 18px;
 }

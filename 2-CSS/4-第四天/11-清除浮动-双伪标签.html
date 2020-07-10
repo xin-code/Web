@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,28 +11,34 @@
             content: "";
             display: table;
         }
+        
         .clearfix:after {
             clear: both;
         }
+        
         .clearfix {
             *zoom: 1;
         }
+        
         .father {
             width: 500px;
             background-color: brown;
         }
+        
         .father .son {
             float: left;
             width: 200px;
             height: 220px;
             background-color: cadetblue;
         }
+        
         .father .dau {
             float: left;
             width: 200px;
             height: 200px;
             background-color: violet;
         }
+        
         .dsq {
             width: 500px;
             height: 200px;
@@ -39,6 +46,7 @@
         }
     </style>
 </head>
+
 <body>
     <div class="father clearfix">
         <div class="son"></div>
@@ -47,4 +55,5 @@
     <div class="dsq"></div>
 
 </body>
+
 </html>
