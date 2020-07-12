@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS3动画属性</title>
+    <style>
+        @keyframes move {
+            0% {
+                transform: translate(0px, 0px);
+            }
+            100% {
+                transform: translate(0px, 1000px);
+            }
+        }
+        
+        div {
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+            /* animation-name: move; */
+            /* 周期的持续时间 */
+            /* animation-duration: 1s; */
+            /* 进入页面后两秒进行播放动画 */
+            /* animation-delay: 2s; */
+            /* 动画循环次数 */
+            /* animation-iteration-count: infinite; */
+            /* 进行逆播放动画 */
+            /* animation-direction: alternate; */
+            /* 动画到达终点，则不会进行继续动作 */
+            /* animation-fill-mode: forwards; */
+            /* animation: move 1s linear 1s infinite alternate forwards; */
+            /* animation: move 1s linear 2s infinite alternate forwards; */
+            /* animation: move 2s linear 1s infinite alternate forwards; */
+            animation: move 2s linear 1s forwards;
+        }
+        
+        div:hover {
+            /* 鼠标经过进行暂停动画的处理 */
+            /* animation-play-state: paused; */
+            animation-play-state: paused;
+        }
+    </style>
+</head>
+
+<body>
+    <div></div>
+</body>
+
+</html>
