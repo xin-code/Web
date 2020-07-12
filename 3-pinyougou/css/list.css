@@ -82,6 +82,7 @@
 /* 商品总体格式 */
 
 .sk_goods {
+    overflow: hidden;
     position: relative;
     float: left;
     width: 288px;
@@ -92,14 +93,6 @@
 
 .sk_goods:hover {
     border: 1px solid #e12228;
-}
-
-.sk_goods_up {
-    transition: all 2s;
-}
-
-.sk_goods_up:hover {
-    padding-top: -10px;
 }
 
 
@@ -190,7 +183,7 @@
 }
 
 .sk_goods img:hover {
-    margin-top: -3px;
+    transform: translateY(-5px);
 }
 
 
