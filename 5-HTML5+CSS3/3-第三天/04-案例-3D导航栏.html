@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D导航栏</title>
+    <style>
+        ul,
+        ol {
+            list-style: none;
+        }
+        
+        ul {
+            margin: 100px;
+        }
+        
+        ul li {
+            float: left;
+            width: 120px;
+            height: 40px;
+            perspective: 500px;
+            margin-left: 10px;
+        }
+        
+        .nav {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            transform-style: preserve-3d;
+            transition: all .4s;
+        }
+        
+        .nav:hover {
+            transform: rotateX(90deg);
+        }
+        
+        .nav div {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            text-align: center;
+            line-height: 40px;
+            top: 0;
+            left: 0;
+        }
+        
+        .nav div:first-child {
+            background-color: pink;
+            transform: translateZ(20px);
+        }
+        
+        .nav div:last-child {
+            background-color: purple;
+            /* 先写移动，在进行旋转 */
+            transform: translateY(20px) rotateX(-90deg);
+        }
+    </style>
+</head>
+
+<body>
+    <ul>
+        <li>
+            <div class="nav">
+                <div>123</div>
+                <div>456</div>
+            </div>
+        </li>
+        <li>
+            <div class="nav">
+                <div>123</div>
+                <div>456</div>
+            </div>
+        </li>
+        <li>
+            <div class="nav">
+                <div>123</div>
+                <div>456</div>
+            </div>
+        </li>
+        <li>
+            <div class="nav">
+                <div>123</div>
+                <div>456</div>
+            </div>
+        </li>
+        <li>
+            <div class="nav">
+                <div>123</div>
+                <div>456</div>
+            </div>
+        </li>
+    </ul>
+</body>
+
+</html>
