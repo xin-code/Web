@@ -1,0 +1,45 @@
+html,
+body {
+    height: 100%;
+    background: url(../images/bg_81ab3d6.jpg)no-repeat center top;
+}
+
+.play_video {
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 91px;
+    height: 91px;
+    cursor: pointer;
+}
+
+.play_video::before {
+    position: absolute;
+    display: block;
+    content: "";
+    width: 91px;
+    height: 91px;
+    background: url(../images/index_z_9769688.png) no-repeat -746px -821px;
+    animation: move 2s linear infinite;
+}
+
+.play_video::after {
+    position: absolute;
+    display: block;
+    content: "";
+    margin-top: 30px;
+    margin-left: 36px;
+    width: 21px;
+    height: 25px;
+    background: url(../images/index_z_9769688.png) no-repeat -2290px -107px;
+}
+
+@keyframes move {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
