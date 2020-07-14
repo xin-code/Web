@@ -1,0 +1,318 @@
+/* 特殊样式 */
+
+* {
+    -webkit-tap-highlight-color: transparent;
+}
+
+input {
+    -webkit-appearance: none;
+}
+
+img,
+a {
+    -webkit-touch-callout: none;
+}
+
+
+/* 总体设计 */
+
+body {
+    width: 100%;
+    min-width: 320px;
+    max-width: 1080px;
+    margin: 0 auto;
+    background-color: #fff;
+    font-size: 14px;
+    font-family: -apple-system, Helvetica, sans-serif;
+    line-height: 1.5;
+    color: #666;
+    height: 12000px;
+    background-color: #ccc;
+}
+
+ul,
+ol {
+    list-style: none;
+}
+
+
+/* APP下载提醒设置 */
+
+
+/* 盒子高度 */
+
+.app {
+    height: 45px;
+}
+
+
+/* ul设置 */
+
+ul {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+
+/* 去除图片顶部空隙 */
+
+img {
+    vertical-align: middle;
+}
+
+
+/* 每个li设置 */
+
+.app ul li {
+    float: left;
+    height: 45px;
+    background-color: #333;
+    text-align: center;
+    line-height: 45px;
+    color: #fff;
+}
+
+.app ul li:nth-child(1) {
+    width: 8%;
+}
+
+.app ul li:nth-child(1) img {
+    width: 10px;
+}
+
+.app ul li:nth-child(2) {
+    width: 10%;
+}
+
+.app ul li:nth-child(2) img {
+    width: 30px;
+    vertical-align: middle;
+}
+
+.app ul li:nth-child(3) {
+    width: 57%;
+}
+
+.app ul li:nth-child(4) {
+    width: 25%;
+    background-color: #F63515;
+}
+
+
+/* 搜索框 */
+
+.search_wrap {
+    overflow: hidden;
+    position: fixed;
+    min-width: 320px;
+    max-width: 1080px;
+    height: 44px;
+    text-align: center;
+    line-height: 44px;
+    width: 100%;
+    z-index: 9999;
+}
+
+
+/* 搜索按钮 */
+
+.search_btn {
+    float: left;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 40px;
+    height: 44px;
+}
+
+.search_btn::before {
+    display: block;
+    content: "";
+    width: 20px;
+    height: 18px;
+    background: url(../images/s-btn.png) no-repeat;
+    background-size: contain;
+    margin: 14px 0 0 15px;
+}
+
+
+/* 搜索框 */
+
+.search {
+    position: relative;
+    height: 30px;
+    margin: 10px 50px 0;
+    border-radius: 22px;
+    background-color: #fff;
+}
+
+
+/* 搜索框内的JD标志 */
+
+.search_icon {
+    position: absolute;
+    top: 7px;
+    left: 14px;
+    width: 20px;
+    height: 15px;
+    background-color: pink;
+    background: url(../images/jd.png) no-repeat;
+    background-size: 20px 15px;
+}
+
+
+/* 分割线 */
+
+.search_icon::after {
+    position: absolute;
+    top: 0px;
+    left: 26px;
+    content: "";
+    display: block;
+    width: 1px;
+    height: 16px;
+    background-color: #000;
+}
+
+
+/* 放大镜 */
+
+.zoom {
+    position: absolute;
+    top: 7px;
+    left: 50px;
+    width: 18px;
+    height: 15px;
+    background: url(../images/jd-sprites.png) no-repeat -81px 0;
+    background-size: 200px auto;
+}
+
+
+/* 登陆按钮 */
+
+.search_login {
+    position: absolute;
+    top: 0;
+    right: 0;
+    float: right;
+    width: 40px;
+    color: #fff;
+    height: 44px;
+    line-height: 44px;
+    text-align: center;
+}
+
+
+/* 滑动图 */
+
+.slider img {
+    width: 100%;
+}
+
+
+/* 品牌日 */
+
+.brand {
+    overflow: hidden;
+    width: 100%;
+    border-radius: 10px 10px 0 0;
+}
+
+.brand div {
+    float: left;
+    width: 33.33%;
+}
+
+.brand div img {
+    width: 100%;
+}
+
+
+/* nav导航栏 */
+
+nav {
+    margin-top: 10px;
+}
+
+
+/* 导航里的字体设置 */
+
+nav a {
+    overflow: hidden;
+    float: left;
+    width: 20%;
+    text-decoration: none;
+    color: #666;
+    text-align: center;
+    line-height: 40px;
+}
+
+
+/* 新闻模块 */
+
+
+/* 利用CSS3盒子模型 解除被挤下来的盒子 */
+
+.news a {
+    float: left;
+    box-sizing: border-box;
+}
+
+.news a img {
+    width: 100%;
+}
+
+.news a:nth-child(1) {
+    width: 50%;
+}
+
+
+/* 利用公式把后面两个孩子选择 */
+
+.news a:nth-child(n+2) {
+    width: 25%;
+    border-left: 1px solid #ccc;
+}
+
+
+/* 东家小院 */
+
+
+/* 顶部logo */
+
+.goods p img {
+    width: 100%;
+}
+
+
+/* 两个商品一起 */
+
+.evengoods_show li {
+    overflow: hidden;
+    float: left;
+    width: 50%;
+    box-sizing: border-box;
+}
+
+.evengoods_show li:nth-child(2n+1) {
+    border-right: 1px solid red;
+}
+
+.evengoods_show span,
+.evengoods_show p {
+    font-weight: 700;
+    margin-left: 50px;
+}
+
+.evengoods_show a {
+    float: left;
+    display: block;
+    width: 50%;
+}
+
+.evengoods_show a img {
+    float: left;
+    width: 100%;
+    transform: scale(0.8);
+}
