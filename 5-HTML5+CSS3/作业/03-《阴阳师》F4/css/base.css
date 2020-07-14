@@ -1,0 +1,33 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+ul,
+ol {
+    list-style: none;
+}
+
+input,
+button {
+    outline-style: none;
+    border-style: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+.cleanfix::before,
+.cleanfix::after {
+    content: "";
+    display: table;
+}
+
+.cleanfix::after {
+    clear: both;
+}
+
+.cleanfix {
+    *zoom: 1;
+}

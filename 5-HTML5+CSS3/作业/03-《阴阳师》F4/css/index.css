@@ -1,0 +1,114 @@
+.f4 {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    height: 175px;
+    width: 100%;
+}
+
+.walk1 {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    opacity: 0;
+    animation: walk 10s linear infinite;
+}
+
+.move1 {
+    width: 155px;
+    height: 121px;
+    background: url(../images/1.png) no-repeat;
+    animation: move1 .3s steps(2) infinite;
+}
+
+@keyframes move1 {
+    from {
+        background: url(../images/1.png) no-repeat 0 0;
+    }
+    to {
+        background: url(../images/1.png) no-repeat -308px 0;
+    }
+}
+
+.walk2 {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    opacity: 0;
+    animation: walk 10s linear 2s infinite;
+}
+
+.move2 {
+    width: 167px;
+    height: 176px;
+    background: url(../images/2.png) no-repeat;
+    animation: move2 .3s steps(2) infinite;
+}
+
+@keyframes move2 {
+    from {
+        background: url(../images/2.png) no-repeat 0 0;
+    }
+    to {
+        background: url(../images/2.png) no-repeat -334px 0;
+    }
+}
+
+.walk3 {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    opacity: 0;
+    animation: walk 10s linear 4s infinite;
+}
+
+.move3 {
+    width: 161px;
+    height: 149px;
+    background: url(../images/3.png) no-repeat;
+    animation: move3 .3s steps(2) infinite;
+}
+
+@keyframes move3 {
+    from {
+        background: url(../images/3.png) no-repeat 0 0;
+    }
+    to {
+        background: url(../images/3.png) no-repeat -322px 0;
+    }
+}
+
+.walk4 {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    opacity: 0;
+    animation: walk 10s linear 6s infinite;
+}
+
+.move4 {
+    width: 171px;
+    height: 157px;
+    background: url(../images/4.png) no-repeat;
+    animation: move4 .3s steps(2) infinite;
+}
+
+@keyframes move4 {
+    from {
+        background: url(../images/4.png) no-repeat 0 0;
+    }
+    to {
+        background: url(../images/4.png) no-repeat -342px 0;
+    }
+}
+
+@keyframes walk {
+    from {
+        transform: translate(-200px, 0);
+        opacity: 1;
+    }
+    to {
+        transform: translate(1920px, 0);
+        opacity: 1;
+    }
+}
