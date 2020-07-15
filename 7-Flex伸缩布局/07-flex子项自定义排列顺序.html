@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>flex子项自定义排列顺序</title>
+    <style>
+        div {
+            display: flex;
+            flex-direction: row;
+            width: 500px;
+            height: 500px;
+            background-color: pink;
+        }
+        
+        span {
+            width: 120px;
+            height: 60px;
+            background-color: purple;
+        }
+        
+        div span:nth-child(1) {
+            order: 1;
+        }
+        
+        div span:nth-child(2) {
+            order: 0;
+        }
+        
+        div span:nth-child(3) {
+            order: 2;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <span>1</span>
+        <span>2</span>
+        <span>3</span>
+    </div>
+</body>
+
+</html>
