@@ -26,8 +26,6 @@ body {
     font-family: -apple-system, Helvetica, sans-serif;
     line-height: 1.5;
     color: #666;
-    height: 12000px;
-    background-color: #ccc;
 }
 
 ul,
@@ -248,6 +246,10 @@ nav a {
     line-height: 40px;
 }
 
+nav a img {
+    width: 100%;
+}
+
 
 /* 新闻模块 */
 
@@ -288,21 +290,17 @@ nav a {
 
 /* 两个商品一起 */
 
+.evengoods_show {
+    clear: both;
+}
+
 .evengoods_show li {
     overflow: hidden;
     float: left;
     width: 50%;
     box-sizing: border-box;
-}
-
-.evengoods_show li:nth-child(2n+1) {
-    border-right: 1px solid red;
-}
-
-.evengoods_show span,
-.evengoods_show p {
-    font-weight: 700;
-    margin-left: 50px;
+    background-color: #ccc;
+    padding: 15px 10px;
 }
 
 .evengoods_show a {
@@ -313,6 +311,38 @@ nav a {
 
 .evengoods_show a img {
     float: left;
+    width: 100%;
+    transform: scale(0.8);
+}
+
+
+/* 单品 */
+
+.oddgoods_show {
+    clear: both;
+    width: 100%;
+    list-style: none;
+}
+
+.oddgoods_show li {
+    float: left;
+    width: 25%;
+    box-sizing: border-box;
+    padding: 15px 10px;
+}
+
+.oddgoods_show span,
+.oddgoods_show p {
+    font-size: 12px;
+}
+
+.oddgoods_show a {
+    float: left;
+    display: block;
+    width: 100%;
+}
+
+.oddgoods_show img {
     width: 100%;
     transform: scale(0.8);
 }
