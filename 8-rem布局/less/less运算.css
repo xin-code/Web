@@ -1,0 +1,21 @@
+html {
+  font-size: 50px;
+}
+div {
+  width: 500px;
+  height: 250px;
+  border: 10px solid #000;
+}
+div p {
+  height: 50px;
+  background-color: #777777;
+}
+div span {
+  font-size: 2ex;
+}
+div a {
+  text-decoration: none;
+}
+div a:hover {
+  color: red;
+}
