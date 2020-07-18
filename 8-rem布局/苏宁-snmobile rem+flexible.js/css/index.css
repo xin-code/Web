@@ -1,0 +1,98 @@
+/* 基础设置 */
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+ul,
+ol {
+    list-style: none;
+}
+
+input,
+button {
+    outline-style: none;
+    border-style: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+
+/* 如果屏幕超过750px 那么就不按照 当前屏幕的大小进行划分 */
+
+@media screen and (min-width:750px) {
+    html {
+        font-size: 75px !important;
+    }
+}
+
+
+/* 总体设计 */
+
+body {
+    min-width: 320px;
+    max-width: 750px;
+    /* flexable.js划分了10等份 */
+    width: 10rem;
+    margin: 0 auto;
+    line-height: 1.5;
+    font-family: Arial, Helvetica;
+    background-color: #f2f2f2;
+    width: 1rem;
+}
+
+
+/* 顶部搜索框 */
+
+.search_content {
+    display: flex;
+    position: fixed;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 10rem;
+    height: 1.173333rem;
+    background-color: #ffc001;
+}
+
+
+/* 左侧分类框 */
+
+.classify {
+    width: .48rem;
+    height: .8rem;
+    margin: .146667rem .333333rem .133333rem;
+    background: url(../images/classify.png) no-repeat;
+    background-size: .48rem .8rem;
+}
+
+
+/* 搜索框 */
+
+.search {
+    flex: 1;
+}
+
+.search input {
+    width: 100%;
+    height: .88rem;
+    border-radius: .44rem;
+    font-size: .333333rem;
+    background-color: #fff2cc;
+    margin-top: .133333rem;
+    padding-left: .333333rem;
+}
+
+
+/* 右侧登陆按钮 */
+
+.login {
+    width: .48rem;
+    height: .8rem;
+    margin: .146667rem .333333rem .133333rem;
+    background: url(../images/login.png) no-repeat;
+    background-size: .48rem .8rem;
+}
