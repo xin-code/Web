@@ -489,6 +489,9 @@ footer {
     vertical-align: middle;
 }
 
+
+/* 图标 */
+
 .copyright em::before {
     display: inline-block;
     content: "";
@@ -497,6 +500,9 @@ footer {
     background: url(../images/sprite.png) no-repeat -59px -259px;
     background-size: 104px auto;
 }
+
+
+/* 利用旋转制造倒三角 */
 
 .copyright em::after {
     margin: 0 5px;
