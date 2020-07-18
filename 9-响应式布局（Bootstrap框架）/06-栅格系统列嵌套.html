@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--[if lt IE 9]>
+      <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+    <![endif]-->
+    <!-- 引入bootstrap样式文件 -->
+    <link rel="stylesheet" href="Bootstrap的使用/bootstrap/css/bootstrap.min.css">
+    <title>列嵌套</title>
+    <style>
+        [class^="col-lg"] {
+            border: 1px solid #000;
+        }
+        /* 一号盒子粉色 */
+        
+        .row .col-lg-3:nth-child(1) {
+            background-color: pink;
+        }
+        /* 二号盒子紫色 */
+        
+        .row .col-lg-3:nth-child(2) {
+            background-color: purple;
+        }
+        /* 三号盒子天蓝色 */
+        
+        .row .col-lg-3:nth-child(3) {
+            background-color: skyblue;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <!-- 在一号盒子内加入一个row类，可以取消父级元素的padding值，与父级元素一样高 -->
+            <div class="col-lg-3">
+                <div class="row">
+                    <div class="col-lg-6">a</div>
+                    <div class="col-lg-6">b</div>
+                </div>
+            </div>
+            <div class="col-lg-3">
+                <div class="col-lg-6">a</div>
+                <div class="col-lg-6">b</div>
+            </div>
+            <div class="col-lg-3">3</div>
+            <div class="col-lg-3">4</div>
+        </div>
+    </div>
+</body>
+
+</html>

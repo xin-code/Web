@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--[if lt IE 9]>
+      <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+    <![endif]-->
+    <!-- 引入bootstrap样式文件 -->
+    <link rel="stylesheet" href="Bootstrap的使用/bootstrap/css/bootstrap.min.css">
+    <title>栅格系统的使用02</title>
+    <style>
+        [class^="col-lg"] {
+            border: 1px solid #000;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <!-- 正好撑满整行 12 份 -->
+        <!-- 想要同时满足
+        宽屏屏幕每个占 3 份 ，一行 4 个
+        中等屏幕占 4 份 ，一行 3 个
+        小屏屏幕(pad)占 6分 ，一行 2 个
+        超小屏幕 一行一个 -->
+
+        <div class="row">
+            <div class="col-lg-3  col-md-4 col-sm-6 col-xs-12">1</div>
+            <div class="col-lg-3  col-md-4 col-sm-6 col-xs-12">2</div>
+            <div class="col-lg-3  col-md-4 col-sm-6 col-xs-12">3</div>
+            <div class="col-lg-3  col-md-4 col-sm-6 col-xs-12">4</div>
+        </div>
+    </div>
+</body>
+
+</html>
