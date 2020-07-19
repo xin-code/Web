@@ -1,0 +1,386 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+
+/* 版心 */
+
+.w {
+    width: 1200px;
+    margin: 0 auto;
+}
+
+a {
+    text-decoration: none;
+}
+
+li {
+    list-style: none;
+}
+
+
+/* 清除浮动 */
+
+.clearfix:after,
+.clearfix:before {
+    content: "";
+    display: table;
+}
+
+.clearfix:after {
+    clear: both;
+}
+
+.clearfix {
+    *zoom: 1;
+}
+
+
+/* 导航栏 */
+
+.nav {
+    height: 30px;
+    background-color: red;
+}
+
+.nav_r {
+    float: right;
+    color: #fff;
+    font-style: 12px;
+}
+
+.nav_r a {
+    line-height: 30px;
+    padding: 0 5px;
+    color: #fff;
+}
+
+
+/* 控制台 */
+
+.kongzhitai {
+    border: 1px solid #fff;
+    border-radius: 5px;
+}
+
+
+/* logo */
+
+.logo {
+    height: 50px;
+    background-color: #ccc;
+}
+
+
+/* logo图 */
+
+.logo img {
+    float: left;
+    margin: 10px 0;
+}
+
+.logo ul {
+    float: right;
+}
+
+
+/* logo a标签 */
+
+.logo li a {
+    float: left;
+    display: block;
+    height: 47px;
+    margin-left: 30px;
+    font-size: 15px;
+    color: black;
+    line-height: 50px;
+    border-bottom: 3px solid transparent;
+}
+
+
+/* logo a标签经过变换颜色 */
+
+.logo li a:hover {
+    border-bottom: 3px solid red;
+}
+
+.w .current {
+    color: red;
+    border-bottom: 3px solid red;
+}
+
+
+/* 聚焦图 */
+
+.focus {
+    /* overflow: hidden; */
+    position: relative;
+}
+
+.focus img {
+    width: 100%;
+    margin-top: -4px;
+}
+
+
+/* 轮播图小圆点 */
+
+.focus ul {
+    position: absolute;
+    bottom: 40px;
+    left: 50%;
+    margin-left: -70px;
+}
+
+.focus li {
+    float: left;
+    width: 15px;
+    height: 15px;
+    background-color: #ccc;
+    border-radius: 50%;
+    margin-left: 15px;
+}
+
+
+/* 轮播图当前状态 */
+
+.focus .current {
+    background-color: #fff;
+}
+
+
+/* 基础云服务 */
+
+.cloud {
+    margin-top: 50px;
+}
+
+.one {
+    background: url(images/01.png) no-repeat center;
+}
+
+.two {
+    background: url(images/02.png) no-repeat center;
+}
+
+.three {
+    background: url(images/03.png) no-repeat center;
+}
+
+.four {
+    background: url(images/04.png) no-repeat center;
+}
+
+.five {
+    background: url(images/05.png) no-repeat center;
+}
+
+.six {
+    background: url(images/06.png) no-repeat center;
+}
+
+.cloud_box {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    background-color: #fff;
+    margin: 20px auto;
+}
+
+.cloud li p {
+    font-size: 25px;
+    color: #fff;
+    text-align: center;
+}
+
+.cloud h5 {
+    text-align: center;
+    font-size: 30px;
+}
+
+.cloud p {
+    text-align: center;
+    font-size: 15px;
+    padding-top: 15px;
+}
+
+.cloud ul {
+    height: 200px;
+    margin: 50px 0;
+}
+
+.cloud ul li {
+    float: left;
+    width: 195px;
+    height: 200px;
+    background-color: #ccc;
+    margin-left: 2px;
+}
+
+.cloud li img {
+    width: 30px;
+    height: 30px;
+}
+
+
+/* 通用解决方案 */
+
+.solu {
+    margin-top: 50px;
+}
+
+.solu h5 {
+    text-align: center;
+    font-size: 30px;
+}
+
+.solu p {
+    text-align: center;
+    font-size: 15px;
+    padding-top: 15px;
+}
+
+.solu img {
+    float: left;
+    margin: 40px 100px 0 100px;
+    vertical-align: top;
+}
+
+.solu span {
+    float: left;
+    display: block;
+    margin-top: 50px;
+    width: 120px;
+    height: 40px;
+    text-align: center;
+    line-height: 40px;
+    border-bottom: 2px solid #ccc;
+    font-size: 25px;
+}
+
+.solu em {
+    display: inline-block;
+    font-style: normal;
+    width: 480px;
+    text-align: left;
+    font-size: 12px;
+    margin-top: 40px;
+}
+
+.solu a {
+    float: left;
+    display: block;
+    margin: 25px 0 0 10px;
+    text-decoration: none;
+    height: 20px;
+    width: 80px;
+    border: 1px solid red;
+    line-height: 20px;
+    text-align: center;
+    font-size: 12px;
+    color: black;
+    border-radius: 5px;
+}
+
+.news {
+    height: 200px;
+}
+
+.news dl {
+    float: left;
+    width: 400px;
+}
+
+.news dt {
+    display: inline-block;
+    font-weight: 700;
+    font-size: 18px;
+    height: 40px;
+    border-bottom: 1px solid #ccc;
+}
+
+.news dd {
+    margin-top: 10px;
+}
+
+.news dd a {
+    display: block;
+    width: 300px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 12px;
+    color: #ccc;
+}
+
+
+/* footer */
+
+.footer {
+    height: 500px;
+    background-color: black;
+    color: #fff;
+}
+
+.footer a {
+    color: #ccc;
+}
+
+.info dl {
+    float: left;
+    margin-right: 100px;
+}
+
+.info dt {
+    font-size: 25px;
+    margin: 30px 0;
+}
+
+.info dd {
+    height: 30px;
+    text-align: left;
+    line-height: 30px;
+}
+
+.links {
+    float: left;
+    width: 250px;
+    height: 200px;
+    margin-top: 30px;
+    font-size: 18px;
+}
+
+.links_l {
+    float: left;
+}
+
+.links_r {
+    float: right;
+}
+
+.links_r em {
+    display: inline-block;
+    margin-left: -7px;
+    width: 0;
+    height: 0;
+    border: 10px solid transparent;
+    border-color: transparent transparent transparent #fff;
+}
+
+.links_r li {
+    border-bottom: 1px solid #ccc;
+}
+
+.links_r .last {
+    border-bottom: 1px solid transparent;
+}
+
+.links i {
+    font-style: normal;
+}
+
+.links li {
+    height: 40px;
+    line-height: 40px;
+}
