@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS背景颜色和图片</title>
+    <style>
+        .pingpu {
+            width: 450px;
+            height: 450px;
+            background-image: url(images/2589.png);
+            color: red;
+            background-color: violet;
+        }
+        
+        .meipingpu {
+            width: 450px;
+            height: 450px;
+            background-image: url(images/2589.png);
+            background-repeat: no-repeat;
+            background-color: black;
+            color: red;
+        }
+        
+        .x {
+            width: 450px;
+            height: 450px;
+            background-image: url(images/2589.png);
+            background-repeat: repeat-x;
+            background-color: red;
+            color: red;
+        }
+        
+        .y {
+            width: 450px;
+            height: 450px;
+            background-image: url(images/2589.png);
+            background-repeat: repeat-y;
+            background-color: gray;
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="pingpu">我的背景应该是玄晶的图片</div>
+    <div class="meipingpu">没有平铺玄晶的图片</div>
+    <div class="x">x轴平铺玄晶的图片</div>
+    <div class="y">y轴平铺玄晶的图片</div>
+
+</body>
+
+</html>

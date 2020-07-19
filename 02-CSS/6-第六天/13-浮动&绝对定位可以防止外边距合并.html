@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>浮动和绝对定位可以防止外边距合并</title>
+    <style>
+        .father {
+            /* 第一种解决方法：给父亲一个浮动 */
+            /* float: left; */
+            /* 第二种解决方法：给父亲一个绝对定位 */
+            /* position: absolute; */
+            position: fixed;
+            width: 300px;
+            height: 300px;
+            background-color: #ccc;
+        }
+        
+        .son {
+            /* 第一种解决方法：给孩子一个浮动 */
+            /* float: left; */
+            /* 第二种解决方法：给孩子一个绝对定位 */
+            /* position: absolute; */
+            /* position: fixed; */
+            width: 100px;
+            height: 100px;
+            background-color: brown;
+            /* 造成外边距合并问题 */
+            margin-top: 50px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="father">
+        <div class="son"></div>
+    </div>
+</body>
+
+</html>
