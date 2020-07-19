@@ -1,0 +1,29 @@
+@fontall:50px;
+@boder:10px;
+@colorhover:red;
+html {
+    font-size: @fontall;
+}
+
+
+div {
+    // 计算方法和小学计算一样，先算括号内的，在算括号外
+    // 运算符前后一定要空格隔开
+    width: (200px + 50) * 2;
+    height: 100px + 150 ;
+    border: @boder solid #000;
+    p {
+        height: 50px;
+        background-color: #999 - #222;
+    }
+    span {
+        // 有两个不同的值进行运算，那么就取第一个值的结果的单位
+        font-size: 100ex / @fontall;
+    }
+    a {
+        text-decoration: none;
+        &:hover {
+            color:@colorhover;
+        }
+    }
+}

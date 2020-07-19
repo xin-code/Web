@@ -1,0 +1,18 @@
+// 子元素可以直接写在父元素里
+div {
+    width: 200px;
+    height: 200px;
+    background-color: green;
+    a {
+        font-size: 15px;
+        color: #fff;
+        &:hover{
+            text-decoration: none;
+        }
+    }
+}
+.nav {
+    .logo {
+        background-color: red;
+    }
+}

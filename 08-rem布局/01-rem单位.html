@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>rem单位</title>
+    <style>
+        /* em单位 是相对于父元素字体大小来计算的 */
+        
+        html {
+            font-size: 20px;
+        }
+        
+        div {
+            font-size: 12px;
+            width: 15rem;
+            height: 15rem;
+            background-color: purple;
+        }
+        
+        p {
+            /* width: 10em;
+            height: 10em; */
+            width: 10rem;
+            height: 10rem;
+            background-color: pink;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- em单位 是相对于父元素字体大小来计算的 -->
+    <div>
+        <!-- <p>em测试子元素的大小。应该是120*120px大小</p> -->
+        <p>rem测试子元素的大小。应该是200*200px大小</p>
+    </div>
+</body>
+
+</html>
