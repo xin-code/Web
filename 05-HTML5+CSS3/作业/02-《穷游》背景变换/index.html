@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>背景变换</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        .box {
+            overflow: hidden;
+            width: 275px;
+            height: 185px;
+            margin: 150px auto;
+            background: url(bgi.jpg) no-repeat top center;
+        }
+        
+        a {
+            display: block;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            opacity: 0;
+        }
+        
+        .box:hover a {
+            opacity: 1;
+            animation: color .5s;
+        }
+        
+        @keyframes color {
+            from {
+                transform: translateX(130%) skewX(-45deg) scale(1);
+            }
+            to {
+                transform: skewX(-45deg) scale(2);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <a href="javascript:;"></a>
+    </div>
+</body>
+
+</html>
