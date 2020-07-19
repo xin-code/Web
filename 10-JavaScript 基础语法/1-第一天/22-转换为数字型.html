@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>转换为数字类型</title>
+    <script>
+        var age = prompt('请输入您的年龄:');
+        console.log(parseInt(age));
+        console.log(typeof parseInt(age));
+        var str = '123.99';
+        // 利用parselnt(变量/字符串)转换为整形
+        console.log(parseInt('123'));
+        console.log(typeof parseInt('123'));
+        // 利用parseFloat(变量/字符串)转换为浮点型
+        console.log(parseFloat(str));
+        console.log(typeof parseFloat(str));
+        // 利用Number(变量/字符串)强制转换
+        console.log(Number(str));
+        console.log(typeof Number(str));
+        //利用js隐式转换
+        console.log('12' - 0);
+        console.log('12' * 1);
+        console.log('12' / 1);
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

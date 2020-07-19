@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>转换为布尔型</title>
+    <script>
+        // 转换布尔型，否定的 空值的 无定义的都会变成false
+        console.log(Boolean(''));
+        console.log(Boolean(0));
+        console.log(Boolean(NaN));
+        console.log(Boolean(null));
+        console.log(Boolean(undefined));
+        console.log('----------------');
+        //其余都会变成true
+        console.log(Boolean('小白'));
+        console.log(Boolean('123'));
+        console.log(Boolean('true'));
+        console.log(Boolean('false'));
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

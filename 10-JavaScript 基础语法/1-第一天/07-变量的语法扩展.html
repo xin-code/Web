@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>变量的语法扩展</title>
+    <script>
+        // 1.后者覆盖前者赋值
+        var myname = '1';
+        var myname = '2';
+        console.log(myname);
+        // 2. 声明多个变量
+        var sex = '女',
+            emali = '888@888.com',
+            address = 'earth';
+        console.log(sex);
+        console.log(emali);
+        console.log(address);
+        //3.只声明变量，不赋值 undefined
+        var psd;
+        console.log(psd);
+        // 4.不声明，不赋值
+        // console.log(tel);
+        // 5.只赋值，不声明
+        qq = 100;
+        console.log(qq);
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>
