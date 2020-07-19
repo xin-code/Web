@@ -1,0 +1,262 @@
+/* 基础设置 */
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+ul,
+ol {
+    list-style: none;
+}
+
+input,
+button {
+    outline-style: none;
+    border-style: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+
+/* 如果屏幕超过750px 那么就不按照 当前屏幕的大小进行划分 */
+
+@media screen and (min-width:750px) {
+    html {
+        font-size: 75px !important;
+    }
+}
+
+
+/* 总体设计 */
+
+body {
+    min-width: 320px;
+    max-width: 750px;
+    /* flexable.js划分了10等份 */
+    width: 10rem;
+    margin: 0 auto;
+    line-height: 1.5;
+    font-family: Arial, Helvetica;
+    background-color: #f2f2f2;
+}
+
+
+/* search_content顶部搜索框 */
+
+.search_content {
+    display: flex;
+    position: fixed;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 10rem;
+    height: 1.02rem;
+    background-color: #FFC001;
+}
+
+
+/* 左边分类按钮 */
+
+.search_content a:nth-of-type(1) {
+    width: .48rem;
+    height: .8rem;
+    background: url(../images/classify.png) no-repeat;
+    margin: .133333rem;
+    background-size: .48rem .8rem;
+}
+
+
+/* 中间搜索框 */
+
+.search {
+    flex: 1;
+    margin-top: .06rem;
+}
+
+.search input {
+    width: 100%;
+    height: .88rem;
+    border-radius: .44rem;
+    padding-left: .466667rem;
+    font-size: .333333rem;
+    background-color: #fff2cc;
+}
+
+
+/* 右侧登陆按钮  */
+
+.search_content a:nth-of-type(2) {
+    width: .48rem;
+    height: .8rem;
+    background: url(../images/login.png) no-repeat;
+    margin: .133333rem;
+    background-size: .48rem .8rem;
+}
+
+
+/* banner部分 */
+
+.banner img {
+    width: 100%;
+    vertical-align: top;
+}
+
+
+/* 广告部分 */
+
+.ad {
+    display: flex;
+}
+
+.ad a {
+    flex: 1;
+}
+
+.ad img {
+    width: 100%;
+}
+
+
+/* nav导航栏 */
+
+.nav {
+    width: 10rem;
+}
+
+.nav a {
+    float: left;
+    width: 2rem;
+    height: 1.866667rem;
+    text-align: center;
+}
+
+.nav a img {
+    display: block;
+    width: 1.093333rem;
+    height: 1.093333rem;
+    margin: .133333rem auto 0;
+}
+
+.nav a p {
+    font-size: .333333rem;
+    color: #666;
+}
+
+
+/* bargin优惠 */
+
+.bargin {
+    width: 100%;
+    display: flex;
+}
+
+.bargin a {
+    flex: 1;
+}
+
+
+/* 第一个图片占两个位置 */
+
+.bargin a:nth-child(1) {
+    flex: 2;
+}
+
+.bargin a img {
+    width: 100%;
+    vertical-align: bottom;
+}
+
+
+/* goods商品模块 */
+
+.goods {
+    width: 100%;
+    overflow: hidden;
+    background-color: #fff;
+    border-radius: .4rem;
+    margin-bottom: .8rem;
+}
+
+
+/* 天天低价 */
+
+.ttdj {
+    float: left;
+    width: 50%;
+    margin: .133333rem auto;
+    border-bottom: 1px solid #ccc;
+}
+
+.ttdj div {
+    font-size: .4rem;
+    font-weight: 700;
+    padding-left: .4rem;
+}
+
+.ttdj p {
+    font-size: .2rem;
+    color: #999;
+    padding-left: .4rem;
+}
+
+.ttdj ul {
+    display: flex;
+}
+
+.ttdj ul li {
+    flex: 1;
+    display: flex;
+}
+
+.ttdj ul li a {
+    flex: 1;
+    text-align: center;
+}
+
+.ttdj ul li a img {
+    width: 1.6rem;
+    height: 1.6rem;
+}
+
+.ttdj ul li a span {
+    color: red;
+    display: block;
+}
+
+
+/* subnav底部导航栏 */
+
+.subnav {
+    display: flex;
+    position: fixed;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 10rem;
+    height: .933333rem;
+    background-color: #fff;
+}
+
+.subnav a {
+    flex: 1;
+    text-align: center;
+    font-size: .2rem;
+}
+
+.subnav a img {
+    display: block;
+    margin: 0 auto;
+    width: .64rem;
+    height: .64rem;
+}
+
+.subnav a span {
+    margin-top: -0.066667rem;
+    display: block;
+    font-size: .2rem;
+    font-weight: 700;
+    color: #000;
+}
