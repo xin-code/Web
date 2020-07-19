@@ -1,0 +1,219 @@
+@import "common";
+@baseFont:50;
+
+// 整体设计
+* {
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    text-decoration: none;
+}
+
+ul,
+ol {
+    list-style: none;
+}
+
+input,
+button {
+    outline-style: none;
+    border-style: none;
+}
+
+body {
+    min-width: 320px;
+    width: 15rem;
+    margin: 0 auto;
+    line-height: 1.5;
+    font-family: Arial,Helvetica;
+    background-color: #f2f2f2;
+}
+// 顶部搜索框
+.search_content {
+    display: flex;
+    position: fixed;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 15rem;
+    height: 88rem / @baseFont;
+    background-color: #FFC001;
+    // 分类模块
+    .classify {
+        width: 36rem / @baseFont;
+        height: 60rem / @baseFont;
+        margin: 10rem / @baseFont 10rem / @baseFont 10rem / @baseFont 10rem / @baseFont;
+        background: url(../images/classify.png);
+        background-size: 36rem / @baseFont 60rem / @baseFont;
+    }
+    // 搜索模块
+    .search {
+        flex: 1;
+        input {
+            width: 100%;
+            height: 66rem / @baseFont;
+            border-radius: 33rem / @baseFont;
+            background-color: #fff2cc;
+            margin-top: 10rem / @baseFont;
+            font-size: 25rem / @baseFont;
+            padding-left: 25rem / @baseFont;
+        }
+    }
+    // 登陆模块
+    .login {
+        width: 36rem / @baseFont;
+        height: 60rem / @baseFont;
+        margin: 10rem / @baseFont 10rem / @baseFont 10rem / @baseFont 10rem / @baseFont;
+        background: url(../images/login.png);
+        background-size: 36rem / @baseFont 60rem / @baseFont;
+    }
+}
+// banner部分
+.banner {
+    width: 750rem / @baseFont;
+    height: 368rem / @baseFont;
+    img {
+        width: 100%;
+        height: 100%;
+    }
+}
+//广告部分
+.ad {
+    display: flex;
+    a {
+        flex: 1;
+        img {
+            width: 100%;
+            height: 100%;
+        }
+    }
+}
+// nav导航栏模块
+.nav {
+    width: 750rem / @baseFont;
+    a {
+        float: left;
+        width: 150rem / @baseFont;
+        height: 140rem / @baseFont;
+        img {
+            display: block;
+            width: 82rem / @baseFont;
+            height: 82rem / @baseFont;
+            margin: 10rem / @baseFont auto 0;
+        }
+        p {
+            font-size: 25rem / @baseFont;
+            text-align: center;
+            color: #666;
+        }
+    }
+}
+// bargin优惠模块
+.bargin {
+    float: left;
+    display: flex;
+    a {
+        flex: 1;
+        img {
+            width: 100%;
+            height: 100%;
+        }
+    }
+}
+.bargin a:nth-child(1) {
+    flex: 2;
+}
+// 天天低价
+// 商品盒子整体宽度
+.goods {
+    overflow: hidden;
+    width: 750rem / @baseFont;
+    background: #fff;
+    border-radius: 30rem / @baseFont;
+    margin-bottom: 70rem / @baseFont;
+    box-sizing: border-box;
+}
+// 四个部分 天天低价、苏宁秒杀、百亿补贴、苏宁拼购
+.goods_lowprice,
+.goods_sk,
+.goods_savemoney,
+.goods_withfriend {
+    float: left;
+    border-bottom: 1px solid #ccc;
+    .border {
+        border-right: 1px solid #000;
+    }
+    div {
+        box-sizing: border-box;
+        width: (750rem / @baseFont) / 2;
+        font-size: 30rem / @baseFont;
+        font-weight: 700;
+        padding-left: 15rem / @baseFont;
+        margin-top: 15rem / @baseFont;
+    }
+    p {
+        box-sizing: border-box;
+        width: (750rem / @baseFont) / 2;
+        font-size: 15rem / @baseFont;
+        color: #999;
+        padding-left: 15rem / @baseFont;
+    }
+    ul {
+        width: (750rem / @baseFont) / 2;
+        display: flex;
+        li {
+            flex: 1;
+            display: flex;
+            a {
+                flex: 1;
+                img {
+                    display: block;
+                    width: 120rem / @baseFont;
+                    height: 120rem / @baseFont;
+                    margin: 0 auto;
+                }
+                span {
+                    display: block;
+                    color: red;
+                    text-align: center;
+                    font-size: 20rem / @baseFont;
+                }
+            }
+        }
+      
+    }
+}
+
+
+// subnav底部导航栏
+.subnav {
+    position: fixed;
+    bottom: 0;
+    left: 50%;
+    height: 70rem / @baseFont;
+    background: #fff;
+    transform: translateX(-50%);
+    width: 750rem / @baseFont;
+    display: flex;
+    a {
+        flex: 1;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        img {
+            display: block;
+            margin: 0 auto;
+            width: 40rem / @baseFont;
+            height: 40rem / @baseFont;
+        }
+        span {
+            display: block;
+            text-align: center;
+            font-size: 20rem / @baseFont;
+            font-weight: 400;
+            color: #000;
+        }
+    }
+}
