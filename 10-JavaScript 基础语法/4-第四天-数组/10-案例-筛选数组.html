@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>案例-筛选数组</title>
+    <script>
+        //方法1 新数组给一个新下标j，然后每进一个数就是j++
+        var arr = [2, 0, 6, 1, 77, 0, 52, 0, 25, 7];
+        var rra = [];
+        var j = 0;
+        for (var i = 0; i < arr.length; i++) {
+            if (arr[i] >= 10) {
+                rra[j] = arr[i];
+                j++;
+            }
+        }
+        console.log(rra);
+        //方法2 那就给一个长度 新数组的长度 刚好省略掉刚才的新下标j
+        var ar = [2, 0, 6, 1, 77, 0, 52, 0, 25, 7];
+        var ra = [];
+        for (var i = 0; i < ar.length; i++) {
+            if (ar[i] >= 10) {
+                ra[ra.length] = ar[i];
+            }
+        }
+        console.log(ra);
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>
