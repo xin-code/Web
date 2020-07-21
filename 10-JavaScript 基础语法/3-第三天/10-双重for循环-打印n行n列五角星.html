@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>双重for循环-打印n行n列五角星</title>
+    <script>
+        var str = '';
+        var row = prompt('需要多少行的五角星：');
+        var col = prompt('需要多少列的五角星：');
+        for (var i = 1; i <= row; i++) {
+            for (var j = 1; j <= col; j++) {
+                str += '★';
+            }
+            // 在执行完内部循环以后， 进行换行操作
+            str = str + '\n'
+        }
+        alert('您一共需要' + row + '行' + col + '列五角星\n下面是结果：\n' + str);
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>
