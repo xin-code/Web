@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>练习-运算符优先级</title>
+    <script>
+        console.log(4 > 6 || '人' != '阿凡达' && !(12 * 2 == 144) && true); //t
+        var num = 10;
+        console.log(5 == num / 2 && (2 + 2 * num).toString() === '22'); //左边t &&右边t 结果t
+        console.log('----------');
+        var a = 3 > 5 && 2 < 7 && 3 == 4;
+        console.log(a); //&&与中有一错全为错 结果f
+
+        var b = 3 <= 4 || 3 > 1 || 3 != 2;
+        console.log(b); //||或中有一对全为对 结果t
+
+        var c = 2 === '2';
+        console.log(c); //数据类型不一样 全等=== 判断值和数据类型 结果f
+
+        var d = !c || b && a;
+        console.log(d); //!c为t 右边与运算f 总体或运算 t||f 结果t
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>
