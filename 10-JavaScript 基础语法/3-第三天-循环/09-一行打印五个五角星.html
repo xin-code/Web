@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>一行打印五个五角星</title>
+    <script>
+        // for (var i = 1; i <= 5; i++) {
+        //     console.log('★');
+        // }
+        // 出现的结果是⑤ ★
+        // 需要出现的是一行内五个五角星 采用追加字符串的方式进行输出
+        var num = prompt('请输入五角星个数：');
+        var str = '';
+        for (var i = 1; i <= num; i++) {
+            str = str + '★';
+        }
+        alert(str);
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

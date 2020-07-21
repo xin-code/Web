@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>案例-打印倒三角</title>
+    <script>
+        var str = '';
+        var row = prompt('请输入需要多少行：');
+        var col = prompt('请输入需要多少列：');
+        for (var i = 1; i <= row; i++) {
+            for (var j = i; j <= col; j++) {
+                str = str + '★';
+            }
+            str += '\n'
+        }
+        alert('您一共需要' + row + '行' + col + '列五角星\n下面是结果：\n' + str);
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>
