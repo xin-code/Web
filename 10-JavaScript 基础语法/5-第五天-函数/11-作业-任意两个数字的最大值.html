@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>作业-任意两个数字的最大值</title>
+    <script>
+        for (var i = 1; i <= Infinity; i++) {
+            var fis = prompt('请输入第一个数字：');
+            var sec = prompt('请输入第二个数字：');
+            alert('您输入第一个数字：' + fis + '\n您输入第二个数字：' + sec + '\n这两个数字中最大值的结果为：' + getMax(fis, sec))
+
+            function getMax(num1, num2) {
+                if (num1 > num2) {
+                    return num1;
+                } else {
+                    return num2;
+                }
+            }
+        }
+    </script>
+</head>
+
+<body>
+    写一个函数,用户输入任意两个数字的最大值,并能出弹运算后的结果。
+</body>
+
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>作业-判断是否为素数</title>
+    <script>
+        var innum = prompt('请输入一个数字：');
+
+        function isPrinme(n) {
+            if (n == 0 || n == 1) {
+                return false;
+            }
+            if (n == 2) {
+                return true;
+            }
+            for (var i = 2; i < Math.sqrt(n); i++) {
+                if (n % i == 0) {
+                    return false;
+                }
+            }
+            return true;
+        }
+        alert('您输入的' + innum + '是不是素数：' + isPrinme(innum))
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

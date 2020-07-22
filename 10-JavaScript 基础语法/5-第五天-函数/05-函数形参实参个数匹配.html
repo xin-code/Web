@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>函数形参实参个数匹配</title>
+    <script>
+        //实参=形参数量
+        function sum(num1, num2) {
+            console.log(num1 + num2);
+        }
+        sum(5, 15);
+
+        //实参>形参数量 多余的实参会被省略掉，最多到的地方是最后一个num2
+        sum(5, 15, 20);
+
+        //实参<形参数量 多余的那个形参会变成undefined 则结果就是NaN
+        sum(5);
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

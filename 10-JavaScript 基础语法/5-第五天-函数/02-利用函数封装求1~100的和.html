@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>利用函数封装求1~100的和</title>
+    <script>
+        var num = prompt('请输入您想要求的和：');
+        getSum(num);
+        alert('您输入的数字是' + num + '\n则1~' + num + '之间所有数字的和为' + getSum(num))
+
+        function getSum() {
+            var sum = 0;
+            for (var i = 1; i <= num; i++) {
+                sum += i;
+            }
+            return sum;
+        }
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

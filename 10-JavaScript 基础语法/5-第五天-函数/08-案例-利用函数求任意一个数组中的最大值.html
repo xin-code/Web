@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>案例-利用函数求任意一个数组中的最大值</title>
+    <script>
+        function getMax(arr) {
+            var Max = arr[0];
+            for (var i = 1; i < arr.length; i++) {
+                if (arr[i] > Max) {
+                    Max = arr[i];
+                }
+            }
+            return Max;
+        }
+        var re = getMax([15, 20, 50, 99, 101, 77, 78, 999]);
+        console.log(re);
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

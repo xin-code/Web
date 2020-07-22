@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>案例-判断闰年</title>
+    <script>
+        var inyear = prompt('请输入您想要判断的年份：');
+        judgerun(inyear);
+        alert('您输入的是' + inyear + '，结果是不是闰年：' + judgerun(inyear));
+
+        function judgerun(year) {
+            var flag = false;
+            if (year % 4 == 0 && year % 100 != 0 || year % 400 == 0) {
+                return true;
+            }
+            return flag;
+        }
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

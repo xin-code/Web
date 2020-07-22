@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>作业-任意三个数字的最大值</title>
+    <script>
+        for (var i = 1; i <= Infinity; i++) {
+            var fis = prompt('请输入第一个数字：');
+            var sec = prompt('请输入第二个数字：');
+            var thr = prompt('请输入第三个数字：');
+
+            alert('您输入第一个数字：' + fis + '\n您输入第二个数字：' + sec + '\n您输入第三个数字：' + thr + '\n这三个数字中最大值的结果为：' + getMax(fis, sec, thr));
+
+            function getMax(num1, num2, num3) {
+                var Max = (num1 > num2 ? num1 : num2) > num3 ? (num1 > num2 ? num1 : num2) : num3;
+                return Max;
+            }
+        }
+    </script>
+</head>
+
+<body>
+    写一个函数,用户输入任意三个不同数字的最大值,并能弹出运算后的结果。
+</body>
+
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>计算器</title>
+    <script>
+        for (var i = 1; i < Infinity; i++) {
+            var notice = prompt('请输入进行的运算：\n1、加法 \n2、减法 \n3、乘法 \n4、除法 \n5、退出');
+            if (notice == 5) {
+                alert('正在退出中···');
+                break;
+            }
+            var fis = prompt('请输入第一个数字：');
+            var sec = prompt('请输入第二个数字：');
+            if (notice == 1) {
+                alert('您输入的是' + fis + '+' + sec + '的结果为：' + add(parseInt(fis), parseInt(sec)));
+            } else if (notice == 2) {
+                alert('您输入的是' + fis + '-' + sec + '的结果为：' + sub(parseInt(fis), parseInt(sec)));
+            } else if (notice == 3) {
+                alert('您输入的是' + fis + '×' + sec + '的结果为：' + mul(parseInt(fis), parseInt(sec)));
+            } else if (notice == 4) {
+                alert('您输入的是' + fis + '÷' + sec + '的结果为：' + div(parseInt(fis), parseInt(sec)));
+            }
+        }
+
+        function add(num1, num2) {
+            return num1 + num2;
+        }
+
+        function sub(num1, num2) {
+            return num1 - num2;
+        }
+
+        function mul(num1, num2) {
+            return num1 * num2;
+        }
+
+        function div(num1, num2) {
+            return num1 / num2;
+        }
+    </script>
+</head>
+
+<body>
+    写一个函数 ,用户输入任意两个数字的任意算术运算(简单的计算器小功能) , 并能弹出运算后的结果。
+</body>
+
+</html>

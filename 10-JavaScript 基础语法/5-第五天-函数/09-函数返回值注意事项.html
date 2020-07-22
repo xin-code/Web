@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>函数返回值注意事项</title>
+    <script>
+        //return 中止函数， 后面的不被执行
+        function test(num1, num2) {
+            return num1 + num2;
+            alert('你看不见我！');
+        }
+        //return只能返回一个值
+        function num(num1, num2) {
+            return num1, num2;
+        }
+        console.log(num(5, 15));
+        //如果想返回多个值，就需要用数组
+        function getResult(num1, num2) {
+            return [num1 + num2, num1 - num2, num1 * num2, num1 / num2];
+        }
+        var result = getResult(5, 2);
+        console.log(result);
+        //又返回值 返回return后面的值
+        function sum(num1, num2) {
+            return num1 + num2;
+        }
+        console.log(sum(1, 2));
+        //无返回值 返回undefined
+        function haha() {
+
+        }
+        console.log(haha());
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>
