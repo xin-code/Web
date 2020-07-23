@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>案例-预解析-结果是几</title>
+    <script>
+        //案例1
+        var num = 10;
+        fun();
+
+        function fun() {
+            console.log(num);
+            var num = 20;
+        }
+
+        //相当于做了一下动作：
+        /* 
+        var num;
+        function fun() {
+            var num;            //num没有给值
+            console.log(num);   //则输出就是undefined
+            num= 20;
+        }
+        num = 10;
+        fun();
+         */
+        console.log('--------------');
+        //案例2
+        var sz = 222;
+
+        function fn() {
+            console.log(sz);
+            var sz = 20;
+            console.log(sz);
+        }
+        fn();
+        //相当于做了一下动作：
+        /* 
+        var sz;
+        function fn() 
+        var sz;
+        console.log(sz);    //第一个没有给数值，那么就是undefined
+        sz = 20;
+        console.log(sz);    //输出20;
+        }
+        sz = 222;
+        fn();
+         */
+        console.log('--------------');
+        //案例3
+        var a = 18;
+        f1();
+
+        function f1() {
+            var b = 9;
+            console.log(a);
+            console.log(b);
+            var a = '123';
+        }
+        //相当于做了一下动作：
+        /* 
+        var a;
+        function f1() {
+            var b;
+            var a;
+            b = 9;
+            console.log(a); //输出undefined
+            console.log(b); //输出9
+            a = '123';
+        }
+        a = 18;
+        f1();
+         */
+        console.log('--------------');
+        //案例4
+        f2();
+        console.log(cc);
+        console.log(bb);
+        console.log(aa);
+
+        function f2() {
+            var aa = bb = cc = 9;
+            console.log(aa);
+            console.log(bb);
+            console.log(cc);
+        }
+        //相当于做了一下动作：
+        /* 
+        function f1() {
+            //var a = b = c = 9; 相当于var a = 9; b=9; c=9; 没有声明变量的话 相当于全局变量
+            var a;
+            a=9;
+            b=9; //b全局变量
+            c=9; //c全局变量
+            console.log(a); //输出9
+            console.log(b); //输出9
+            console.log(c); //输出9
+        }
+        f1();
+        console.log(c); //输出9
+        console.log(b); //输出9
+        console.log(a); //输出undefined
+         */
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

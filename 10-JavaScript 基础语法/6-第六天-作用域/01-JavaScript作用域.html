@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript作用域</title>
+    <script>
+        //全局作用域 num与函数内部的不冲突
+        var num = 19;
+        console.log(num);
+
+        function fn() {
+            //局部作用域（函数作用域）
+            var num = 20;
+            console.log(num);
+        }
+        fn();
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

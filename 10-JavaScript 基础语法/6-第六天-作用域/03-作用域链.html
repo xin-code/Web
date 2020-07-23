@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>作用域链</title>
+    <script>
+        var num = 999; //全局变量
+        fn();
+
+
+        function fn() { //外部函数 num1 局部变量
+            var num1 = 888;
+            fun();
+
+            function fun() { //内部函数 num往外部函数找，没有找到 在往上一级找 num全局变量 找到 打印结果
+                console.log(num);
+            }
+        }
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

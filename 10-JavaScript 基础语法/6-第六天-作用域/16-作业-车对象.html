@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>作业-车对象</title>
+    <script>
+        function Car(weight, color, brand) {
+            this.weight = weight;
+            this.color = color;
+            this.brand = brand;
+            this.use = function(usecar) {
+                console.log(usecar);
+            }
+        }
+        var bmw = new Car('500kg', 'yellow', '宝马');
+        for (const key in bmw) {
+            console.log(bmw[key]);
+        }
+        bmw.use('载人、拉货和耕田!');
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

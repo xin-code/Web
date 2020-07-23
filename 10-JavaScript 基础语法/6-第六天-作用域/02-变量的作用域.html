@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>变量的作用域</title>
+    <script>
+        //全局变量 在script标签内 所有位置都可以调用
+        var num = 19;
+        acc();
+        fn();
+        //调用局部变量 函数内的变量 则 会报错！！
+        console.log(num2);
+        console.log(num1);
+
+
+
+        function acc() {
+            //num 是全局变量 没有写在函数内 对所有位置都可以被使用
+            console.log(num);
+        }
+
+        function fn() {
+            //局部变量 只有在函数内部才可以使用 num1就是局部变量
+            var num1 = 22;
+            // 在函数内部 没有进行声明 直接赋值 那么也是全局变量！
+            num2 = 5555;
+        }
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

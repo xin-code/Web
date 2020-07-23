@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>作业-简易计算器</title>
+    <script>
+        do {
+            var innum = prompt('欢迎使用简易计算器：\n1、加法运算；\n2、减法运算；\n3、乘法运算；\n4、除法运算；\n5、退出；');
+            if (innum == 1) {
+                var fir = prompt('请输入第一个数值：');
+                var sec = prompt('请输入第二个数值：');
+                alert('结果为：' + add(parseFloat(fir), parseFloat(sec)));
+            } else if (innum == 2) {
+                var fir = prompt('请输入第一个数值：');
+                var sec = prompt('请输入第二个数值：');
+                alert('结果为：' + sub(parseFloat(fir), parseFloat(sec)));
+            } else if (innum == 3) {
+                var fir = prompt('请输入第一个数值：');
+                var sec = prompt('请输入第二个数值：');
+                alert('结果为：' + mul(parseFloat(fir), parseFloat(sec)));
+            } else if (innum == 4) {
+                var fir = prompt('请输入第一个数值：');
+                var sec = prompt('请输入第二个数值：');
+                alert('结果为：' + div(parseFloat(fir), parseFloat(sec)));
+            } else if (innum == 5) {
+                alert('正在退出···');
+            } else {
+                alert('输入错误！请重新输入！');
+            }
+        } while (true);
+
+        function add(num1, num2) {
+            return num1 + num2;
+        }
+
+        function sub(num1, num2) {
+            return num1 - num2;
+        }
+
+        function mul(num1, num2) {
+            return num1 * num2;
+        }
+
+        function div(num1, num2) {
+            return num1 / num2;
+        }
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>
