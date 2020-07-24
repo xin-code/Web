@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>封装自己的数学对象</title>
+    <script>
+        var myMath = {
+            PI: 3.14,
+            max: function() {
+                //函数里面的max是局部变量 与外面的不冲突
+                var max = arguments[0];
+                for (var i = 1; i < arguments.length; i++) {
+                    if (arguments[i] > max) {
+                        max = arguments[i];
+                    }
+                }
+                return max;
+            }, //方法和方法之间用逗号隔开
+            min: function() {
+                //函数里面的min是局部变量 与外面的不冲突
+                var min = arguments[0];
+                for (var i = 1; i < arguments.length; i++) {
+                    if (arguments[i] < min) {
+                        min = arguments[i];
+                    }
+                }
+                return min;
+            }
+        }
+
+        console.log(myMath.PI);
+        console.log(myMath.max(1, 2, 3, 4, 5, 6));
+        console.log(myMath.min(1, 2, 3, 4, 5, 6));
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

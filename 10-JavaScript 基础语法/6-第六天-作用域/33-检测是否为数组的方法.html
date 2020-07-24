@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>检测是否为数组的方法</title>
+    <script>
+        //翻转数组
+        function reverse(arr) {
+            // if (arr instanceof Array)
+            if (Array.isArray(arr)) {
+                var newArr = [];
+                for (var i = arr.length - 1; i >= 0; i--) {
+                    newArr[newArr.length] = arr[i];
+                }
+                return newArr;
+            } else {
+                return 'error 您输入的不是数组格式！'
+            }
+        }
+        console.log(reverse([6, 5, 4, 3, 2, 1]));
+        console.log(reverse(6, 5, 4, 3, 2, 1));
+        console.log('-------------');
+        //(1)通过 instanceof 来检测是否为数组
+        var arr1 = [];
+        var obj = {};
+        console.log(arr1 instanceof Array);
+        console.log(obj instanceof Array);
+        console.log('-------------');
+        //(2)通过Array.isArray 来检测是否为数组 H5新增
+        console.log(Array.isArray(arr1));
+        console.log(Array.isArray(obj));
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

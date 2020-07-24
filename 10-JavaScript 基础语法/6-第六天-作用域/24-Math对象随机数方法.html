@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Math对象随机数方法</title>
+    <script>
+        var fir = prompt('请输入第一个最小数');
+        var sec = prompt('请输入第二个最大数');
+
+        function getRandom(min, max) {
+            return Math.floor(Math.random() * (max - min + 1)) + min;
+        }
+        alert('随机数：' + getRandom(parseInt(fir), parseInt(sec)));
+
+        //随机点名
+        var arr = ['张三', '李四', '王五', '赵六', '老七', '老八'];
+        alert('随机姓名' + arr[getRandom(0, 5)]);
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

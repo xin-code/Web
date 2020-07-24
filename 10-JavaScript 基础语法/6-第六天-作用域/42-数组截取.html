@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数组截取</title>
+    <script>
+        var arr1 = [5, 6, 7, 8, 9, 10, 1, 2, 3, 4];
+        //原数组
+        console.log(arr1);
+        console.log('-----------');
+        //只有一个属性值那么就是start值，从数组下标第一个开始直到最后一个
+        var arr2 = arr1.slice(1);
+        console.log(arr2);
+        console.log('-----------');
+        //从数组索引号(数组下标)开始数起[1-2)的值
+        var arr = arr1.slice(1, 2);
+        console.log(arr);
+        console.log('-----------');
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

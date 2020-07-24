@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>案例-返回字符位置(出现最多的字母和次数)</title>
+    <script>
+        var str = '1234561231541592111';
+        //创建一个空对象o
+        var o = {};
+        for (var i = 0; i < str.length; i++) {
+            var ssttrr = str.charAt([i]);
+            if (o[ssttrr]) {
+                o[ssttrr]++;
+            } else {
+                o[ssttrr] = 1;
+            }
+        }
+        console.log(o);
+        //遍历对象 for in
+        //存 字符出现最多次数
+        var max = 0;
+        // 存出现最多的字符
+        var ch = '';
+        for (var key in o) {
+            if (o[key] > max) {
+                max = o[key];
+                ch = key
+            }
+        }
+        console.log('出现最多数字的是:' + ch);
+        console.log('出现最多的次数：' + max);
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>
