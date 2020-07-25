@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>innerText和innerHTML的区别</title>
+</head>
+
+<body>
+    <div></div>
+    <p>
+        aaa
+        <span>123</span>
+    </p>
+    <script>
+        var div = document.querySelector('div');
+        var p = document.querySelector('p');
+        //innerText 不识别HTML语言
+        div.innerText = '<strong> 今天是： </strong>';
+        console.log(p.innerText);
+        //innerHTML
+        div.innerHTML = '<strong>今天是：</strong>';
+        console.log(p.innerHTML);
+    </script>
+</body>
+
+</html>

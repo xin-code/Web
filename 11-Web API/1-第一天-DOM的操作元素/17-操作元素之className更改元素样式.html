@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>操作元素之className修改样式属性</title>
+    <style>
+        div {
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+        }
+        
+        .change {
+            width: 350px;
+            height: 100px;
+            background-color: purple;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="one"></div>
+
+    <script>
+        var div = document.querySelector('div');
+        div.onclick = function() {
+            this.className = 'div change';
+        }
+    </script>
+</body>
+
+</html>

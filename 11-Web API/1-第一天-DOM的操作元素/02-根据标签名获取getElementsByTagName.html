@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>根据标签名获取getElementsByTagName</title>
+</head>
+
+<body>
+    <ul id='nav'>
+        <li>111222333444--1--111222333444</li>
+        <li>111222333444--2--111222333444</li>
+        <li>111222333444--3--111222333444</li>
+        <li>111222333444--4--111222333444</li>
+        <li>111222333444--5--111222333444</li>
+        <li>111222333444--6--111222333444</li>
+    </ul>
+    <ul>
+        <li>aaa</li>
+        <li>aaa</li>
+        <li>aaa</li>
+        <li>aaa</li>
+        <li>aaa</li>
+        <li>aaa</li>
+    </ul>
+    <script>
+        var lis = document.getElementsByTagName('li');
+        console.log(lis);
+        console.log(lis[0]);
+        console.log('-------------------');
+        //遍历
+        for (var i = 0; i < lis.length; i++) {
+            console.log(lis[i]);
+        }
+        var nav = document.getElementById('nav');
+        var lia = nav.getElementsByTagName('li');
+        console.log(lia);
+    </script>
+</body>
+
+</html>

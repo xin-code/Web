@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>作业-广告图的关闭</title>
+    <style>
+        .box {
+            position: relative;
+            margin: 100px auto;
+        }
+        
+        .box i {
+            position: absolute;
+            top: -21px;
+            left: 0;
+            width: 20px;
+            height: 20px;
+            border: 1px solid #000;
+            line-height: 20px;
+            text-align: center;
+            font-style: normal;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <img src="images/ad.png">
+        <i>X</i>
+    </div>
+
+    <script>
+        var box = document.querySelector('.box');
+        var i = document.querySelector('i');
+        i.onclick = function() {
+            box.style.display = 'none';
+        }
+    </script>
+</body>
+
+</html>

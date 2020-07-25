@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>案例-分时问候显示不同图片</title>
+    <style>
+        img {
+            width: 300px;
+        }
+        
+        div {
+            display: inline;
+        }
+    </style>
+</head>
+
+<body>
+    <img src="images/morning.gif">
+    <div>上午好！</div>
+
+    <script>
+        var img = document.querySelector('img');
+        var div = document.querySelector('div');
+        //得到当前小时数
+        var date = new Date();
+        var hours = date.getHours;
+        if (hours < 12) {
+            img.src = 'images/morning.gif';
+            div.innerHTML = '早上好！！';
+        } else if (hours < 18) {
+            img.src = 'images/afternoon.gif';
+            div.innerHTML = '下午好！！';
+        } else {
+            img.src = 'images/night.gif';
+            div.innerHTML = '晚上好！！';
+        }
+    </script>
+</body>
+
+</html>

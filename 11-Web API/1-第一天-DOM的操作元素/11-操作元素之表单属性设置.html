@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>操作元素之表单属性设置</title>
+</head>
+
+<body>
+    <button>提交</button>
+    <input type="text" placeholder="请输入内容：">
+
+    <script>
+        var btn = document.querySelector('button');
+        var input = document.querySelector('input');
+        btn.onclick = function() {
+            input.placeholder = '被点击了！';
+            // btn.disabled = true;
+            this.disabled = true;
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>通过H5新增获取元素方式</title>
+</head>
+
+<body>
+    <div class="box">盒子</div>
+    <div class="box">盒子</div>
+    <div id="nav">
+        <ul>
+            <li>首页</li>
+            <li>产品</li>
+        </ul>
+    </div>
+    <script>
+        //1、通过getElementsByClassName
+        var boxs = document.getElementsByClassName('box');
+        console.log(boxs);
+        //2、通过querySelector
+        var firstbox = document.querySelector('.box');
+        console.log(firstbox);
+        var nav = document.querySelector('#nav');
+        console.log(nav);
+        var lis = document.querySelector('li');
+        console.log(lis);
+        //3、通过querySelectorAll
+        var boxall = document.querySelectorAll('.box');
+        console.log(boxall);
+        var navall = document.querySelectorAll('#nav');
+        console.log(navall);
+        var liall = document.querySelectorAll('li');
+        console.log(liall);
+    </script>
+</body>
+
+</html>

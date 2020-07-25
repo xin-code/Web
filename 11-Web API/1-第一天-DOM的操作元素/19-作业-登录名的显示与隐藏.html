@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>作业-登录名的显示与隐藏</title>
+    <style>
+        input {
+            color: #999;
+            outline-style: none;
+        }
+    </style>
+</head>
+
+<body>
+    <input type="text" value="邮箱/手机号">
+
+    <script>
+        var ipt = document.querySelector('input');
+        ipt.onfocus = function() {
+            // console.log('获得焦点');
+            if (this.value === '邮箱/手机号') {
+                this.value = '';
+            }
+            this.style.border = '1px solid orange'
+            this.style.color = '#333';
+        }
+        ipt.onblur = function() {
+            // console.log('失去焦点');
+            if (this.value === '') {
+                this.value = '邮箱/手机号';
+            }
+            this.style.border = '1px solid #ccc';
+            this.style.color = '#999';
+
+        }
+    </script>
+</body>
+
+</html>

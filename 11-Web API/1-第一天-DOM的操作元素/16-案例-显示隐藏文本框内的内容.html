@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>案例-显示隐藏文本框的内容</title>
+    <style>
+        input {
+            color: #999;
+        }
+    </style>
+</head>
+
+<body>
+    <input type="search" value="手机">
+
+    <script>
+        var input = document.querySelector('input');
+        //获得焦点
+        input.onfocus = function() {
+                // console.log('获得焦点');
+                if (this.value === '手机') {
+                    this.value = '';
+                }
+                //获得焦点并且输入文字的时候，字体颜色变黑
+                this.style.color = '#333';
+            }
+            //失去焦点
+        input.onblur = function() {
+            // console.log('失去焦点');
+            if (this.value === '') {
+                this.value = '手机';
+            }
+            //失去焦点 字体颜色变浅
+            this.style.color = '#999';
+        }
+    </script>
+</body>
+
+</html>
