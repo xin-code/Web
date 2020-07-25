@@ -6,27 +6,46 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>作业-下拉菜单</title>
     <style>
-        .box dt {
+        ul {
+            list-style: none;
+        }
+        
+        .hd {
             width: 50px;
             background-color: pink;
         }
         
-        .box dd {
+        .bd {
             width: 50px;
             background-color: purple;
+            display: none;
         }
     </style>
 </head>
 
 <body>
     <div class="box">
-        <dl>
-            <dt>产品</dt>
-            <dd>1</dd>
-            <dd>2</dd>
-            <dd>3</dd>
-        </dl>
+        <ul>
+            <div class="hd">
+                <li>产品</li>
+            </div>
+            <div class="bd">
+                <li>1</li>
+                <li>2</li>
+                <li>3</li>
+            </div>
+        </ul>
     </div>
+    <script>
+        var hd = document.querySelector('.hd');
+        var bd = document.querySelector('.bd');
+        hd.onmouseover = function() {
+            bd.style.display = 'block';
+        }
+        hd.onmouseout = function() {
+            bd.style.display = 'none';
+        }
+    </script>
 </body>
 
 </html>
