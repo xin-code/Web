@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>获取属性值</title>
+</head>
+
+<body>
+    <div id="zx" zxg='133'></div>
+
+    <script>
+        var div = document.querySelector('div');
+        //获取属性的值
+        console.log(div.id);
+        console.log(div.getAttribute('zxg'));
+        //设置属性和值
+        div.id = 'newid';
+        div.setAttribute('zxg', '999');
+        //删除属性
+        div.removeAttribute('zxg');
+    </script>
+</body>
+
+</html>

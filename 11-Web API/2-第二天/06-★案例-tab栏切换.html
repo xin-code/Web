@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>案例-tab栏切换</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        ul {
+            list-style: none;
+        }
+        
+        .tab {
+            width: 500px;
+            margin: 100px auto;
+            background-color: pink;
+        }
+        
+        .tab_hd ul {
+            height: 30px;
+            background-color: #ccc;
+        }
+        
+        .tab_hd li {
+            float: left;
+            padding: 0 15px;
+            border-right: 1px solid #999;
+            line-height: 30px;
+        }
+        
+        .current {
+            background-color: red;
+            color: #fff;
+            font-size: 19px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="tab">
+        <div class="tab_hd">
+            <ul>
+                <li class="current">商品介绍</li>
+                <li>规格包装</li>
+                <li>商品评价</li>
+                <li>手机社区</li>
+            </ul>
+        </div>
+        <div class="tab_bd">
+            <div class="item" style="display: block;">商品介绍内容</div>
+            <div class="item">规格包装内容</div>
+            <div class="item">商品评价内容</div>
+            <div class="item">手机社区内容</div>
+        </div>
+    </div>
+
+    <script>
+        //获取元素
+        var tab_hd = document.querySelector('.tab_hd');
+        var list = tab_hd.querySelectorAll('li');
+        var items = document.querySelectorAll('.item');
+        // console.log(list);
+        //for循环绑定事件
+        for (var i = 0; i < list.length; i++) {
+            //设定自定义属性
+            list[i].setAttribute('index', i);
+            list[i].onclick = function() {
+                //1.实现点击li 背景图片跟着变化 变成红色 其他恢复原来
+                //干掉其他人
+                for (var i = 0; i < list.length; i++) {
+                    list[i].className = '';
+                }
+                //留下我自己
+                this.className = 'current';
+                //2.实现下面内容的改变
+                var index = this.getAttribute('index');
+                // console.log(index);
+                //干掉其他隐藏
+                for (var i = 0; i < items.length; i++) {
+                    items[i].style.display = 'none';
+                }
+                //自己显示
+                items[index].style.display = 'block';
+            }
+        }
+    </script>
+</body>
+
+</html>

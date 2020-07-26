@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>案例-表单全选取消</title>
+    <style>
+        table {
+            margin: 100px auto;
+            border-collapse: collapse;
+        }
+        
+        thead tr {
+            background-color: skyblue;
+            height: 40px;
+        }
+        
+        thead td {
+            border: 1px solid #fff;
+            text-align: center;
+        }
+        
+        tbody {
+            background-color: #ccc;
+        }
+        
+        tbody td {
+            border: 1px solid #fff;
+            padding: 15px 30px;
+            text-align: center;
+        }
+        
+        .bg {
+            background-color: rgba(0, 0, 0, .1);
+        }
+    </style>
+</head>
+
+<body>
+    <table>
+        <thead>
+            <tr>
+                <td><input type="checkbox" id="head_btn"></td>
+                <td>商品</td>
+                <td>价钱</td>
+            </tr>
+        </thead>
+        <tbody id="body_btn">
+            <tr>
+                <td><input type="checkbox"></td>
+                <td>iPhone X</td>
+                <td>8999</td>
+            </tr>
+            <tr>
+                <td><input type="checkbox"></td>
+                <td>iPhone 11</td>
+                <td>17779</td>
+            </tr>
+            <tr>
+                <td><input type="checkbox"></td>
+                <td>iPhone 12</td>
+                <td>999999</td>
+            </tr>
+            <tr>
+                <td><input type="checkbox"></td>
+                <td>iPhone 999</td>
+                <td>9876543210</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <script>
+        //获取元素
+        var tr = document.querySelector('tbody').querySelectorAll('tr');
+        //选中该行 变色
+        for (var i = 0; i < tr.length; i++) {
+            tr[i].onmousemove = function() {
+                this.className = 'bg';
+            }
+            tr[i].onmouseout = function() {
+                this.className = '';
+            }
+        }
+        //获取元素
+        var head_btn = document.getElementById('head_btn');
+        var body_btn = document.getElementById('body_btn').getElementsByTagName('input');
+        //全选和取消全选 头 ——>身体
+        head_btn.onclick = function() {
+                // console.log(this.checked);
+                for (var i = 0; i < body_btn.length; i++) {
+                    body_btn[i].checked = this.checked;
+                }
+            }
+            //下面的选择影响头部checked状态 身体——>头
+            //遍历按钮，给每个按钮绑定事件
+        for (var i = 0; i < body_btn.length; i++) {
+            //绑定事件
+            body_btn[i].onclick = function() {
+                var flag = true;
+                //每次点击都要检查下面四个小按钮是否都被选择
+                for (var i = 0; i < body_btn.length; i++) {
+                    //刚进入页面都是未被选择状态 ！取反 全部选中状态下 则
+                    if (!body_btn[i].checked) {
+                        flag = false;
+                        break;
+                    }
+                }
+                head_btn.checked = flag;
+            }
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>兄弟节点</title>
+</head>
+
+<body>
+    <p>我是p标签</p>
+    <div>我是div</div>
+    <span>我是span</span>
+
+    <script>
+        var div = document.querySelector('div');
+        //找到的是全部节点
+        console.log(div.nextSibling); //下一个兄弟节点(文本、元素、换行)
+        console.log(div.previousSibling); //上一个兄弟节点(文本、元素、换行)
+        //找到的是元素节点
+        console.log(div.nextElementSibling); //下一个兄弟元素节点
+        console.log(div.previousElementSibling); //上一个兄弟元素节点
+    </script>
+</body>
+
+</html>
