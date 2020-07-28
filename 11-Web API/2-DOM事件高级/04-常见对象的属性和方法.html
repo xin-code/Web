@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>常见对象的属性和方法</title>
+</head>
+
+<body>
+    <div>123</div>
+    <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+    </ul>
+    <p>abc</p>
+    <a href="http://www.baidu.com">baidu</a>
+
+
+    <script>
+        //返回事件的触发对象
+        var div = document.querySelector('div');
+        div.addEventListener('click', function(e) {
+            console.log(e.target);
+        })
+
+        //this返回绑定的对象
+        var ul = document.querySelector('ul');
+        ul.addEventListener('click', function(e) {
+            // console.log(e.target);
+            console.log(this);
+        })
+
+        //返回事件的类型
+        var p = document.querySelector('p');
+        p.addEventListener('mouseover', fn);
+        p.addEventListener('click', fn);
+        p.addEventListener('mouseout', fn);
+
+        function fn(e) {
+            console.log(e.type);
+        }
+
+        //阻止默认事件
+        var a = document.querySelector('a');
+        a.addEventListener('click', function(e) {
+            e.preventDefault();
+        })
+    </script>
+</body>
+
+</html>

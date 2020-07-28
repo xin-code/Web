@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>常用键盘按键</title>
+</head>
+
+<body>
+
+    <script>
+        // 1. 传统方式
+        // document.onkeyup = function() {
+        //         console.log('弹起！');
+        //     }
+
+        // document.onkeydown = function() {
+        //    console.log('按下未弹起！');
+        // }
+
+        // document.onkeypress = function() {
+        //     console.log('按下并弹起');
+        // }
+
+        // 2.addEventListener
+        // document.addEventListener('keyup', function() {
+        //     console.log('弹起！');
+        // })
+
+        // document.addEventListener('keydown', function() {
+        //     console.log('按下未弹起！');
+        // })
+
+        document.addEventListener('keypress', function() {
+            console.log('按下并弹起');
+        })
+    </script>
+</body>
+
+</html>

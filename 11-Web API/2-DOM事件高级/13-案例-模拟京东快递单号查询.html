@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>案例-模拟京东快递单号查询</title>
+    <style>
+        body {
+            background-color: #ccc;
+        }
+        
+        .search {
+            position: relative;
+            margin: 300px 300px;
+            width: 100px;
+            height: 80px;
+        }
+        
+        .con {
+            display: none;
+            position: absolute;
+            top: -60px;
+            font-size: 30px;
+            width: 180px;
+            height: 45px;
+            background-color: #fff;
+            box-shadow: 2px 2px rgba(0, 0, 0, .2);
+            border: 1px solid #ccc;
+        }
+        
+        .con::after {
+            position: absolute;
+            bottom: -7px;
+            left: 10px;
+            display: block;
+            content: '';
+            width: 10px;
+            height: 10px;
+            border-left: 1px solid #fff;
+            border-bottom: 1px solid #fff;
+            transform: rotate(-45deg);
+            background-color: #fff;
+        }
+        
+        .express {
+            position: absolute;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="search">
+        <div class="con"></div>
+        <input type="text" placeholder="请输入您的快递单号" class="express">
+    </div>
+
+    <script>
+        var search = document.querySelector('.search');
+        var con = document.querySelector('.con')
+        var input = document.querySelector('.express');
+        //按下s 快速进行输入操作
+        document.addEventListener('keyup', function(e) {
+            if (e.keyCode === 83) {
+                input.focus();
+            }
+        })
+
+        //输入的时候显示框 删除输入框内的全部文字时 全部隐藏
+        input.addEventListener('keyup', function() {
+            // console.log(input.value);
+            if (this.value == '') {
+                con.style.display = '';
+            } else {
+                con.innerHTML = this.value;
+                con.style.display = 'block';
+            }
+        })
+
+        //获得焦点 显示
+        input.addEventListener('focus', function() {
+            if (this.value !== '') {
+                con.style.display = 'block';
+            }
+        })
+
+        //失去焦点 隐藏 
+        input.addEventListener('blur', function() {
+            con.style.display = '';
+        })
+    </script>
+</body>
+
+</html>

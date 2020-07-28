@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>键盘事件对象</title>
+</head>
+
+<body>
+
+    <script>
+        document.addEventListener('keyup', function(e) {
+            //返回ASCII码 keyup keydown不区分大小写
+            console.log('UP的值为：' + e.keyCode);
+        })
+        document.addEventListener('keypress', function(e) {
+            console.log('Press的值为：' + e.keyCode);
+        })
+    </script>
+</body>
+
+</html>

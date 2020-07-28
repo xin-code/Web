@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>阻止事件冒泡</title>
+    <style>
+        .father {
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+        }
+        
+        .son {
+            width: 100px;
+            height: 100px;
+            background-color: purple;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="father">
+        <div class="son">子</div>
+    </div>
+
+    <script>
+        //子
+        var son = document.querySelector('.son');
+        son.addEventListener('click', function(e) {
+            alert('son');
+            e.stopPropagation();
+        }, false);
+
+        //父
+        var father = document.querySelector('.father');
+        father.addEventListener('click', function(e) {
+            alert('father');
+            e.stopPropagation();
+        }, false);
+
+        //document
+        document.addEventListener('click', function(e) {
+            alert('document');
+        }, false);
+    </script>
+</body>
+
+</html>
