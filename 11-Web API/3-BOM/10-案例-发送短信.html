@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>案例-发送短信</title>
+</head>
+
+<body>
+    手机号码：<input type="tel"><button>发送</button>
+
+    <script>
+        //1.发送 按钮点击后变成灰色
+        var btn = document.querySelector('button');
+        var time = 60;
+        var timer = null;
+        btn.addEventListener('click', function() {
+            this.disabled = 'true';
+            timer = setInterval(function() {
+                if (time == 0) {
+                    clearInterval(timer);
+                    btn.disabled = false;
+                    btn.innerHTML = '发送';
+                    time = 60;
+                } else {
+                    btn.innerHTML = '还剩 ' + time + ' 秒再次点击';
+                    btn.style.cursor = 'not-allowed';
+                    time--;
+                }
+            }, 1000);
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>案例-5秒后跳转网页</title>
+</head>
+
+<body>
+    <button>点击跳转</button>
+    <div></div>
+
+    <script>
+        var btn = document.querySelector('button');
+        var div = document.querySelector('div');
+        var time = 5;
+        btn.addEventListener('click', function() {
+            fis();
+            setInterval(fis, 1000);
+
+            function fis() {
+                if (time == 0) {
+                    location.href = 'http://www.baidu.com';
+
+                } else {
+                    div.innerHTML = '将在' + time + '秒后跳转到首页';
+                    time--;
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>主页</title>
+</head>
+
+<body>
+    <div></div>
+
+    <script>
+        console.log(location.search);
+        //先去掉？用截取字符串 substr
+        var newstr = location.search.substr(1);
+        console.log(newstr);
+        var news = newstr.split('=');
+        console.log(news);
+        var div = document.querySelector('div');
+        div.innerHTML = news[1] + '欢迎光临';
+    </script>
+</body>
+
+</html>

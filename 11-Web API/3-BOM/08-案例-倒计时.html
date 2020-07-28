@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>案例-倒计时</title>
+    <style>
+        span {
+            float: left;
+            width: 50px;
+            height: 50px;
+            text-align: center;
+            line-height: 50px;
+            background-color: black;
+            color: #fff;
+            margin-left: 15px;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <span class="hour"></span>
+        <span class="minute"></span>
+        <span class="second"></span>
+    </div>
+
+    <script>
+        //通过计时器进行
+        var h = document.querySelector('.hour');
+        var m = document.querySelector('.minute');
+        var s = document.querySelector('.second');
+
+        var inputTime = +new Date('2020-7-28 21:50:00');
+        cuntDown(); //在下面计数器之前，先调用一次函数 因为有1秒的间隔才会输入进去
+        setInterval(cuntDown, 1000);
+        //简易console口倒计时
+        function cuntDown() {
+            var nowTime = +new Date();
+            var times = (inputTime - nowTime) / 1000; //求秒
+            var hours = parseInt(times / 60 / 60 % 24); //小时
+            hours = hours < 10 ? '0' + hours : hours;
+            h.innerHTML = hours;
+            var minutes = parseInt(times / 60 % 60); //分
+            minutes = minutes < 10 ? '0' + minutes : minutes;
+            m.innerHTML = minutes;
+            var seconds = parseInt(times % 60); //秒
+            seconds = seconds < 10 ? '0' + seconds : seconds;
+            s.innerHTML = seconds;
+        }
+    </script>
+</body>
+
+</html>

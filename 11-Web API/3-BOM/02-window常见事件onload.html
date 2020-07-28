@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>window常见事件onload</title>
+    <script>
+        //1.传统注册方式
+        // window.onload = function() {
+        //     var btn = document.querySelector('button');
+        //     btn.addEventListener('click', function() {
+        //         alert('你好！')
+        //     })
+        // }
+        // window.onload = function() {
+        //     var btn = document.querySelector('button');
+        //     btn.addEventListener('click', function() {
+        //         alert('123！')
+        //     })
+        // }
+
+        //2.addEventListener
+
+        window.addEventListener('load', function() {
+            var btn = document.querySelector('button');
+            btn.addEventListener('click', function() {
+                alert('1！')
+            })
+        })
+
+        window.addEventListener('load', function() {
+            var btn = document.querySelector('button');
+            btn.addEventListener('click', function() {
+                alert('2！')
+            })
+        })
+    </script>
+</head>
+
+<body>
+    <button>点击提交</button>
+</body>
+
+</html>

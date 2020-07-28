@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>window常见事件定时器之setTimeout</title>
+</head>
+
+<body>
+    <script>
+        //写法1
+        window.setTimeout(function() {
+            console.log('boom！');
+        }, 1000);
+        //写法2
+        var time1 = setTimeout(fn, 1000);
+        var time2 = setTimeout(fn, 2000);
+
+        function fn() {
+            console.log('shaka');
+        }
+    </script>
+</body>
+
+</html>
