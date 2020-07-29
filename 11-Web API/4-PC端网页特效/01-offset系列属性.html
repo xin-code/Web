@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>offset系列属性</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        .father {
+            position: relative;
+            width: 100px;
+            height: 100px;
+            background-color: pink;
+            margin: 150px;
+            border: 5px solid #000;
+            padding: 5px;
+        }
+        
+        .son {
+            width: 10px;
+            height: 10px;
+            background-color: purple;
+            margin: 15px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="father">
+        <div class="son"></div>
+    </div>
+
+    <script>
+        var father = document.querySelector('.father');
+        var son = document.querySelector('.son');
+        console.log('--父盒子--');
+        console.log('距离左边' + father.offsetLeft);
+        console.log('距离右边' + father.offsetTop);
+        //父亲无定位 以body为准
+        console.log('--子盒子--');
+        console.log('距离左边' + son.offsetLeft);
+        console.log('距离右边' + son.offsetTop);
+        console.log('-----');
+        console.log('宽' + father.offsetWidth);
+        console.log('高' + father.offsetHeight);
+    </script>
+</body>
+
+</html>
