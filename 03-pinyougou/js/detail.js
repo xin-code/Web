@@ -17,10 +17,11 @@ window.addEventListener('load', function() {
 
     //鼠标在小图内的坐标 并且让放大镜跟随鼠标
     preview_img.addEventListener('mousemove', function(e) {
+        //X Y盒子内的坐标
         var smallX = e.pageX - this.offsetLeft;
         var smallY = e.pageY - this.offsetTop;
         // console.log(smallX, smallY);
-        //鼠标在跟随放大镜的中间offsetWidth 本身的宽度 offsetHeight本身的高度
+        //鼠标在跟随放大镜的中间offsetWidth 本身的宽度 offsetHeight本身的高度 小盒子移动的距离
         var sX = smallX - mask.offsetWidth / 2;
         var sY = smallY - mask.offsetHeight / 2;
         //小盒子内mask的最大移动距离为：
