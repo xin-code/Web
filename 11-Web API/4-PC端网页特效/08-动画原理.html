@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>动画原理</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        div {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100px;
+            height: 100px;
+            background-color: pink;
+        }
+    </style>
+</head>
+
+<body>
+    <div></div>
+
+    <script>
+        var div = document.querySelector('div');
+        var timer = setInterval(function() {
+            if (div.offsetLeft >= 400) {
+                //停止计时器
+                clearInterval(timer);
+            } else {
+                div.style.left = div.offsetLeft + 10 + 'px';
+            }
+        }, 50);
+    </script>
+</body>
+
+</html>

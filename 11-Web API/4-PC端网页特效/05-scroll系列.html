@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>scroll系列</title>
+    <style>
+        div {
+            width: 200px;
+            height: 200px;
+            border: 10px solid #000;
+            overflow: auto;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容
+    </div>
+
+    <script>
+        var div = document.querySelector('div');
+        div.addEventListener('scroll', function() {
+            console.log(div.scrollTop);
+        })
+    </script>
+</body>
+
+</html>

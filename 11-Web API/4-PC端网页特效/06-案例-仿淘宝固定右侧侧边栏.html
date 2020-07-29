@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>案例-仿淘宝固定右侧侧边栏</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+        
+        .w {
+            width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .header {
+            height: 150px;
+            background-color: pink;
+            margin-bottom: 10px;
+        }
+        
+        .banner {
+            height: 450px;
+            background-color: purple;
+            margin-bottom: 10px;
+        }
+        
+        .main {
+            height: 1500px;
+            background-color: #ccc;
+        }
+        
+        .slider_bar {
+            position: absolute;
+            top: 300px;
+            right: 80px;
+            width: 80px;
+            background-color: green;
+        }
+        
+        .one {
+            height: 50px;
+            background-color: #999;
+        }
+        
+        .two {
+            height: 50px;
+            background-color: #666;
+        }
+        
+        .three {
+            height: 50px;
+            background-color: #333;
+        }
+        
+        .goback {
+            display: none;
+            height: 50px;
+            background-color: skyblue;
+        }
+        
+        .four {
+            height: 50px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="slider_bar">
+        <div class="one">1</div>
+        <div class="two">2</div>
+        <div class="three">3</div>
+        <div class="goback"><a href="#oo">返回顶部</a></div>
+        <div class="four">4</div>
+    </div>
+    <div class="header w" id="oo">头部区域</div>
+    <div class="banner w">banner区域</div>
+    <div class="main w">主体区域</div>
+
+    <script>
+        var slider_bar = document.querySelector('.slider_bar');
+        var banner = document.querySelector('.banner');
+        var main = document.querySelector('.main');
+        var goback = document.querySelector('.goback');
+        //距离带有父级定位元素的距离，没有，就是距离body高度
+        var mianTop = main.offsetTop;
+        var bannerTop = banner.offsetTop;
+        var slider_barTop = slider_bar.offsetTop - bannerTop;
+        document.addEventListener('scroll', function() {
+            //判断是否进行转换侧边栏的绝对定位还是固定定位
+            if (window.pageYOffset >= bannerTop) {
+                slider_bar.style.position = 'fixed';
+                slider_bar.style.top = slider_barTop + 'px';
+            } else {
+                slider_bar.style.position = 'absolute';
+                slider_bar.style.top = 300 + 'px';
+            }
+            //显示返回顶部按钮
+            if (window.pageYOffset >= mianTop) {
+                goback.style.display = 'block';
+            } else {
+                goback.style.display = 'none';
+            }
+        })
+    </script>
+</body>
+
+</html>

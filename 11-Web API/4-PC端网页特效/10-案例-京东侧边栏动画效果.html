@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>案例-京东侧边栏动画效果</title>
+    <script src="animate.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        .slider_bar {
+            position: absolute;
+            top: 150px;
+            left: 0px;
+            width: 50px;
+            background-color: pink;
+        }
+        
+        .one {
+            position: relative;
+            height: 50px;
+            line-height: 50px;
+            text-align: center;
+            background-color: skyblue;
+            border: 1px solid #ccc;
+            z-index: 999;
+        }
+        
+        .ques {
+            position: absolute;
+            top: 0px;
+            left: -150px;
+            width: 150px;
+            height: 52px;
+            line-height: 52px;
+            text-align: center;
+            background-color: purple;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="slider_bar">
+        <div class="one">问题</div>
+        <div class="ques">反馈反馈反馈反馈</div>
+    </div>
+
+    <script>
+        var one = document.querySelector('.one');
+        var ques = document.querySelector('.ques');
+        //鼠标经过slider_bar 让盒子滑动到左侧(出现)
+        one.addEventListener('mouseenter', function() {
+                animate(ques, one.offsetWidth, function() {
+                    one.innerHTML = '返回!';
+                });
+            })
+            //鼠标离开slider_bar 让盒子滑动到右侧(消失)
+        one.addEventListener('mouseleave', function() {
+            animate(ques, -ques.offsetWidth, function() {
+                one.innerHTML = '问题';
+            });
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>简单动画的封装</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        div {
+            position: absolute;
+            top: 30px;
+            left: 0;
+            width: 100px;
+            height: 100px;
+            background-color: pink;
+        }
+        
+        span {
+            position: absolute;
+            top: 150px;
+            left: 0;
+            width: 100px;
+            height: 100px;
+            background-color: purple;
+        }
+    </style>
+</head>
+
+<body>
+    <button class="btn500">点击到500</button>
+    <button class="btn800">点击到800</button>
+    <div></div>
+    <span></span>
+
+    <script>
+        function animate(obj, target, callback) {
+            clearInterval(obj.timer);
+            obj.timer = setInterval(function() {
+                //停止计时器
+                if (obj.offsetLeft == target) {
+                    clearInterval(obj.timer);
+                    //如果存在回调函数，再调用
+                    if (callback) {
+                        callback();
+                    }
+
+                } else {
+                    var step = (target - obj.offsetLeft) / 10;
+                    step = step > 0 ? Math.ceil(step) : Math.floor(step);
+                    //把每次10像素变成一个慢慢变小的值 把10换成一个慢慢变小的变量
+                    // obj.style.left = obj.offsetLeft + 10 + 'px';
+                    //(目标值-现在位置)/10
+                    obj.style.left = obj.offsetLeft + step + 'px';
+                }
+            }, 15);
+        }
+        var div = document.querySelector('div');
+        var span = document.querySelector('span');
+        var btn500 = document.querySelector('.btn500');
+        var btn800 = document.querySelector('.btn800');
+        animate(div, 500);
+        btn500.addEventListener('click', function() {
+            animate(span, 500);
+        })
+        btn800.addEventListener('click', function() {
+            animate(span, 800, function() {
+                span.style.backgroundColor = 'red';
+            });
+        })
+    </script>
+</body>
+
+</html>

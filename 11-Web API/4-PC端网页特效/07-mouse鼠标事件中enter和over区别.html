@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>mouse鼠标事件中enter和over区别</title>
+    <style>
+        .father {
+            width: 300px;
+            height: 300px;
+            background-color: pink;
+        }
+        
+        .son {
+            width: 100px;
+            height: 100px;
+            background-color: purple;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="father">
+        <div class="son"></div>
+    </div>
+
+    <script>
+        var father = document.querySelector('.father');
+        var son = document.querySelector('.son');
+
+        //mouseenter只针对自身盒子,才会触发。 子盒子不会冒泡
+        father.addEventListener('mouseenter', function() {
+            console.log(11);
+        })
+
+        //mouseover 子盒子会冒泡 所以触发两次
+        // father.addEventListener('mouseover', function() {
+        //     console.log(11);
+        // })
+    </script>
+</body>
+
+</html>
