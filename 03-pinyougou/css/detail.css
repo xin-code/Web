@@ -28,9 +28,39 @@
 /* 预览大图 */
 
 .preview_img {
+    position: relative;
     width: 398px;
     height: 398px;
     border: 1px solid #ccc;
+}
+
+.mask {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 250px;
+    height: 250px;
+    background-color: yellow;
+    opacity: .5;
+    border: 1px solid #ccc;
+}
+
+.big {
+    overflow: hidden;
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 410px;
+    width: 500px;
+    height: 500px;
+    background-color: pink;
+    border: 1px solid #ccc;
+    z-index: 999;
+}
+
+.bigImage {
+    position: absolute;
 }
 
 
