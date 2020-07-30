@@ -73,10 +73,10 @@
         <div class="one">1</div>
         <div class="two">2</div>
         <div class="three">3</div>
-        <div class="goback"><a href="#oo">返回顶部</a></div>
+        <div class="goback"><a>返回顶部</a></div>
         <div class="four">4</div>
     </div>
-    <div class="header w" id="oo">头部区域</div>
+    <div class="header w">头部区域</div>
     <div class="banner w">banner区域</div>
     <div class="main w">主体区域</div>
 
@@ -105,6 +105,28 @@
                 goback.style.display = 'none';
             }
         })
+
+        //返回顶部
+        goback.addEventListener('click', function() {
+            animate(window, 0);
+        })
+
+        //动画函数
+        function animate(obj, target, callback) {
+            //首先调用一次停止计时器，是因为只让计时器工作一次
+            clearInterval(obj.timer);
+            var step = (target - window.pageYOffset) / 10;
+            step = step > 0 ? Math.ceil(step) : Math.floor(step);
+            //设置计时器
+            obj.timer = setInterval(function() {
+                //停止计时器
+                if (window.pageYOffset == target) {
+                    clearInterval(obj.timer);
+                    callback && callback();
+                }
+                window.scroll(0, window.pageYOffset + step);
+            }, 15);
+        }
     </script>
 </body>
 

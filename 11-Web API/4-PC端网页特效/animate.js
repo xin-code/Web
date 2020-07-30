@@ -9,9 +9,10 @@ function animate(obj, target, callback) {
         if (obj.offsetLeft == target) {
             clearInterval(obj.timer);
             //如果存在回调函数，再调用
-            if (callback) {
-                callback();
-            }
+            // if (callback) {
+            //     callback();
+            // }
+            callback && callback();
             //如果当前位置和目标值不相等的话，就进行移动
         } else {
             var step = (target - obj.offsetLeft) / 10;
