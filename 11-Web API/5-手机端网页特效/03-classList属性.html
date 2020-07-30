@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>classList属性</title>
+    <style>
+        .one {
+            width: 100px;
+            height: 100px;
+            background-color: pink;
+        }
+        
+        .bg {
+            background-color: black;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="one"></div>
+    <button>开关灯</button>
+    <script>
+        var div = document.querySelector('.one');
+        //添加类
+        div.classList.add('two');
+        div.classList.add('three');
+        //删除类
+        div.classList.remove('two');
+        //切换类
+        var button = document.querySelector('button');
+        button.addEventListener('click', function() {
+            document.body.classList.toggle('bg');
+        })
+    </script>
+</body>
+
+</html>

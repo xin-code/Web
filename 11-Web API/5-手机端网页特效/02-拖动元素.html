@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>拖动元素</title>
+    <style>
+        div {
+            /* 必须要有这个才能移动 */
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100px;
+            height: 100px;
+            background-color: pink;
+        }
+    </style>
+</head>
+
+<body>
+    <div></div>
+
+    <script>
+        var div = document.querySelector('div');
+        //手指初始化坐标
+        var startX = 0;
+        var startY = 0;
+        //盒子原来坐标
+        var boxX = 0;
+        var boxY = 0;
+        //初始
+        div.addEventListener('touchstart', function(e) {
+            startX = e.targetTouches[0].pageX;
+            startY = e.targetTouches[0].pageY;
+            // console.log(startX, startY);
+            boxX = this.offsetLeft;
+            boxY = this.offsetTop;
+            // console.log(boxX, boxY);
+        });
+        //移动
+        div.addEventListener('touchmove', function(e) {
+            var moveX = e.targetTouches[0].pageX - startX;
+            var moveY = e.targetTouches[0].pageY - startY;
+            // console.log(moveX, moveY);
+            // 移动盒子
+            this.style.left = boxX + moveX + 'px';
+            this.style.top = boxY + moveY + 'px';
+            console.log(this.style.left);
+            console.log(this.style.top);
+
+            e.preventDefault();
+        });
+    </script>
+</body>
+
+</html>
