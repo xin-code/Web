@@ -104,7 +104,7 @@ img {
     overflow: hidden;
     position: fixed;
     min-width: 320px;
-    max-width: 1080px;
+    max-width: 640px;
     height: 44px;
     text-align: center;
     line-height: 44px;
@@ -206,6 +206,33 @@ img {
 
 .slider img {
     width: 100%;
+}
+
+
+/* 复制swiper css样式 */
+
+.swiper-container {
+    width: 100%;
+    height: 100%;
+}
+
+.swiper-slide {
+    text-align: center;
+    font-size: 18px;
+    background: #fff;
+    /* Center slide text vertically */
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
 }
 
 
