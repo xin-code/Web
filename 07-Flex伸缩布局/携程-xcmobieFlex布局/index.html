@@ -7,6 +7,7 @@
     <title>携程</title>
     <link rel="stylesheet" href="css/normalize.css">
     <link rel="stylesheet" href="css/index.css">
+    <script src="js/index.js"></script>
 </head>
 
 <body>
@@ -18,7 +19,20 @@
 
     <!-- 焦点图focus -->
     <div class="focus">
-        <img src="upload/focus.jpg" alt="">
+        <!-- 轮播图 -->
+        <ul>
+            <li><img src="upload/focus3.jpg"></li>
+            <li><img src="upload/focus1.jpg"></li>
+            <li><img src="upload/focus2.jpg"></li>
+            <li><img src="upload/focus3.jpg"></li>
+            <li><img src="upload/focus1.jpg"></li>
+        </ul>
+        <!-- 小圆圈 -->
+        <ol>
+            <li class="current"></li>
+            <li></li>
+            <li></li>
+        </ol>
     </div>
 
     <!-- 当地导航local-nav -->
@@ -230,6 +244,9 @@
             沪ICP备08023580号
         </p>
     </div>
+
+    <!-- go back模块 -->
+    <div class="goback"></div>
 </body>
 
 </html>
