@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>创建类和对象</title>
+</head>
+
+<body>
+
+    <script>
+        class Star {
+            //构造函数
+            constructor(straname, age) {
+                    this.straname = straname;
+                    this.age = age;
+                }
+                //方法
+            sing(song) {
+                console.log(this.straname + song);
+            }
+        }
+
+        var zxy = new Star('张学友', 20);
+        var ldh = new Star('刘德华', 18);
+        console.log(zxy);
+        console.log(ldh);
+        zxy.sing('唱山歌');
+        ldh.sing('唱冰雨');
+    </script>
+</body>
+
+</html>
