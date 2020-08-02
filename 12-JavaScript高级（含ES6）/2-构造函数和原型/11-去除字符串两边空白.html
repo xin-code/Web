@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>去除字符串两边空白</title>
+</head>
+
+<body>
+    <input type="text" placeholder="请输入内容"> <button>查看</button>
+    <div></div>
+    <script>
+        var str = '   123   ';
+        console.log(str);
+        var newstr = str.trim();
+        console.log(newstr);
+
+        var input = document.querySelector('input');
+        var button = document.querySelector('button');
+        var div = document.querySelector('div');
+        button.addEventListener('click', function() {
+            if (input.value.trim() == '') {
+                alert('请输入内容');
+            } else {
+                div.innerHTML = input.value.trim();
+                console.log(input.value.trim().length);
+            }
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>对象方法defineProperty</title>
+</head>
+
+<body>
+
+    <script>
+        var data = {
+            id: 1,
+            pname: 'mi',
+            price: 999
+        };
+        //原来做法
+        // data.num = 123;
+        // data.price = 899;
+        // console.log(data);
+        //
+        Object.defineProperty(data, 'id', {
+            value: 11,
+            //不允许修改重写
+            writable: false,
+            //不允许再次更改特效
+            configurable: false,
+            //不允许枚举
+            enumerable: false
+        });
+        data.id = 555;
+        console.log(data);
+    </script>
+</body>
+
+</html>

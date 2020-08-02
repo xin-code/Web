@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>对象方法keys</title>
+</head>
+
+<body>
+
+    <script>
+        var data = {
+            id: 1,
+            pname: 'mi',
+            price: 999
+        };
+
+        var arr = Object.keys(data);
+        console.log(arr);
+        arr.forEach(function(value) {
+            console.log(value);
+        })
+    </script>
+</body>
+
+</html>
