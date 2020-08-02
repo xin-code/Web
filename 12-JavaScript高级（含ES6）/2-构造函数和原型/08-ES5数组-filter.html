@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ES5数组-filter</title>
+</head>
+
+<body>
+
+    <script>
+        var arr = [45, 80, 30, 60, 78, 92, 33, 25, 60, 24, 46, 50, 66, 30];
+        var arr1 = arr.filter(function(value, index) {
+            return value >= 50;
+        })
+        console.log(arr1);
+    </script>
+</body>
+
+</html>

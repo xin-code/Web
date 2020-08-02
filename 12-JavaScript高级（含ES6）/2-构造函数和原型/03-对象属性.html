@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>对象属性</title>
+</head>
+
+<body>
+
+    <script>
+        function Star(uname, age) {
+            this.name = uname;
+            this.year = age;
+        }
+
+        Star.prototype = function() {
+            return '唱跳rap'
+        }
+        var ldh = new Star('刘德华', 25);
+        var zxy = new Star('张学友', 28);
+        console.log(ldh.prototype === zxy.prototype);
+    </script>
+</body>
+
+</html>

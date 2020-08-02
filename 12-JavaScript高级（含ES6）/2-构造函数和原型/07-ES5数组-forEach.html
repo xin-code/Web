@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ES5数组-forEach</title>
+</head>
+
+<body>
+
+    <script>
+        var arr1 = [1, 2, 3, 4, 5, 6];
+        arr1.forEach(function(currentValue, index, array) {
+            console.log('当前数组元素是：' + currentValue);
+            console.log('数组当前索引号：' + index);
+            console.log('数组对象本身：' + array);
+        })
+    </script>
+</body>
+
+</html>

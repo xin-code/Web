@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>子继承父构造函数方法</title>
+</head>
+
+<body>
+
+    <script>
+        function Father(uname, age) {
+            this.mz = uname;
+            this.nl = age;
+        }
+        Father.prototype.money = function() {
+            this.money = 1000;
+        }
+
+        function Son(inputname, inputage, score) {
+            Father.call(this, inputname, inputage);
+            this.score = 100;
+        }
+        //子继承父级的方法
+        Son.prototype = new Father();
+        Son.prototype.constructor = Son;
+
+        var ldh = new Son('刘德华', 18);
+
+        console.log(Father.prototype);
+        console.log(Son.prototype);
+    </script>
+</body>
+
+</html>

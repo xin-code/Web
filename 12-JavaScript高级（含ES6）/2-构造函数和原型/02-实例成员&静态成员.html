@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>实例成员&静态成员</title>
+</head>
+
+<body>
+
+    <script>
+        function Star(uname, age) {
+            this.name = uname;
+            this.year = age;
+        }
+
+        var ldh = new Star('刘德华', 25);
+        //实例成员 只能通过实例化对象进行调用
+        console.log(ldh.name, ldh.year);
+        Star.sex = '男';
+        //静态成员 只能通过构造函数来添加
+        console.log(Star.sex);
+        console.log(ldh.name, ldh.year, Star.sex);
+    </script>
+</body>
+
+</html>

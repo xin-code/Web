@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>创建对象</title>
+</head>
+
+<body>
+
+    <script>
+        // 1. 利用new Object() 创建对象
+        var obj3 = new Object();
+        //2.利用字面量创建对象
+        var obj2 = {
+            uname: '刘德华',
+            age: 18,
+        };
+        console.log(obj2.uname);
+        console.log(obj2.age);
+
+        //3.利用构造函数
+        function Star(uname, age) {
+            this.name = uname;
+            this.year = age;
+            this.song = function() {
+                return '唱歌';
+            }
+        }
+
+        var ldh = new Star('刘德华', 18);
+        console.log('我是：' + ldh.name + '\n今年' + ldh.year + '岁\n我喜欢:' + ldh.song());
+    </script>
+</body>
+
+</html>

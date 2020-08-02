@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>原型constructor</title>
+</head>
+
+<body>
+
+    <script>
+        function Star(uname, age) {
+            this.name = uname;
+            this.year = age;
+        }
+
+        // Star.prototype.sing = function() {
+        //     return '唱跳rap';
+        // };
+        // Star.prototype.movie = function() {
+        //     return '电影';
+        // }
+
+        Star.prototype = {
+            constructor: Star,
+            sing: function() {
+                return '唱跳rap';
+            },
+            movie: function() {
+                return '电影';
+            },
+
+        }
+        var ldh = new Star('刘德华', 25);
+        var zxy = new Star('张学友', 28);
+
+        console.log(ldh.__proto__);
+        console.log(Star.prototype);
+
+        console.log(ldh.__proto__.constructor);
+        console.log(Star.prototype.constructor);
+    </script>
+</body>
+
+</html>
