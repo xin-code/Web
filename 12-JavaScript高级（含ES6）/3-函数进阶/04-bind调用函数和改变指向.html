@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>bind调用函数和改变指向</title>
+</head>
+
+<body>
+    <button>点击</button>
+    <button>点击</button>
+    <button>点击</button>
+    <button>点击</button>
+
+    <script>
+        var o = {
+            name: '123'
+        }
+
+        function fun(a, b) {
+            //普通函数this指向的是window
+            console.log(this);
+            console.log(a + b);
+        }
+        fun();
+        console.log('-----');
+        //此时bind第一个参数 指向的是o 则改变this的指向
+        var f = fun.bind(o, 1, 2);
+        f();
+
+        //经常使用！
+        var btns = document.querySelectorAll('button');
+        for (var i = 0; i < btns.length; i++) {
+            btns[i].addEventListener('click', function() {
+                setTimeout(function() {
+                    this.disabled = true;
+                }.bind(this), 1000)
+            })
+        }
+    </script>
+
+</body>
+
+</html>

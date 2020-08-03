@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>函数的定义</title>
+</head>
+
+<body>
+
+    <script>
+        // 自定义函数
+        function fun(a, b) {
+            console.log(a + b);
+        }
+        fun(1, 2);
+        //匿名函数
+        var fn = function(a, b) {
+            console.log(a * b);
+        }
+        fn(2, 2);
+        //利用new
+        var f = new Function('a', 'b', 'console.log(a/b)');
+        f(6, 1);
+    </script>
+</body>
+
+</html>

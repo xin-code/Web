@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>call调用函数和改变指向</title>
+</head>
+
+<body>
+
+    <script>
+        var o = {
+            name: '123'
+        }
+
+        function fun(a, b) {
+            //普通函数this指向的是window
+            console.log(this);
+            console.log(a + b);
+        }
+        fun();
+        console.log('-----');
+        //此时call第一个参数 指向的是o 则改变this的指向
+        fun.call(o, 1, 2);
+
+        function Father(uname, age, sex) {
+            this.mz = uname;
+            this.nl = age;
+            this.xb = sex;
+        }
+
+        function Son(him, year, nv) {
+            Father.call(this, him, year, nv);
+        }
+        var ldh = new Son('刘德华', 22, '男');
+        console.log(ldh);
+    </script>
+</body>
+
+</html>

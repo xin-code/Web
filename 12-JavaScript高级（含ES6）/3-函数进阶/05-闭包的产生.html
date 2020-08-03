@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>闭包的产生</title>
+</head>
+
+<body>
+
+    <script>
+        'use strict';
+
+        //因为fn函数调用了fun中局部作用域中的num 则 就产生了闭包 fun就为闭包函数
+        // function fun() {
+        //     var num = 10;
+
+        //     function fn() {
+        //         console.log(num);
+        //     }
+        //     fn();
+        // }
+        // fun();
+
+        function fat() {
+            var num = 10;
+
+            return function son() {
+                    console.log(num);
+                }
+                //函数作为一个返回值给到了fat函数内
+        }
+        //这里 s 就相当于保存了一个函数进去
+        // s = function son() {
+        //     console.log(num);
+        // }
+        var s = fat();
+        //那么s可以调用局部作用域内的变量num
+        s();
+    </script>
+</body>
+
+</html>

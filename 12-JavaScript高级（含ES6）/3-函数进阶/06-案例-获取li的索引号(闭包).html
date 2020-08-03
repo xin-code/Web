@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>案例-获取li的索引号</title>
+</head>
+
+<body>
+    <ul class="nav">
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+    </ul>
+
+    <script>
+        var lis = document.querySelector('.nav').querySelectorAll('li');
+        //之前做法
+        // for (var i = 0; i < lis.length; i++) {
+        //     lis[i].index = i;
+        //     lis[i].onclick = function() {
+        //         console.log(this.index);
+        //     }
+        // }
+        //闭包做法
+        //立即执行函数
+        for (var i = 0; i < lis.length; i++) {
+            (function(canshu) {
+                // console.log(canshu);
+                lis[canshu].onclick = function() {
+                    console.log(canshu);
+                }
+            })(i)
+        }
+    </script>
+</body>
+
+</html>

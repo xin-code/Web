@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>apply调用函数和改变指向</title>
+</head>
+
+<body>
+
+    <script>
+        var o = {
+            name: '123'
+        }
+
+        function fun(arr1, arr2, arr3) {
+            //普通函数this指向的是window
+            console.log(this);
+            console.log(arr1, arr2, arr3);
+        }
+        fun();
+        console.log('-----');
+        //此时apply第一个参数 指向的是o 则改变this的指向
+        fun.apply(o, ['blue', 'pink', 'yellow']);
+
+        var array = [5, 10, 99, 88, 50, 32, 24, 85];
+        var max = Math.max.apply(Math, array);
+        var min = Math.min.apply(Math, array);
+        console.log(max, min);
+    </script>
+</body>
+
+</html>

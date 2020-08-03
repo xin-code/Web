@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>案例-利用递归求数学题</title>
+</head>
+
+<body>
+
+    <script>
+        // 求1~n的阶乘
+        function fn(n) {
+            if (n == 1) {
+                return 1;
+            }
+            // n*函数的前一个数
+            return n * fn(n - 1);
+        }
+        console.log(fn(3));
+        console.log(fn(8));
+    </script>
+</body>
+
+</html>
