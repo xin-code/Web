@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>案例-深拷贝</title>
+</head>
+
+<body>
+
+    <script>
+        var obj = {
+            id: 1,
+            name: 'zzz',
+            msg: {
+                age: 12,
+            },
+            color: [1, 2, 3]
+        }
+
+        var o = {};
+
+        function deepCopy(newobj, oldobj) {
+            for (const key in oldobj) {
+                //判断属性值是什么类型
+                var items = oldobj[key];
+                // console.log(items);
+                //是否为数组
+                if (items instanceof Array) {
+                    //把old数组放在new数组内
+                    newobj[key] = [];
+                    deepCopy(newobj[key], items);
+                    //newobj[key]是属性值 就是先定义一个空的数组 然后把old里面的值赋值给new
+                    console.log(newobj[key]);
+                } else if (items instanceof Object) {
+                    newobj[key] = {};
+                    deepCopy(newobj[key], items);
+                    //newobj[key]是属性值 就是先定义一个空的对象 然后把old里面的值赋值给new
+                    console.log(newobj[key]);
+                } else {
+                    //简单数据类型
+                    // 浅拷贝会把属性名复制走
+                    newobj[key] = items;
+                }
+            }
+        }
+        deepCopy(o, obj);
+        console.log(o);
+    </script>
+</body>
+
+</html>
