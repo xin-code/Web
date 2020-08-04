@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>测试正则表达式-单个元字符</title>
+</head>
+
+<body>
+
+    <script>
+        var rg = /123/;
+        console.log(rg.test(123));
+
+        console.log('---------------');
+
+        var reg = /abc/;
+        console.log(reg.test('abc'));
+        console.log(reg.test('abcd'));
+        console.log(reg.test('aabc'));
+
+        console.log('------以abc开头-------');
+
+        var rega = /^abc/;
+        console.log(rega.test('abc'));
+        console.log(rega.test('abcd'));
+        console.log(rega.test('aabc'));
+
+        console.log('---abc三个字符----');
+
+        var regab = /^abc$/;
+        console.log(regab.test('abc'));
+        console.log(regab.test('abcd'));
+        console.log(regab.test('aabc'));
+
+        console.log('--[]包含其中一个字母即可---');
+
+        var regabc = /[abc]/;
+        console.log(regabc.test('apple'));
+        console.log(regabc.test('color'));
+        console.log(regabc.test('dog'));
+
+        console.log('--^[abc]$三选一才行---');
+
+        var regabcd = /^[abc]$/;
+        console.log(regabcd.test('aa'));
+        console.log(regabcd.test('a'));
+        console.log(regabcd.test('b'));
+        console.log(regabcd.test('c'));
+
+        console.log('--^[a-z]]$26个小写英文字母中的一个(敏感大小写)---');
+
+        var regabcde = /^[a-z]$/;
+        console.log(regabcde.test('aa'));
+        console.log(regabcde.test('a'));
+        console.log(regabcde.test('b'));
+        console.log(regabcde.test('c'));
+        console.log(regabcde.test('A'));
+
+        console.log('--^[a-zA-Z0-9_-]]$26个大小写英文字母、0-9、_、-中的一个(敏感大小写)---!!现在还是只能输入单个文字--');
+
+        var regabcdef = /^[a-zA-Z0-9_-]$/;
+        console.log(regabcdef.test('aa'));
+        console.log(regabcdef.test('a'));
+        console.log(regabcdef.test('b'));
+        console.log(regabcdef.test('c'));
+        console.log(regabcdef.test('A'));
+        console.log(regabcdef.test('pink0123'));
+
+        console.log('--^[^(一旦中括号内有^ 就是取反)a-zA-Z0-9_-]]$26个大小写英文字母、0-9、_、-中的一个(敏感大小写)---!!现在还是只能输入单个文字--');
+
+        var regabcdefg = /^[^a-zA-Z0-9_-]$/;
+        console.log(regabcdefg.test('aa'));
+        console.log(regabcdefg.test('a'));
+        console.log(regabcdefg.test('b'));
+        console.log(regabcdefg.test('c'));
+        console.log(regabcdefg.test('A'));
+        console.log(regabcdefg.test('!'));
+    </script>
+</body>
+
+</html>

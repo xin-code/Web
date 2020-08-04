@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>测试正则表达式-验证用户表单</title>
+</head>
+
+<body>
+
+    <script>
+        var reg = /^[a-zA-Z0-9_-]{6,16}$/;
+        console.log(reg.test('a'));
+        console.log(reg.test('ab'));
+        console.log(reg.test('abc'));
+        console.log(reg.test('123456zxg'));
+        console.log(reg.test('123456_123'));
+        console.log(reg.test('123456_1239999999999999'));
+    </script>
+</body>
+
+</html>
