@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>String扩展方法-模板字符串</title>
+</head>
+
+<body>
+
+    <script>
+        //调用变量
+        var str = '张三';
+        var print = `这是我的自我介绍，我叫：${str}`;
+        console.log(print);
+
+        //也可以调用函数
+        var fun = function() {
+            return '这是一个函数'
+        }
+        var pln = `我也可以调用这个：${fun()}`
+        console.log(pln);
+    </script>
+</body>
+
+</html>

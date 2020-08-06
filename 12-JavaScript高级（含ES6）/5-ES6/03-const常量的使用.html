@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>const常量的使用</title>
+</head>
+
+<body>
+
+    <script>
+        //1.const具有块级作用域
+        if (true) {
+            const a = 10;
+            if (true) {
+                const a = 22;
+                console.log(a); //22
+            }
+            console.log(a); //10
+        }
+        //console.log(a); //报错
+
+        //2.声明常量时 必须赋初始值
+        const PI = 3.14;
+        const abc = 666;
+        //const ab; //报错 没有赋初始值 Missing initializer in const declaration
+
+        //3.赋值后，不可更改值
+        //3.1简单数据类型
+        const c = 123;
+        console.log(c);
+        //const c = 222; //报错 已经声明过值了 Identifier 'c' has already been declared
+        //console.log(c); //报错 已经声明过值了 Identifier 'c' has already been declared
+        //3.2复杂数据类型
+        const arr = [1, 2, 3];
+        arr[0] = 9;
+        arr[1] = 8;
+        arr[2] = 7;
+        console.log(arr); //[9,8,7] 复杂数据类型 单个进行修改可以
+        // 如果进行整体修改 则会报错
+        arr = ['a', 'b', 'c']; //Assignment to constant variable.
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>经典面试题</title>
+</head>
+
+<body>
+
+    <script>
+        var arr = [];
+        for (var i = 0; i < 2; i++) {
+            arr[i] = function() {
+                console.log(i);
+            }
+        }
+        arr[0](); //2
+        arr[1](); //2 
+        // 因为先循环循环体内
+        // 在i=2的时候 不符合循环体条件 退出循环。
+        //然后在调用函数 那么此时 不管你arr[]写的是几 都输出的是不符合条件的值
+        //i是全局的
+
+        let arr1 = [];
+        for (let i = 0; i < 2; i++) {
+            arr1[i] = function() {
+                console.log(i);
+            }
+        }
+        arr1[0](); //0
+        arr1[1](); //1
+        //let 关键字是绑定块级作用域 所以产生两个作用域
+        //每次循环产生的块级变量域是不一样的 所以每个块级变量域内的变量也是不一样的
+        //arr1[]中的几就尤为重要，因为决定你输出的结果
+    </script>
+</body>
+
+</html>

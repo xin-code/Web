@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Array扩展方法-伪数组变为真数组</title>
+</head>
+
+<body>
+
+    <script>
+        //Array.from方法
+        var obj = {
+            0: 'zs',
+            1: '22',
+            2: '男',
+            3: 'sex',
+            length: 4
+        }
+        console.log(obj);
+        var arr = Array.from(obj);
+        console.log(arr);
+
+        console.log('----');
+
+        var o = {
+            0: 1,
+            1: 2,
+            2: 3,
+            3: 4,
+            length: 4
+        }
+        console.log(o);
+        var arr = Array.from(o, num => num * 2);
+        console.log(arr);
+    </script>
+</body>
+
+</html>

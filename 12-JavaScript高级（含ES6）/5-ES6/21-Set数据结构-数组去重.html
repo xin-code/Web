@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Set数据结构-数组去重</title>
+</head>
+
+<body>
+
+    <script>
+        const s = new Set([1, 2, 2, 3, 4, 1, 1, 1, 2, 3, 5, 6]);
+        //现在能看到s内只有6个值，已经实现自动去重
+        console.log(s.size);
+        //用扩展运算符添加进arr数组内
+        var arr = [...s];
+        console.log(arr);
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Set数据结构-实例方法</title>
+</head>
+
+<body>
+
+    <script>
+        const s = new Set([1, 2, 1, 3, 4, 5, 4, 6]);
+        //添加数据
+        s.add(7).add(8).add(9).add(10).add(11);
+        //删除数据 返回一个布尔值 看是否删除成功
+        var suc = s.delete(1);
+        console.log(suc);
+        //查看数据是否存在 返回布尔值 看是否存在
+        var have = s.has(10);
+        console.log(have);
+        var arr = [...s];
+        console.log(arr);
+
+        //清空数据
+        s.clear();
+        console.log(s.size);
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>let变量关键字的使用</title>
+</head>
+
+<body>
+
+    <script>
+        // if (true) {
+        //     var num = 10;
+        //     let numb = 20;
+        // }
+        // console.log(num);
+        // console.log(numb);
+
+        //1.避免循环变量转为全局变量
+        // for (var i = 0; i < 99; i++) {
+        // }
+        // console.log(i);
+
+        // for (let a = 0; a < 99; a++) {
+        // }
+        // console.log(a);
+
+        //2.避免变量提升
+
+        console.log(num); //undefined 
+        var num = 9;
+        // 相当于做了以下代码 所以结果是undefined
+        // var num;
+        // console.log(num);
+        // num = 9;
+
+
+        console.log(a);
+        let a = 19;
+        // let变量不会变量提升 所以是红色报错
+    </script>
+</body>
+
+</html>
