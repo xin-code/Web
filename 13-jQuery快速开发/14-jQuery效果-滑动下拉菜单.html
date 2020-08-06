@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jQuery效果-滑动下拉菜单</title>
+    <style>
+        div {
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+        }
+    </style>
+    <script src="jquery-3.5.1.min.js"></script>
+</head>
+
+<body>
+    <button>上拉滑动</button>
+    <button>下拉滑动</button>
+    <button>切换滑动</button>
+    <div></div>
+
+    <script>
+        //上拉滑动
+        $("button").eq(0).slideUp(function() {
+            $("div").slideUp();
+        });
+        //下拉滑动
+        $("button").eq(1).slideDown(function() {
+            $("div").slideDown();
+        });
+        //切换滑动
+        $("button").eq(2).slideToggle(function() {
+            $("div").slideToggle();
+        });
+    </script>
+</body>
+
+</html>

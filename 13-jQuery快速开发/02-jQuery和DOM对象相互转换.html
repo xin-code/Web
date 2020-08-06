@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jQuery和DOM对象相互转换</title>
+    <script src="jquery-3.5.1.min.js"></script>
+</head>
+
+<body>
+    <video src="mov.mp4" autoplay muted></video>
+
+    <script>
+        //DOM对象转为jQuery对象
+        //1、直接获取元素
+        $("video");
+        //2、已经进行DOM元素的获取
+        var video = document.querySelector("video");
+        $(video);
+
+        //jQuery对象转换为DOM对象
+        //方法一
+        $("video")[0].play();
+        //方法二
+        $("video").get(0).play();
+    </script>
+</body>
+
+</html>

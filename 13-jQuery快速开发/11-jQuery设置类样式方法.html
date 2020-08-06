@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jQuery设置类样式方法</title>
+    <style>
+        div {
+            width: 200px;
+            height: 200px;
+            background-color: blue;
+            transition: all .5s;
+        }
+        
+        .current {
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+            transform: rotate(360deg);
+        }
+    </style>
+    <script src="jquery-3.5.1.min.js"></script>
+</head>
+
+<body>
+    <button>切换颜色</button>
+    <div></div>
+
+    <script>
+        $(function() {
+            //添加类
+            $("div").addClass("current");
+            //删除类
+            $("div").removeClass("current");
+            //切换类
+            $("button").click(function() {
+                $(this).siblings("div").toggleClass("current");
+            })
+        })
+    </script>
+</body>
+
+</html>

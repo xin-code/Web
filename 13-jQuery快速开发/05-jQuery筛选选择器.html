@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jQuery筛选选择器</title>
+    <script src="jquery-3.5.1.min.js"></script>
+</head>
+
+<body>
+    <ul>
+        <li>多个里面筛选几个</li>
+        <li>多个里面筛选几个</li>
+        <li>多个里面筛选几个</li>
+        <li>多个里面筛选几个</li>
+        <li>多个里面筛选几个</li>
+        <li>多个里面筛选几个</li>
+    </ul>
+
+    <script>
+        $(function() {
+            $("ul li:first").css("color", "red");
+            $("ul li:last").css("color", "green");
+            $("ul li:eq(2)").css("color", "blue");
+            $("ul li:odd").css("background", "pink");
+            $("ul li:even").css("background", "skyblue");
+        })
+    </script>
+</body>
+
+</html>
