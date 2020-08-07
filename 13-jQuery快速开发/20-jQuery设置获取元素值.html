@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jQuery设置获取元素值</title>
+    <script src="jquery-3.5.1.min.js"></script>
+</head>
+
+<body>
+    <a href="http://www.baidu.com">百度</a>
+    <input type="checkbox" checked>
+    <p index="2">123</p>
+    <span title="name" s="1" data-index="999">abc</span>
+
+    <script>
+        //固有属性
+        console.log($("a").prop("href"));
+        $("a").prop("target", "_blank");
+
+        $("input").change(function() {
+            console.log($(this).prop("checked"));
+        });
+        //自定义属性
+        console.log($("p").attr("index"));
+        $("p").attr("uname", "thisishername");
+
+        //数据缓存data()
+        //不能！！获取固有属性 undefined
+        console.log($("span").data("title"));
+        //获取自定义属性(必须是以data-开头的数据)   999 并且还是数字型
+        console.log($("span").data("index"));
+        //不能获取不以data开头的数据 undefined
+        //但是寄存到内存里的话 可以获取到 是字符串型
+        console.log($("span").data("s"));
+        $("span").data("abc", "123");
+        console.log($("span").data("abc"));
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jQuery操作元素-遍历</title>
+    <script src="jquery-3.5.1.min.js"></script>
+    <style>
+        span {
+            display: block;
+            width: 50px;
+            height: 50px;
+            text-align: center;
+            line-height: 50px;
+        }
+    </style>
+</head>
+
+<body>
+    <div>1</div>
+    <div>2</div>
+    <div>3</div>
+
+    <span>5</span>
+    <span>1</span>
+    <span>2</span>
+
+    <script>
+        //隐式迭代 把同一类元素做相同操作
+        $("div").css("color", "red");
+        //遍历操作 把同一类元素做不同的操作
+        //遍历方法一
+        var arr = ["blue", "yellow", "red"];
+        $("span").each(function(index, domEle) {
+            //索引号index
+            // console.log(index);
+            $(domEle).css("background", arr[index]);
+        })
+
+        //数组求和
+        var sum = 0;
+        $("span").each(function(index, domEle) {
+            sum += parseInt($(domEle).text());
+        })
+        console.log(sum);
+
+        //遍历方法二
+        $.each(arr, function(i, ele) {
+            console.log(i);
+            console.log(ele);
+        })
+
+        $.each({
+            name: "zs",
+            age: 18
+        }, function(index, ele) {
+            console.log(index);
+            console.log(ele);
+        })
+    </script>
+</body>
+
+</html>

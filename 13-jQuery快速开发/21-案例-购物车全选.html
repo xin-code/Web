@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>案例-购物车全选</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            text-align: center;
+        }
+        
+        thead th {
+            border: 1px solid #000;
+            width: 140px;
+            height: 40px;
+        }
+        
+        tbody td {
+            border: 1px solid #000;
+            height: 40px;
+        }
+        
+        tfoot td {
+            border: 1px solid #000;
+            height: 40px;
+        }
+    </style>
+    <script src="jquery-3.5.1.min.js"></script>
+    <script src="car.js"></script>
+</head>
+
+<body>
+    <table>
+        <caption>购物车</caption>
+        <thead>
+            <tr>
+                <th><input type="checkbox" class="checkedall">全选</th>
+                <th>商品</th>
+                <th>单价</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><input type="checkbox" class="con-checked"></td>
+                <td>1</td>
+                <td>6.66</td>
+            </tr>
+            <tr>
+                <td><input type="checkbox" class="con-checked"></td>
+                <td>2</td>
+                <td>2.66</td>
+            </tr>
+            <tr>
+                <td><input type="checkbox" class="con-checked"></td>
+                <td>3</td>
+                <td>1.66</td>
+            </tr>
+            <tr>
+                <td><input type="checkbox" class="con-checked"></td>
+                <td>4</td>
+                <td>8.66</td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <td><input type="checkbox" class="checkedall">全选</td>
+                <td>清空商品</td>
+                <td>总价：999</td>
+            </tr>
+        </tfoot>
+    </table>
+
+</body>
+
+</html>
