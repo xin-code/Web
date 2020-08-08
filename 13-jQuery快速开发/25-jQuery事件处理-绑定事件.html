@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jQuery事件处理-绑定事件</title>
+    <style>
+        div {
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+        }
+    </style>
+    <script src="jquery-3.5.1.min.js"></script>
+</head>
+
+<body>
+    <div></div>
+
+    <script>
+        //绑定不同事件
+        $("div").on({
+            mouseenter: function() {
+                $("div").css("background", "purple");
+            },
+            mouseout: function() {
+                $("div").css("background", "skyblue");
+            },
+            click: function() {
+                $("div").css("background", "red");
+            }
+        });
+        //绑定相同事件
+        $("div").on("mouseleave click", function() {
+            alert("11");
+        });
+    </script>
+</body>
+
+</html>

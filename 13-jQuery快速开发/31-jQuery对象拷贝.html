@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jQuery对象拷贝</title>
+    <script src="jquery-3.5.1.min.js"></script>
+</head>
+
+<body>
+
+    <script>
+        var newobj = {
+            id: 0,
+        };
+        var oldobj = {
+            id: 1,
+            name: "张三",
+            msg: {
+                age: 19,
+            }
+        };
+        //jQuery拷贝
+        $.extend(true, newobj, oldobj);
+        console.log(newobj);
+        oldobj.msg.age = 20;
+        console.log(oldobj);
+    </script>
+</body>
+
+</html>
