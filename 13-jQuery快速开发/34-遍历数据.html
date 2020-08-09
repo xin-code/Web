@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>遍历数据</title>
+    <script src="jquery-3.5.1.min.js"></script>
+</head>
+
+<body>
+    <script>
+        var obj = [{
+            id: 1,
+            name: "张三"
+        }, {
+            id: 2,
+            name: "李四"
+        }]
+
+        $.each(obj, function(index, value) {
+            console.log(index);
+            console.log(value);
+        })
+    </script>
+</body>
+
+</html>

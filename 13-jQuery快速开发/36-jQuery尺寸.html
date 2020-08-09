@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jQuery尺寸</title>
+    <style>
+        div {
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+            border: 3px solid #000;
+            padding: 2px;
+            margin: 1px;
+        }
+    </style>
+    <script src="jquery-3.5.1.min.js"></script>
+</head>
+
+<body>
+    <div>我的宽度是width: 200px ; 我的高度是height: 200px ; 我的边框是border : 3px ; 我的内边距padding:2px ;我的外边距是: 1px;</div>
+
+    <script>
+        console.log('只计算width和height的宽高');
+        console.log($("div").width());
+        console.log($("div").height());
+        console.log('计算内边距padding值');
+        console.log($("div").innerWidth());
+        console.log($("div").innerHeight());
+        console.log('计算边框值border 内边距padding');
+        console.log($("div").outerWidth());
+        console.log($("div").outerHeight());
+        console.log('计算所有');
+        console.log($("div").outerWidth(true));
+        console.log($("div").outerHeight(true));
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>本地存储的数据格式</title>
+</head>
+
+<body>
+    <script>
+        var data = [{
+            con: '一',
+            done: false,
+        }, {
+            con: '二',
+            done: false,
+        }, ];
+        window.localStorage.setItem("todo", JSON.stringify(data));
+        //借助JSON.stringify进行数组存储
+        var content = localStorage.getItem("todo"); //取出来的是字符串格式 content
+        console.log(typeof content); //存进去的是string 字符串格式
+        console.log(content[0].done); //输出数组的却是undefined
+        //因为存入进去的时候转换了格式 把对象格式转换为字符串格式 存入localStorage
+        //取值的时候也应该把字符串格式转换回来对象格式
+        content = JSON.parse(content);
+        console.log(content[0].done); //正常显示
+    </script>
+</body>
+
+</html>
