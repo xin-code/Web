@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jQuery位置</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        .father {
+            position: relative;
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+            margin: 100px;
+        }
+        
+        .son {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            width: 50px;
+            height: 50px;
+            background-color: purple;
+        }
+    </style>
+    <script src="jquery-3.5.1.min.js"></script>
+</head>
+
+<body>
+    <div class="father">
+        <div class="son"></div>
+    </div>
+
+    <script>
+        //offset只针对文档来说
+        //获得son元素距离文档顶部位置的距离
+        // console.log($(".son").offset({
+        //     top: 200,
+        //     left: 200
+        // }));
+        console.log($(".son").offset().top);
+
+        //position针对带有定位的父级
+        console.log($(".son").position());
+        //只能获取 不能设置
+        console.log($(".son").position().left);
+        console.log($(".son").position().top);
+    </script>
+</body>
+
+</html>
