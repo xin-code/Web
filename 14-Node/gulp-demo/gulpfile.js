@@ -52,9 +52,9 @@ gulp.task('jsmin', () =>
 
 //复制文件夹
 gulp.task('copy', () => {
-    gulp.src('./src/img/*')
+    return gulp.src('./src/img/*')
         .pipe(gulp.dest('dist/img'));
-    gulp.src('./src/upload/*')
+    return gulp.src('./src/upload/*')
         .pipe(gulp.dest('dist/upload'));
 });
 
