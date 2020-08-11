@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>注册页面</title>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/register.css">
+    <script src="js/register.js"></script>
+</head>
+
+<body>
+    <div class="w">
+        <!-- 头部 strat -->
+        <div class="header">
+            <!-- logo -->
+            <div class="logo">
+                <a href="index.html"><img src="img/logo.png"></a>
+            </div>
+        </div>
+        <!-- register start -->
+        <div class="registerarea">
+            <div class="registerarea_hd">
+                <h3>注册新用户</h3>
+                <em>我有账号，去<a href="javascript:;">登陆</a></em>
+            </div>
+            <div class="registerarea_bd">
+                <!-- 需要提交后台，则需要表单域 -->
+                <form action="demo.php">
+                    <ul>
+                        <li>
+                            <label for="tel">手机号：</label>
+                            <input type="text" class="inp" id="tel">
+                            <span class=""></span>
+                        </li>
+                        <li>
+                            <label for="yanzhengma">短信验证码：</label>
+                            <input type="text" class="inp" id="yanzhengma">
+                        </li>
+                        <li>
+                            <label for="psw">登陆密码：</label>
+                            <input type="password" class="inp" id="psw">
+                            <span class=""></span>
+                        </li>
+                        <li class="safe">
+                            <h3>安全程度：</h3>
+                            <em class="ruo">弱</em>
+                            <em class="zhong">中</em>
+                            <em class="qiang">强</em>
+                        </li>
+                        <li>
+                            <label for="con">确认密码：</label>
+                            <input type="password" class="inp" id="conpsw">
+                            <span class=""></span>
+                        </li>
+                        <li class="agree"><input type="checkbox">同意协议并注册<a href="javascript:;">《品优购用户协议》</a> </li>
+                        <li>
+                            <input type="submit" value="完成注册" class="comp">
+                        </li>
+                    </ul>
+                </form>
+            </div>
+        </div>
+
+        <!-- footer start -->
+        <div class="footer">
+            <div class="w">
+                <!-- mod_copyright -->
+                <div class="mod_copyright">
+                    <p class="mod_copyright_item">
+                        <a href="javascript:;">关于我们</a>|
+                        <a href="javascript:;">联系我们</a>|
+                        <a href="javascript:;">联系客服</a>|
+                        <a href="javascript:;">商家入驻</a>|
+                        <a href="javascript:;">营销中心</a>|
+                        <a href="javascript:;">手机品优购</a>|
+                        <a href="javascript:;">友情链接</a>|
+                        <a href="javascript:;">销售联盟</a>|
+                        <a href="javascript:;">品优购社区</a>|
+                        <a href="javascript:;">品优购公益</a>|
+                        <a href="javascript:;">English Site</a>|
+                        <a href="javascript:;">Contact U</a>
+                    </p>
+                    <p class="mod_copyright_info">地址：河南省安阳市 邮编：100000 电话：400-000-0000 传真：000-88888888 邮箱: 975203723@qq.com<br>京ICP备88888888号京公网安备110110110110</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
