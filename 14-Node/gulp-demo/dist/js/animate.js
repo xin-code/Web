@@ -1,0 +1,1 @@
+"use strict";function animate(t,f,r){clearInterval(t.timer),t.timer=setInterval(function(){if(t.offsetLeft==f)clearInterval(t.timer),r&&r();else{var e=(f-t.offsetLeft)/10;e=0<e?Math.ceil(e):Math.floor(e),t.style.left=t.offsetLeft+e+"px"}},15)}
