@@ -49,3 +49,16 @@ gulp.task('jsmin', () =>
     .pipe(uglify())
     .pipe(gulp.dest('dist/js'))
 );
+
+//复制文件夹
+gulp.task('copy', () => {
+    gulp.src('./src/img/*')
+        .pipe(gulp.dest('dist/img'));
+    gulp.src('./src/upload/*')
+        .pipe(gulp.dest('dist/upload'));
+});
+
+//构建任务 一次执行所有任务
+gulp.task('default', gulp.series('first', 'htmlmin', 'less', 'jsmin', 'copy', done => done()));
+//gulp 4 解决方法
+//gulp.task('default', gulp.series('script', 'html', done => done()))
