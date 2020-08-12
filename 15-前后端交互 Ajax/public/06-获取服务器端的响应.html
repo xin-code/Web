@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>获取服务器端的响应</title>
+</head>
+
+<body>
+    客户端
+
+    <script>
+        //创建Ajax对象
+        var xhr = new XMLHttpRequest();
+        //此时没有配置，那么现在状态码是0
+        console.log(xhr.readyState);
+        //告诉Ajax对象，以什么方式发送请求，要向哪里发送请求
+        xhr.open('get', 'http://localhost:3000/state');
+        //已经配置，但是还没有发送请求 现在状态码为1
+        console.log(xhr.readyState);
+        // 当Ajax发生变化的时候触发
+        xhr.onreadystatechange = function() {
+            //2 请求已发出
+            //3 请求处理中 完成部分数据
+            //4 响应数据已经接收完成
+            console.log(xhr.readyState);
+            if (xhr.readyState == 4) {
+                console.log(xhr.responseText);
+            }
+        }
+
+        //发送请求
+        xhr.send();
+    </script>
+</body>
+
+</html>

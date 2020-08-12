@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ajax错误处理</title>
+</head>
+
+<body>
+    <button id="btn">客户端</button>
+
+    <script>
+        var btn = document.querySelector("#btn");
+        btn.addEventListener("click", function() {
+            //创建Ajax对象
+            var xhr = new XMLHttpRequest();
+            //告诉Ajax对象，以什么方式发送请求，要向哪里发送请求
+            //服务器端没有first地址
+            xhr.open('get', 'http://localhost:3000/error');
+            //发送请求
+            xhr.send();
+            //获取服务器端响应到客户端的数据
+            xhr.onload = function() {
+                console.log(xhr.responseText);
+                console.log(xhr.status);
+                if (xhr.status == 400) {
+                    alert('请求出错')
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
