@@ -1,0 +1,1 @@
+console.log('find.js在同级目录下的js文件被执行了');

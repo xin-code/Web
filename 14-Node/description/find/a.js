@@ -1,0 +1,1 @@
+console.log('根据package.json中mian指向的js文件被执行了，现在我的名字为a.js');
