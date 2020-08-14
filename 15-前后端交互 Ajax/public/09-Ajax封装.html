@@ -9,6 +9,24 @@
 
 <body>
 
+    <script>
+        function Ajax(options) {
+            var xhr = new XMLHttpRequest();
+            xhr.open(options.type, options.url);
+            xhr.send();
+            xhr.onload = function() {
+                options.success(xhr.responseText);
+            }
+        }
+
+        Ajax({
+            type: 'get',
+            url: 'http://localhost:3000/first',
+            success: function(data) {
+                console.log('这是封装函数里的data值' + data);
+            }
+        })
+    </script>
 </body>
 
 </html>
