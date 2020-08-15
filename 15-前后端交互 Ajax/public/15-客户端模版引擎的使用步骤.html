@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>客户端模版引擎的使用步骤</title>
+    <!-- 引入模版引擎 -->
+    <script src="/js/template-web.js"></script>
+</head>
+
+<body>
+
+    <h1 id="container"></h1>
+
+    <!-- 定义模版引擎ID -->
+    <script id="tpl" type="text/html">
+        <div class="box">{{username}}{{age}}</div>
+    </script>
+    <!-- 拼接字符串 -->
+    <script type="text/javascript">
+        // 返回值是一个拼接好的字符串
+        var hername = template('tpl', {
+            username: '张三',
+            age: 18
+        });
+        console.log(hername);
+        document.getElementById('container').innerHTML = hername;
+    </script>
+</body>
+
+</html>

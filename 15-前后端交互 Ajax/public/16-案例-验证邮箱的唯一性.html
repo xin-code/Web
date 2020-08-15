@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>案例-验证邮箱的唯一性</title>
+    <style>
+        div {
+            width: 400px;
+        }
+        
+        .success {
+            background-color: green;
+            display: none;
+        }
+        
+        .error {
+            background-color: red;
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <p>邮箱地址:</p>
+    <input type="email" id="email" placeholder="请输入邮箱地址">
+    <div></div>
+
+
+
+    <!-- 引入封装好的Ajax函数 -->
+    <script src="/js/Ajax.js"></script>
+    <script>
+        // 1、获取文本框并为其添加离开焦点事件
+        var email = document.getElementById('email');
+        var div = document.querySelector('div');
+        email.addEventListener('blur', function() {
+            div.style.display = 'block';
+            // 2、离开焦点时，检测用户输入的邮箱地址是否符合规则
+            var email = this.value;
+            var reg = /^[A-Za-z\d]+([-_.][A-Za-z\d]+)*@([A-Za-z\d]+[-.])+[A-Za-z\d]{2,4}$/;
+            // 3、如果不符合规则，阻止程序向下执行并给出提示信息
+            if (!reg.test(email)) {
+                div.innerHTML = '请输入正确的邮箱地址！';
+                div.className = 'error';
+                return;
+            }
+            //4、向服务器端发送请求，检测邮箱地址是否被别人注册
+            Ajax({
+                type: 'get',
+                url: 'http://localhost:3000/verifyEmailAdress',
+                //参数
+                data: {
+                    email: email
+                },
+                // 5、根据服务器端返回值决定客户端显示何种提示信息
+                success: function(result) {
+                    console.log(result);
+                    div.innerHTML = result.message;
+                    div.className = 'success';
+                },
+                error: function(result) {
+                    console.log(result);
+                    div.innerHTML = result.message;
+                    div.className = 'error';
+                }
+            })
+
+
+        });
+    </script>
+</body>
+
+</html>
