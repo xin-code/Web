@@ -2,12 +2,17 @@
 const express = require('express');
 // 路径处理模块
 const path = require('path');
-const bodyParser = require('body-parser');
+// const bodyParser = require('body-parser');
+//bodyParser不能处理客户端传递过来的formdata对象
 const fs = require('fs');
+//用formidable处理formdata对象
+const formidable = require('formidable');
+
+
 // 创建web服务器
 const app = express();
 
-app.use(bodyParser.json());
+// app.use(bodyParser.json());
 
 // 静态资源访问服务功能
 app.use(express.static(path.join(__dirname, 'public')));
@@ -212,6 +217,14 @@ app.get('/areas', (req, res) => {
     res.send(areas[id] || []);
 });
 
+//19-FormData对象的作用
+app.post('/formData', (req, res) => {
+    //创建formidable表单解析对象
+    var form = new formidable.IncomingForm();
+    form.parse(req, (err, fileds, files) => {
+        res.send(fileds);
+    })
+});
 
 // 监听端口
 app.listen(3000);
