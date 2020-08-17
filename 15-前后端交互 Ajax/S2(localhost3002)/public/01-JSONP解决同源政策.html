@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JSONP解决同源政策</title>
+</head>
+
+<body>
+    <script>
+        //data是S1(localhost3001)服务器中的({name:"张三"});
+        function fn(data) {
+            console.log('在服务器端调用了函数的执行，并且把结果打印在控制台');
+            console.log(data);
+        }
+    </script>
+
+    <script src="http://localhost:3001/test"></script>
+</body>
+
+</html>

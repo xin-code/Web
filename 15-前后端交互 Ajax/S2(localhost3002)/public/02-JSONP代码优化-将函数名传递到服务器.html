@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JSONP代码优化-将函数名传递到服务器</title>
+</head>
+
+<body>
+    <script>
+        //data是S1(localhost3001)服务器中的({name:"张三"});
+        function fn1(data) {
+            console.log('在服务器端调用了函数的执行，并且把结果打印在控制台');
+            console.log(data);
+        }
+    </script>
+    <!-- fn1随着定义的函数名字改变，不会影响服务器 -->
+    <script src="http://localhost:3001/better?callback=fn1"></script>
+</body>
+
+</html>

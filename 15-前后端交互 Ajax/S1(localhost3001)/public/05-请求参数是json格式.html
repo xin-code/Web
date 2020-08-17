@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>请求参数是json格式</title>
+</head>
+
+<body>
+    客户端
+
+    <script>
+        //创建Ajax对象
+        var xhr = new XMLHttpRequest();
+        var params = {
+            name: '张三',
+            age: 18
+        };
+        //告诉Ajax对象，以什么方式发送请求，要向哪里发送请求
+        //服务器端没有json地址
+        xhr.open('post', 'http://localhost:3000/json');
+        //请求参数类型
+        xhr.setRequestHeader('Content-Type', 'application/json');
+        //发送请求
+        xhr.send(JSON.stringify(params));
+        //获取服务器端响应到客户端的数据
+        xhr.onload = function() {
+            console.log(xhr.responseText)
+        }
+    </script>
+</body>
+
+</html>

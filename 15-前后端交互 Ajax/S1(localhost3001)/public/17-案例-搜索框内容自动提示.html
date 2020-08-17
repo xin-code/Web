@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>案例-搜索框内容自动提示</title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <style type="text/css">
+        .container {
+            padding-top: 150px;
+        }
+        
+        .list-group {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="form-group">
+            <input type="text" class="form-control" placeholder="请输入搜索关键字" id="search">
+            <ul class="list-group" id="list-box">
+
+            </ul>
+        </div>
+    </div>
+
+    <script src="/js/Ajax.js"></script>
+    <script src="/js/template-web.js"></script>
+    <!-- 模版引擎 -->
+    <script type="text/html" id="tpl">
+        {{each result}}
+        <li class='list-group-item'>{{$value}}</li>
+        {{/each}}
+    </script>
+    <script>
+        // 获取搜索框并为其添加用户输入事件
+        var searchIpt = document.querySelector('#search');
+        var listBox = document.querySelector('#list-box');
+        //定时器
+        var timer = null;
+        //用户输入事件
+        searchIpt.addEventListener('input', function() {
+            //清除定时器
+            clearTimeout(timer);
+            //获取用户输入的关键字
+            var key = this.value;
+            if (key.trim().length == 0) {
+                listBox.style.display = 'none';
+                //阻止程序向下执行
+                return;
+            }
+            timer = setTimeout(function() {
+                //向服务器传递参数
+                Ajax({
+                    type: 'get',
+                    url: 'http://localhost:3000/searchAutoPrompt',
+                    //参数
+                    data: {
+                        //服务器接收的key 后面的key是自己定义的用户输入的值 var key = this.value;
+                        key: key
+                    },
+                    success: function(result) {
+                        //使用引擎模版拼接字符串
+                        var html = template('tpl', {
+                            result: result
+                        });
+                        //将字符串显示到页面中
+                        listBox.innerHTML = html;
+                        listBox.style.display = 'block';
+                    }
+                })
+            }, 800);
+        })
+    </script>
+</body>
+
+</html>

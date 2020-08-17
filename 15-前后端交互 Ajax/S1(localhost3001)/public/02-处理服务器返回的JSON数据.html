@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>处理服务器返回的JSON数据</title>
+</head>
+
+<body>
+    客户端
+
+    <script>
+        //创建Ajax对象
+        var xhr = new XMLHttpRequest();
+        //告诉Ajax对象，以什么方式发送请求，要向哪里发送请求
+        //服务器端没有first地址
+        xhr.open('get', 'http://localhost:3000/responseData');
+        //发送请求
+        xhr.send();
+        //获取服务器端响应到客户端的数据
+        xhr.onload = function() {
+            console.log(xhr.responseText);
+            //可以看到 输出的类型是string类型 
+            console.log(typeof xhr.responseText);
+            //需要转换 字符串转换为JSON对象
+            var zsname = JSON.parse(xhr.responseText);
+            //拼接HTML
+            var tohtml = '<h2>' + zsname.name + '</h2>';
+            document.body.innerHTML = tohtml;
+        }
+    </script>
+</body>
+
+</html>

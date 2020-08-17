@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>进一步完善-判断http状态码</title>
+</head>
+
+<body>
+    客户端
+
+    <script>
+        //先进行封装函数
+        //封装时判断post或get类型
+        function Ajax(options) {
+            var xhr = new XMLHttpRequest();
+            //接收拼接字符串
+            var params = '';
+            //for in 遍历数组
+            for (var key in options.data) {
+                //name=zhangsan&age=20
+                params += key + '=' + options.data[key] + '&'
+            }
+            //截取字符串
+            params = params.substr(0, params.length - 1);
+            // 封装时判断post或get类型
+            if (options.type == 'get') {
+                options.url += '?' + params;
+                xhr.open(options.type, options.url);
+                xhr.send();
+            } else {
+                xhr.open(options.type, options.url);
+                var ContentType = options.header['Content-Type'];
+                xhr.setRequestHeader('Content-Type', ContentType);
+                //判断用户希望传递请求参数的格式类型
+                if (ContentType == 'application/json') {
+                    //json需要转换类型 从对象型转化为字符串型
+                    xhr.send(JSON.stringify(options.data));
+                } else {
+                    //如果是正常的就不需要转换，就传递正常的请求参数
+                    xhr.send(params);
+                }
+            }
+            xhr.onload = function() {
+                //判断http状态码
+                if (xhr.status == 200) {
+                    //请求成功
+                    options.success(xhr.responseText, xhr);
+                } else {
+                    //请求失败 返回状态码
+                    options.error(xhr.responseText, xhr);
+                }
+            }
+        }
+
+        Ajax({
+            type: 'get',
+            url: 'http://localhost:3000/first',
+            data: {
+                name: 'zhangsan',
+                age: 22
+            },
+            header: {
+                'Content-Type': 'application/json'
+            },
+            success: function(data, xhr) {
+                console.log('这里是封装函数的值：' + data, xhr);
+            },
+            error: function(data, xhr) {
+                console.log('这里是错误的状态码' + data, xhr);
+                console.log(xhr);
+            }
+
+        })
+    </script>
+</body>
+
+</html>

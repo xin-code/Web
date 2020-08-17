@@ -253,7 +253,26 @@ app.post('/uploadimg', (req, res) => {
         });
     })
 });
+
+//01-JSONP解决同源政策 
+app.get('/test', (req, res) => {
+    const result = 'fn({name:"张三"})';
+    res.send(result);
+});
+
+//02-JSONP代码优化-将函数名传递到服务器
+app.get('/better', (req, res) => {
+    // //接收客户端传递过来的函数名称
+    // const fnName = req.query.callback;
+    // //将函数名称对应的函数调用代码返回给客户端
+    // const result = fnName + '({name:"张三"})';
+    // setTimeout(() => {
+    //     res.send(result);
+    // }, 1000);
+    res.jsonp({ name: "zhang三", age: 18 })
+});
+
 // 监听端口
-app.listen(3000);
+app.listen(3001);
 // 控制台提示输出
 console.log('服务器启动成功');

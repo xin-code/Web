@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JSONP代码优化-点击才去发送请求</title>
+</head>
+
+<body>
+    <button id="btn1">点我才发送请求</button>
+    <button id="btn2">点我才发送请求</button>
+
+    <script>
+        var btn1 = document.querySelector("#btn1");
+        var btn2 = document.querySelector("#btn2");
+        btn1.addEventListener("click", function() {
+            jsonp({
+                //请求地址
+                url: "http://localhost:3001/better",
+                success: function(data) {
+                    console.log('123');
+                    console.log(data);
+                }
+            })
+        });
+
+        btn2.addEventListener("click", function() {
+            jsonp({
+                //请求地址
+                url: "http://localhost:3001/better",
+                data: {
+                    name: 'lisi',
+                    age: 18
+                },
+                success: function(data) {
+                    console.log('456');
+                    console.log(data);
+                }
+            })
+        });
+
+        //函数的封装
+        function jsonp(options) {
+            //创建script标签
+            var script = document.createElement('script');
+            var params = '';
+            //按钮2点击后可以输出里面的值
+            console.log(JSON.stringify(options.data));
+            // for in 进行循环对象
+            for (const key in options.data) {
+                params += "&" + key + "=" + options.data[key];
+                console.log(params);
+            }
+            //fn名字改成随机数
+            var fnName = 'myjsonp' + Math.random().toString().replace('.', '');
+            //挂载到window下
+            window[fnName] = options.success;
+            script.src = options.url + "?callback=" + fnName + params;
+            document.body.appendChild(script);
+            script.onload = function() {
+                document.body.removeChild(script);
+            }
+        }
+    </script>
+</body>
+
+</html>

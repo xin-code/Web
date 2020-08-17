@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>封装时判断post或get类型</title>
+</head>
+
+<body>
+    客户端
+
+    <script>
+        //先进行封装函数
+        //封装时判断post或get类型
+        function Ajax(options) {
+            var xhr = new XMLHttpRequest();
+            //接收拼接字符串
+            var params = '';
+            //for in 遍历数组
+            for (var key in options.data) {
+                //name=zhangsan&age=20
+                params += key + '=' + options.data[key] + '&'
+            }
+            //截取字符串
+            params = params.substr(0, params.length - 1);
+            //封装时判断post或get类型
+            if (options.type == 'get') {
+                options.url += '?' + params;
+                xhr.open(options.type, options.url);
+                xhr.send();
+            } else {
+                xhr.open(options.type, options.url);
+                xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+                xhr.send(params);
+            }
+            xhr.onload = function() {
+                options.success(xhr.responseText);
+            }
+        }
+
+        Ajax({
+            type: 'post',
+            url: 'http://localhost:3000/first',
+            data: {
+                name: 'zhangsan',
+                age: 22
+            },
+            success: function(data) {
+                console.log('这里是封装函数的值：' + data);
+            }
+
+        })
+    </script>
+</body>
+
+</html>

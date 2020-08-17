@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>formData对象实现二进制文件的上传</title>
+    <style>
+        .progress {
+            width: 120px;
+            height: 20px;
+            border: 1px solid #000;
+        }
+        
+        .bar {
+            width: 0%;
+            background-color: green;
+        }
+    </style>
+</head>
+
+<body>
+    客户端<br>
+    <label for="file">文件上传：</label><input type="file" id="file">
+    <div class="progress">
+        <div class="bar">0%</div>
+    </div>
+
+    <script>
+        var file = document.querySelector("#file");
+        var bar = document.querySelector('.bar');
+        file.addEventListener("change", function() {
+            //创建空的formData表单对象
+            var formData = new FormData();
+            //将用户选择的文件追加到formData表单对象中
+            formData.append("attrName", this.files[0]);
+            //创建Ajax对象
+            var xhr = new XMLHttpRequest();
+            //配置
+            xhr.open("post", "http://localhost:3000/uploadfile");
+            //上传进度条
+            xhr.upload.onprogress = function(ev) {
+                console.log(ev);
+                bar.style.width = ((ev.loaded / ev.total) * 100).toFixed(2) + "%";
+                bar.innerHTML = bar.style.width;
+            };
+            //发送Ajax请求
+            xhr.send(formData);
+            //监听服务器响应客户端的数据
+            xhr.onload = function() {
+                //判断是否上传成功
+                if (xhr.status == 200) {
+                    //将服务器返回的数据显示到控制台中
+                    console.log(xhr.responseText);
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
