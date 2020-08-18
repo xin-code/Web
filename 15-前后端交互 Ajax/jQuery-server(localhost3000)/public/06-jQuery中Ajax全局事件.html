@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jQuery中Ajax全局事件</title>
+    <link rel="stylesheet" href="/css/nprogress.css">
+</head>
+
+<body>
+    <button id="btn">点击按钮发送请求</button>
+
+    <script src="/js/jquery-3.5.1.min.js"></script>
+    <script src="/js/nprogress.js"></script>
+    <script>
+        $("#btn").on("click", function() {
+            $.ajax({
+                url: '/jsonpcb',
+                //代表发送jsonp请求
+                jsonp: 'cb',
+                jsonpCallback: 'fn',
+                dataType: 'jsonp',
+                success: function(response) {
+                    console.log(response);
+                }
+
+            })
+        })
+        $(document).on('ajaxStart', function() {
+            console.log('start');
+            NProgress.start();
+        });
+        $(document).on('ajaxComplete', function() {
+            console.log('ajaxComplete');
+            NProgress.done();
+        });
+    </script>
+
+</body>
+
+</html>

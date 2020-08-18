@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>$.ajax方法发送jsonp请求</title>
+</head>
+
+<body>
+    <button id="btn">点击按钮发送请求</button>
+
+    <script src="/js/jquery-3.5.1.min.js"></script>
+    <script>
+        $("#btn").on("click", function() {
+            $.ajax({
+                url: '/jsonp',
+                //代表发送jsonp请求
+                dataType: 'jsonp',
+                success: function(response) {
+                    console.log(response);
+                }
+
+            })
+        })
+    </script>
+</body>
+
+</html>

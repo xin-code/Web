@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>$.ajax方法基本使用</title>
+    <script src="/js/jquery-3.5.1.min.js"></script>
+</head>
+
+<body>
+    <button id="btn">发送请求</button>
+
+    <script>
+        // var params = {
+        //     name: "zs",
+        //     age: 10
+        // }
+        $('#btn').on('click', function() {
+            $.ajax({
+                type: 'post',
+                url: '/first',
+                //在$.ajax中自动转换为字符串格式 name=zzz&age=55
+                // data: JSON.stringify(params),
+                data: {
+                    name: 'zs',
+                    age: 11
+                },
+                //指定参数格式类型
+                // contentType: 'application/json',
+                beforeSend: function() {
+                    // alert('信息即将发送');
+                    // return false;
+                },
+                success: function(response) {
+                    console.log(response);
+                },
+                error: function(xhr) {
+                    console.log(xhr);
+                }
+
+            })
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>serialize方法的使用</title>
+</head>
+
+<body>
+    <form id="form">
+        <label>用户名：</label><input type="text" name="username">
+        <label>密码：</label><input type="password" name="password">
+        <input type="submit" value="提交">
+    </form>
+
+    <script src="/js/jquery-3.5.1.min.js"></script>
+    <script>
+        $('#form').on('submit', function() {
+            serializeObject($(this));
+            return false;
+        });
+
+        //现在这个函数仅仅是变成数组格式类型[{…}, {…}]
+        // function serializeObject(obj) {
+        //     var params = obj.serializeArray();
+        //     console.log(params);
+        // }
+
+        function serializeObject(obj) {
+            var result = {};
+            var params = obj.serializeArray();
+            //循环数组，将数组转换为对象类型
+            $.each(params, function(index, value) {
+                result[value.name] = value.value;
+            });
+            //将处理的结果返回到函数外部
+            return result;
+        }
+    </script>
+</body>
+
+</html>

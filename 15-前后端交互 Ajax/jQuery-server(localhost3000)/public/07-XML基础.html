@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>XML基础</title>
+</head>
+
+<body>
+    <button id="btn">点我获取数据</button>
+    <div id="box"></div>
+
+    <script>
+        var btn = document.querySelector('#btn');
+        var box = document.querySelector('#box');
+        btn.addEventListener('click', function() {
+            var xhr = new XMLHttpRequest();
+            xhr.open('get', '/xml');
+            xhr.send();
+            xhr.onload = function() {
+                console.log(xhr.responseXML);
+                var xml = xhr.responseXML;
+                var t = xml.getElementsByTagName("top")[0].innerHTML;
+                console.log(t);
+                box.innerHTML = t;
+            }
+        })
+    </script>
+</body>
+
+</html>
