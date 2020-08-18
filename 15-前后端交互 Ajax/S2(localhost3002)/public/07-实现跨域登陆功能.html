@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>实现跨域登陆功能</title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <style type="text/css">
+        .container {
+            padding-top: 60px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <form id="loginForm">
+            <div class="form-group">
+                <label>用户名</label>
+                <input type="text" name="username" class="form-control" placeholder="请输入用户名">
+            </div>
+            <div class="form-group">
+                <label>密码</label>
+                <input type="password" name="password" class="form-control" placeholder="请输入用密码">
+            </div>
+            <input type="button" class="btn btn-default" value="登录" id="loginBtn">
+            <input type="button" class="btn btn-default" value="检测用户登录状态" id="checkLogin">
+        </form>
+    </div>
+
+    <script>
+        //获取按钮
+        var loginBtn = document.querySelector('#loginBtn');
+        var checkLogin = document.querySelector('#checkLogin');
+        var loginForm = document.querySelector('#loginForm');
+        //为登陆按钮添加点击事件(点击登陆，把表单中的信息【FormData】通过Ajax提交到服务器端)
+        loginBtn.addEventListener('click', function() {
+            //将html表单转换为formdata表单对象
+            var formdata = new FormData(loginForm);
+            // 创建Ajax
+            var xhr = new XMLHttpRequest();
+            xhr.open('post', 'http://localhost:3001/login');
+            //设置跨域携带cookie
+            xhr.withCredentials = true;
+            //发送请求并传递请求参数
+            xhr.send(formdata);
+            //监听服务器的响应内容
+            xhr.addEventListener('load', function() {
+                console.log(xhr.responseText);
+            })
+        })
+
+        //为检测按钮添加点击事件
+        checkLogin.addEventListener('click', function() {
+            // 创建Ajax
+            var xhr = new XMLHttpRequest();
+            xhr.open('get', 'http://localhost:3001/checklogin');
+            //设置跨域携带cookie
+            xhr.withCredentials = true;
+            //发送请求并传递请求参数
+            xhr.send();
+            //监听服务器的响应内容
+            xhr.addEventListener('load', function() {
+                console.log(xhr.responseText);
+            })
+        })
+    </script>
+</body>
+
+</html>

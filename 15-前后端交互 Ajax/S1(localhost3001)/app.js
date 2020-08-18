@@ -7,7 +7,15 @@ const path = require('path');
 const fs = require('fs');
 //用formidable处理formdata对象
 const formidable = require('formidable');
+// 实现session功能
+var session = require('express-session');
 
+// 实现session功能 设置官方文档提供的中间件
+app.use(session({
+    secret: 'keyboard cat',
+    resave: false,
+    saveUninitialized: false
+}));
 
 // 创建web服务器
 const app = express();
@@ -271,6 +279,61 @@ app.get('/better', (req, res) => {
     // }, 1000);
     res.jsonp({ name: "zhang三", age: 18 })
 });
+
+//05-CORS跨域资源访问
+app.get('/corss', (req, res) => {
+    //允许那些访问我
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Methods', 'get,post');
+    res.send('ok');
+})
+
+//06-服务器端跨域访问
+app.get('/severrequest', (req, res) => {
+    //允许那些访问我
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Methods', 'get,post');
+    res.send('123');
+})
+
+//07-实现跨域登陆功能
+// 拦截所有请求
+app.use((req, res, next) => {
+    // 1.允许哪些客户端访问我
+    // * 代表允许所有的客户端访问我
+    // 注意：如果跨域请求中涉及到cookie信息传递，值不可以为*号 比如是具体的域名信息
+    res.header('Access-Control-Allow-Origin', 'http://localhost:3002');
+    // 2.允许客户端使用哪些请求方法访问我
+    res.header('Access-Control-Allow-Methods', 'get,post');
+    // 允许客户端发送跨域请求时携带cookie信息
+    res.header('Access-Control-Allow-Credentials', true);
+    next();
+});
+
+
+app.post('/login', (req, res) => {
+    //解析表单
+    var form = formidable.IncomingForm();
+    form.parse(req, (err, fields, files) => {
+        const { username, password } = fields;
+        if (username == '1' && password == '1') {
+            //设置session
+            req.session.isLogin = true;
+            res.send({ message: '登陆成功' })
+        } else {
+            res.send({ message: '账号密码输入错误，登陆失败' })
+        }
+    })
+})
+
+app.get('/checklogin', (req, res) => {
+    // 判断用户是否处于登录状态
+    if (req.session.isLogin) {
+        res.send({ message: '处于登录状态' })
+    } else {
+        res.send({ message: '处于未登录状态' })
+    }
+})
 
 // 监听端口
 app.listen(3001);

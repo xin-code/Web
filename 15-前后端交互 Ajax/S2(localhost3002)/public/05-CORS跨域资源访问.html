@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CORS跨域资源访问</title>
+</head>
+
+<body>
+    <button id="btn">点我发送请求</button>
+
+    <script src="/js/Ajax.js"></script>
+    <script>
+        var btn = document.querySelector('#btn');
+        btn.addEventListener("click", function() {
+            Ajax({
+                type: 'get',
+                url: 'http://localhost:3001/corss',
+                success: function(data) {
+                    console.log(data);
+                }
+            })
+        })
+    </script>
+</body>
+
+</html>
