@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>案例-简单计算器</title>
+    <script src="js/vue.js"></script>
+    <style>
+        i {
+            font-style: normal;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="cal">
+        <h1>简单计算器</h1>
+        <label for="A">数值A</label><input type="text" id="A" v-model='numA'><br>
+        <label for="B">数值B</label><input type="text" id="B" v-model='numB'><br>
+        <input type="button" value="计算" @click='add'><br>
+        <span>计算结果：</span><i v-text='result'></i>
+    </div>
+
+    <script>
+        var cal = new Vue({
+            el: '.cal',
+            data: {
+                numA: '',
+                numB: '',
+                result: '',
+            },
+            methods: {
+                add: function() {
+                    this.result = parseInt(this.numA) + parseInt(this.numB);
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

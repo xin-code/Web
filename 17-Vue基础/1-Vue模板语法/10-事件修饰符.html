@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>事件修饰符</title>
+    <script src="js/vue.js"></script>
+</head>
+
+<body>
+    <div class="box">
+        <div v-text="num"></div>
+        <div class="father" @click='add'>
+            <button @click.stop='def'>点我+1</button>
+        </div>
+        <a @click.prevent href="http://www.baidu.com">baidu</a>
+    </div>
+
+    <script>
+        var vue = new Vue({
+            el: '.box',
+            data: {
+                num: 0
+            },
+            methods: {
+                add: function() {
+                    this.num++
+                },
+                def: function() {
+                    this.num;
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

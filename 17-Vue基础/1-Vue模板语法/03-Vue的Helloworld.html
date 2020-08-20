@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue的Helloworld</title>
+    <script src="js/vue.js"></script>
+</head>
+
+<body>
+    <div id="first">
+        <div>{{msg}}</div>
+        <div>{{1 + 2}}</div>
+        <div>{{msg+'-----'+123}}</div>
+        <div>{{5/2}}</div>
+    </div>
+
+    <script>
+        var firstvue = new Vue({
+            el: '#first',
+            data: {
+                msg: "Helloworld！"
+            }
+        });
+    </script>
+</body>
+
+</html>

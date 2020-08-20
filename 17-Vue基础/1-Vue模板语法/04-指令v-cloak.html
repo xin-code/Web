@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>指令v-cloak</title>
+    <script src="js/vue.js"></script>
+    <style>
+        [v-cloak] {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="div">
+        <div v-cloak>{{text}}</div>
+    </div>
+
+    <script>
+        var first = new Vue({
+            el: '.div',
+            data: {
+                text: '此时不会出现闪动现象，采用的是v-cloak指令。原理是：先样式隐藏，替换好值以后在显示最终内容'
+            }
+        })
+    </script>
+</body>
+
+</html>

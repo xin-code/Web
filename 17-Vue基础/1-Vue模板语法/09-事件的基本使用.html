@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>事件的基本使用</title>
+    <script src="js/vue.js"></script>
+</head>
+
+<body>
+    <div class="box">
+        <div>{{num}}</div>
+        <button @click='add'>点我+1</button>
+        <button @click='sub(1,2,$event)'>点我-1</button>
+
+    </div>
+
+    <script>
+        var vue = new Vue({
+            el: '.box',
+            data: {
+                num: 0
+            },
+            methods: {
+                add: function(event) {
+                    console.log(event.target.tagName);
+                    this.num++;
+                },
+                sub: function(num1, num2, event) {
+                    console.log(num1, num2);
+                    console.log(event.target.innerHTML);
+                    this.num--;
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

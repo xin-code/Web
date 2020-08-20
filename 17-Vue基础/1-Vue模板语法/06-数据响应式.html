@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数据响应式</title>
+    <script src="js/vue.js"></script>
+</head>
+
+<body>
+    <div class="first">
+        <div>{{msg}}</div>
+        <div v-once>{{info}}</div>
+    </div>
+
+    <script>
+        var first = new Vue({
+            el: '.first',
+            data: {
+                msg: '我这个值可以随时改变的，这个值改变了 页面也跟随变化，就是数据响应式',
+                info: '你就是修改不了我的值，我是v-once绑定的，只编译一次'
+            }
+        })
+    </script>
+</body>
+
+</html>

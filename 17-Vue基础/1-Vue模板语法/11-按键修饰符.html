@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>按键修饰符</title>
+    <script src="js/vue.js"></script>
+</head>
+
+<body>
+    <form id="box">
+        <label for="username">用户名：</label><input type="text" id="username" v-model='name' v-on:keyup.delete='del'>
+        <label for="password">密码：</label><input type="password" id="password" v-model='password' v-on:keyup.enter='show'>
+        <input type="button" value="提交" v-on:click='show'>
+        <div>测试</div>
+        <input type="text" v-on:keyup.zdy='handle'>
+    </form>
+
+
+    <script>
+        //自定义按键修饰符
+        Vue.config.keyCodes.zdy = 65
+        var vue = new Vue({
+            el: '#box',
+            data: {
+                name: '',
+                password: '',
+            },
+            methods: {
+                show: function() {
+                    console.log(this.name, this.password);
+                },
+                del: function() {
+                    this.name = '';
+                },
+                handle: function(event) {
+                    console.log(event.keyCode);
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

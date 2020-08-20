@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>动态处理属性绑定</title>
+    <script src="js/vue.js"></script>
+</head>
+
+<body>
+    <div class="box">
+        <!-- <a v-bind:href="url" target="_blank">跳转</a> -->
+        <a :href="url" target="_blank">跳转</a>
+        <button @click='toggle'>点我动态处理属性的绑定</button>
+    </div>
+
+    <script>
+        var vue = new Vue({
+            el: '.box',
+            data: {
+                url: 'http://www.baidu.com',
+            },
+            methods: {
+                toggle: function() {
+                    this.url = 'http://www.hao123.com'
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

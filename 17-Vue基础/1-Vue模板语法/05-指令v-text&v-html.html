@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>指令v-text</title>
+    <script src="js/vue.js"></script>
+</head>
+
+<body>
+    <div class="div">
+        <div v-text='text'></div>
+        <div v-html='html'></div>
+        <div v-pre>{{text}}</div>
+    </div>
+
+    <script>
+        var first = new Vue({
+            el: '.div',
+            data: {
+                text: '这是我在data内的text所对应的属性值',
+                html: '<h1>这是我输入的HTML标签</h1>',
+            }
+        })
+    </script>
+</body>
+
+</html>

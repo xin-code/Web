@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>双向数据绑定</title>
+    <script src="js/vue.js"></script>
+</head>
+
+<body>
+    <div class="father">
+        <div>{{text}}</div>
+        <input type="text" v-model='text'>
+    </div>
+
+    <script>
+        var one = new Vue({
+            el: '.father',
+            data: {
+                text: '这里的值会随着你输入的值改变'
+            }
+        })
+    </script>
+</body>
+
+</html>

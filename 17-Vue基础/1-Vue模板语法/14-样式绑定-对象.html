@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>样式绑定-对象</title>
+    <script src="js/vue.js"></script>
+    <style>
+        .Bg {
+            background-color: pink;
+        }
+        
+        .Bd {
+            border: 1px solid #000;
+            width: 200px;
+            height: 200px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <div :class="{Bg:isBg,Bd:isBd}">测试样式</div>
+        <button @click='toggle'>点我切换样式</button>
+    </div>
+    <script>
+        var vue = new Vue({
+            el: '.box',
+            data: {
+                isBg: true,
+                isBd: true
+            },
+            methods: {
+                toggle: function() {
+                    this.isBg = !this.isBg;
+                    this.isBd = !this.isBd;
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

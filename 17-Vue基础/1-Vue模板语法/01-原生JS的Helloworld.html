@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>原生JS的Helloworld</title>
+</head>
+
+<body>
+    <button>点我显示</button>
+    <div></div>
+
+    <script>
+        var btn = document.querySelector("button");
+        var div = document.querySelector('div');
+        btn.addEventListener('click', function() {
+            var text = 'Helloworld';
+            div.innerHTML = text;
+        })
+    </script>
+</body>
+
+</html>
