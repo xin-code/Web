@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>样式绑定-数组</title>
+    <script src="js/vue.js"></script>
+    <style>
+        .first {
+            border: 1px solid #000;
+            width: 200px;
+            height: 200px;
+        }
+        
+        .second {
+            background-color: orange;
+        }
+        
+        .three {
+            background-color: pink;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <div v-bind:class='[firstClass,secondClass]'>测试样式</div>
+        <button v-on:click='remove'>去除任意一个样式</button>
+    </div>
+
+    <script>
+        var vue = new Vue({
+            el: '.box',
+            data: {
+                firstClass: 'first',
+                secondClass: 'second',
+            },
+            methods: {
+                remove: function() {
+                    this.firstClass = '';
+                    this.secondClass = 'three';
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
