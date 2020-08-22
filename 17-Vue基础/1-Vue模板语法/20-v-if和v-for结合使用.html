@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>v-if和v-for结合使用</title>
+    <script src="js/vue.js"></script>
+</head>
+
+<body>
+    <div class="box">
+        <div v-for='(value,key,index) in obj'>{{key+'----'+value+'-----'+index}}</div>
+        <div v-if='value==13' v-for='(value,key,index) in obj '>{{key+'---- '+value+'----- '+index}}</div>
+    </div>
+
+    <script>
+        //原生JS遍历 for in
+        var obj = {
+            name: 'zs ',
+            age: 1,
+            sex: 'man '
+        }
+        for (const key in obj) {
+            console.log(key, obj[key]);
+        }
+
+        //vue
+        var vue = new Vue({
+            el: '.box ',
+            data: {
+                obj: {
+                    name: 'zs ',
+                    age: 13,
+                    sex: 'man '
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

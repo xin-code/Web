@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Style样式处理</title>
+    <script src="js/vue.js"></script>
+</head>
+
+<body>
+    <div id="box">
+        <div v-bind:style='{border:borderStyle,width:widthStyle,height:heightStyle}'>样式</div>
+        <div v-bind:style='objStyle'>样式</div>
+        <button type="button" v-on:click='toggle'>变化样式</button>
+    </div>
+
+    <script type="text/javascript">
+        var vue = new Vue({
+            el: '#box',
+            data: {
+                borderStyle: '50px solid green',
+                widthStyle: '200px',
+                heightStyle: '200px',
+                objStyle: {
+                    border: '50px solid red',
+                    width: '200px',
+                    height: '200px'
+                }
+            },
+            methods: {
+                toggle: function() {
+                    this.objStyle.width = '100px'
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>样式绑定综合使用</title>
+    <script src="js/vue.js"></script>
+    <style>
+        .bd {
+            border: 1px solid #000;
+            width: 200px;
+            height: 200px;
+        }
+        
+        .bg {
+            background-color: orange;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <div v-bind:class='arrClasses'>123</div>
+        <div v-bind:class='objClasses'>456</div>
+        <button v-on:click='toggle'>切换</button>
+    </div>
+
+    <script>
+        var vue = new Vue({
+            el: '.box',
+            data: {
+                arrClasses: ['bd', 'bg'],
+                objClasses: {
+                    bd: true,
+                    bg: true
+                }
+            },
+            methods: {
+                toggle: function() {
+                    this.objClasses.bg = false
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>循环结构</title>
+    <script src="js/vue.js"></script>
+</head>
+
+<body>
+    <ul id="ul">
+        <li v-for='items in fruit'>{{items}}</li>
+        <li v-for='(items,index) in fruit'>{{items+'----'+index}}</li>
+        <li :key='items.id' v-for='(items,index) in all'>
+            <!-- :key='items.id'可以提高Vue性能 -->
+            <span>{{items.ename}}</span>
+            <span>++++</span>
+            <span>{{items.cname}}</span>
+            <span>----</span>
+            <span>{{index}}</span>
+        </li>
+    </ul>
+
+    <script>
+        var vue = new Vue({
+            el: '#ul',
+            data: {
+                fruit: ['apple', 'b', 'c', 'd'],
+                all: [{
+                    id: 1,
+                    ename: '1',
+                    cname: 'a',
+                }, {
+                    id: 2,
+                    ename: '2',
+                    cname: 'b',
+                }, {
+                    id: 3,
+                    ename: '3',
+                    cname: 'c',
+                }]
+            }
+        })
+    </script>
+</body>
+
+</html>
