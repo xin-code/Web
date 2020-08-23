@@ -16,6 +16,9 @@
     <script src="js/vue.js"></script>
     <script>
         Vue.filter("Upper", function(value) {
+            //charAt()返回指定位置的字符
+            //toUpperCase()大写
+            //slice进行截取操作
             return value.charAt(0).toUpperCase() + value.slice(1);
         })
 
