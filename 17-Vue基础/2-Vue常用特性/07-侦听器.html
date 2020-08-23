@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>侦听器</title>
+</head>
+
+<body>
+    <div class="box">
+        <div>
+            <label for="lastname">名：</label>
+            <input type="text" name="lastname" v-model='lastname'>
+        </div>
+        <div>
+            <label for="firstname">姓：</label>
+            <input type="text " name="firstname " v-model='firstname'>
+        </div>
+        <div>{{result}}</div>
+    </div>
+
+    <script src="js/vue.js"></script>
+    <script>
+        var vue = new Vue({
+            el: '.box',
+            data: {
+                lastname: 'world!',
+                firstname: 'hello',
+                // fullname: 'hello world!'
+            },
+            // watch: {
+            //     firstname: function(val) {
+            //         this.fullname = val + ' ' + this.lastname;
+            //     },
+            //     lastname: function(val) {
+            //         this.fullname = this.firstname + ' ' + val;
+            //     }
+            // },
+            computed: {
+                result: function() {
+                    return this.firstname + " " + this.lastname;
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

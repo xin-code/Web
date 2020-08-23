@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>自定义指令-带参数</title>
+    <style>
+        .one {
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <div class="one" v-color='{color:"purple"}'></div>
+    </div>
+
+    <script src="js/vue.js"></script>
+    <script>
+        Vue.directive("color", {
+            inserted: function(el, binding) {
+                console.log(binding.value.color);
+                el.style.backgroundColor = binding.value.color;
+            }
+        })
+
+        var vue = new Vue({
+            el: ".one",
+            data: {}
+        })
+    </script>
+</body>
+
+</html>

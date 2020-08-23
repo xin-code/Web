@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>表单操作</title>
+    <style>
+        label {
+            display: inline-block;
+            width: 80px;
+        }
+        
+        div {
+            margin-top: 15px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <form>
+            <div>
+                <label for="username">姓名：</label>
+                <input type="text" name="username" v-model="uname">
+            </div>
+            <div>
+                <label>性别：</label>
+                <input type="radio" name="sex" value="1" v-model="gender">男
+                <input type="radio" name="sex" value="2" v-model="gender">女
+            </div>
+            <div>
+                <label>爱好：</label>
+                <input type="checkbox" name="hobby" value="1" v-model="hobby">篮球
+                <input type="checkbox" name="hobby" value="2" v-model="hobby">唱歌
+                <input type="checkbox" name="hobby" value="3" v-model="hobby">写代码
+            </div>
+            <div>
+                <label>职业：</label>
+                <select v-model="occupation" multiple="true">
+                    <option value="0">请选择职业</option>
+                    <option value="1">java</option>
+                    <option value="2">html</option>
+                    <option value="3">css</option>
+                </select>
+
+            </div>
+            <div>
+                <label>个人简介：</label>
+                <textarea name="resume" id="" cols="30" rows="10" v-model='desc'></textarea>
+            </div>
+            <input type="submit" value="提交" @click.prevent="submit">
+        </form>
+    </div>
+
+    <script src="js/vue.js"></script>
+    <script>
+        var vue = new Vue({
+            el: ".box",
+            data: {
+                uname: "zs",
+                gender: "2",
+                hobby: ['1', '2', '3'],
+                occupation: [''],
+                desc: ''
+            },
+            methods: {
+                submit: function() {
+                    console.log(this.uname);
+                    console.log(this.gender);
+                    console.log(this.hobby.toString());
+                    console.log(this.occupation.toString());
+                    console.log(this.desc);
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

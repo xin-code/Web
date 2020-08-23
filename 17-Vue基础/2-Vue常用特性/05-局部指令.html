@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>局部指令</title>
+    <style>
+        .one {
+            display: inline-block;
+            width: 200px;
+            height: 20px;
+            background-color: pink;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <div class="one" v-color="{color:'purple'}"></div>
+        <input type="text" v-focus>
+    </div>
+
+    <script src="js/vue.js"></script>
+    <script>
+        var vue = new Vue({
+            el: '.box',
+            directives: {
+                color: {
+                    bind: function(el, binding) {
+                        el.style.backgroundColor = binding.value.color;
+                    }
+                },
+                focus: {
+                    inserted: function(el) {
+                        el.focus();
+                    }
+                },
+            }
+        })
+    </script>
+</body>
+
+</html>

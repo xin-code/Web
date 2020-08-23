@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>侦听器的应用场景</title>
+</head>
+
+<body>
+    <div class="box">
+        <label for="username">用户名：</label>
+        <input name="username" type="text" v-model.lazy='msg'>
+        <span>{{tip}}</span>
+    </div>
+
+    <script src="js/vue.js"></script>
+    <script>
+        var vue = new Vue({
+            el: '.box',
+            data: {
+                msg: 'hello',
+                tip: ''
+            },
+            methods: {
+                //2、调用后台接口进行验证
+                //模拟
+                checkName: function(msg) {
+                    var that = this;
+                    setTimeout(function() {
+                        if (msg == 'admin') {
+                            that.tip = '用户名存在，请重新输入...'
+                        } else {
+                            that.tip = '输入合法！'
+                        }
+                    }, 2000);
+                }
+            },
+            watch: {
+                //监听器
+                //1、采用监听器监听用户名的变化
+                msg: function(val) {
+                    this.checkName(val);
+                    this.tip = '正在验证...';
+                }
+
+                //3、根据验证结果tip信息的不同
+            }
+        })
+    </script>
+</body>
+
+</html>

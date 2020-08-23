@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>过滤器</title>
+</head>
+
+<body>
+    <div class="box">
+        <input type="text" v-model='msg'>
+        <div>{{msg | Upper}}</div>
+    </div>
+
+    <script src="js/vue.js"></script>
+    <script>
+        Vue.filter("Upper", function(value) {
+            return value.charAt(0).toUpperCase() + value.slice(1);
+        })
+
+        var vue = new Vue({
+            el: '.box',
+            data: {
+                msg: "hello",
+            },
+        })
+    </script>
+</body>
+
+</html>
