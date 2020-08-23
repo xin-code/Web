@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>带参数的过滤器</title>
+</head>
+
+<body>
+    <div class="box">
+        <span>格式化日期：{{data | format('yyyy-MM-dd')}}</span>
+    </div>
+
+    <script src="js/vue.js"></script>
+    <script>
+        Vue.filter('format', function(value, arg) {
+            if (arg == 'yyyy-MM-dd') {
+                var end = '';
+                var month = value.getMonth() < 10 ? '0' + value.getMonth() : value.getMonth();
+                var day = value.getDay() < 10 ? '0' + value.getDay() : value.getDay();
+                end += value.getFullYear() + '-' + month + '-' + day;
+                return end;
+            }
+            return value;
+        })
+        var vue = new Vue({
+            el: '.box',
+            data: {
+                data: new Date(),
+            }
+        })
+    </script>
+</body>
+
+</html>
