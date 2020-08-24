@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue中数组的方法</title>
+</head>
+
+<body>
+    <div class="box">
+        <input type="text" v-model="fruit">
+        <input type="button" value="添加" @click="add">
+        <input type="button" value="删除" @click="del">
+        <input type="button" value="替换" @click="change">
+        <ul>
+            <li v-for="(items,index) in list">{{items}}</li>
+        </ul>
+    </div>
+
+    <script src="js/vue.js"></script>
+    <script>
+        var vue = new Vue({
+            el: '.box',
+            data: {
+                fruit: '',
+                list: ['apple', 'orange', 'banana']
+            },
+            methods: {
+                add: function() {
+                    this.list.push(this.fruit)
+                },
+                del: function() {
+                    this.list.pop(this.fruit)
+                },
+                //替换为新数组 原数组发生改变
+                change: function() {
+                    this.list = this.list.slice(0, 2);
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

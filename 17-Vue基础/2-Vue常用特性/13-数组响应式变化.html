@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数组响应式变化</title>
+</head>
+
+<body>
+    <div class="box">
+        <input type="text" v-model="fruit">
+        <input type="button" value="添加" @click="add">
+        <input type="button" value="删除" @click="del">
+        <ul>
+            <li v-for="(items,index) in list">{{items}}</li>
+            <div>{{msg.name}}</div>
+            <div>{{msg.age}}</div>
+            <div>{{msg.gender}}</div>
+        </ul>
+    </div>
+
+    <script src="js/vue.js"></script>
+    <script>
+        var vue = new Vue({
+            el: '.box',
+            data: {
+                fruit: '',
+                list: ['apple', 'orange', 'banana'],
+                msg: {
+                    name: "zs",
+                    age: 18
+                }
+            },
+            methods: {
+                add: function() {
+                    this.list.push(this.fruit)
+                },
+                del: function() {
+                    this.list.pop(this.fruit)
+                },
+            },
+        });
+        //方法一
+        // Vue.set(vue.list, 2, 'lemon');
+        //方法二
+        // vue.$set(vue.list, 2, '123')
+        //修改不是数组中的值，对象中的
+        Vue.set(vue.msg, 'gender', 'man')
+    </script>
+</body>
+
+</html>
