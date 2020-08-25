@@ -5,10 +5,155 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>案例-图书管理</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        a {
+            text-decoration: none;
+        }
+        
+        table {
+            border: 1px dashed orange;
+            border-collapse: collapse;
+        }
+        
+        .all {
+            margin: 200px auto;
+            width: 500px;
+        }
+        
+        h1 {
+            text-align: center;
+        }
+        
+        th,
+        td {
+            border: 1px dashed orange;
+            width: 160px;
+            line-height: 35px;
+            text-align: center;
+        }
+        
+        .add {
+            background-color: orange;
+        }
+        
+        .all th {
+            background-color: orange;
+        }
+        /* 解决插值表达式闪动问题 v-cloak*/
+        
+        [v-cloak] {
+            display: none;
+        }
+    </style>
 </head>
 
 <body>
+    <div class="box">
+        <div class="all">
+            <table>
+                <h1>图书管理</h1>
+                <div class="add">
+                    <label for="bookid">编号：</label> <input type="text" name="bookid" v-model='id' :disabled='flag'>
+                    <label for="bookname">名称：</label> <input type="text" name="bookname" v-model='name'>
+                    <input type="button" value="提交" @click='add'>
+                </div>
+                <thead>
+                    <tr>
+                        <th>编号</th>
+                        <th>名称</th>
+                        <th>时间</th>
+                        <th>操作</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr v-for="items in books" v-cloak>
+                        <td>{{items.id}}</td>
+                        <td>{{items.name}}</td>
+                        <td>{{items.date}}</td>
+                        <td>
+                            <a href="" @click.prevent="toEdit(items.id)">修改</a>
+                            <span>|</span>
+                            <a href="" @click.prevent>删除</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
 
+    <script src="js/vue.js"></script>
+    <script>
+        var vue = new Vue({
+            el: '.box',
+            data: {
+                flag: false,
+                id: '',
+                name: '',
+                books: [{
+                    id: 1,
+                    name: '西游记',
+                    date: '',
+                }, {
+                    id: 2,
+                    name: '三国演义',
+                    date: '',
+                }, {
+                    id: 3,
+                    name: '水浒传',
+                    date: '',
+                }, {
+                    id: 4,
+                    name: '红楼梦',
+                    date: '',
+                }],
+            },
+            methods: {
+                //添加图书
+                add: function() {
+                    if (this.flag) {
+                        //修改数据的时候，flag是true 则执行下面的语句
+                        this.books.some((item) => {
+                            if (item.id == this.id) {
+                                item.name = this.name;
+                                // 完成后退出循环
+                                return true;
+                            };
+                            this.flag = false;
+                        })
+                    } else {
+                        //添加
+                        var newbook = {
+                            id: this.id,
+                            name: this.name,
+                            date: '',
+                        }
+                        this.books.push(newbook);
+                    }
+                    //清空输入栏
+                    this.id = '';
+                    this.name = '';
+                },
+                //修改图书
+                toEdit: function(id) {
+                    console.log(id);
+                    //根据ID查询原来的data中是否存在相同的数值
+                    var book = this.books.filter(function(item) {
+                        return item.id == id;
+                    });
+                    console.log(book);
+                    this.id = book[0].id;
+                    this.name = book[0].name;
+                    //禁止修改ID
+                    this.flag = true;
+                }
+            }
+        })
+    </script>
 </body>
 
 </html>
