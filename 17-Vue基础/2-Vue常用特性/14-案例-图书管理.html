@@ -22,7 +22,7 @@
         
         .all {
             margin: 200px auto;
-            width: 500px;
+            width: 800px;
         }
         
         h1 {
@@ -32,12 +32,14 @@
         th,
         td {
             border: 1px dashed orange;
-            width: 160px;
+            width: 260px;
+            height: 35px;
             line-height: 35px;
             text-align: center;
         }
         
         .add {
+            text-align: center;
             background-color: orange;
         }
         
@@ -49,6 +51,15 @@
         [v-cloak] {
             display: none;
         }
+        
+        .total {
+            text-align: right;
+            height: 30px;
+            line-height: 30px;
+            border: 1px solid #ccc;
+            background-color: orange;
+            padding-right: 50px;
+        }
     </style>
 </head>
 
@@ -58,9 +69,12 @@
             <table>
                 <h1>图书管理</h1>
                 <div class="add">
-                    <label for="bookid">编号：</label> <input type="text" name="bookid" v-model='id' :disabled='flag'>
+                    <label for="bookid">编号：</label> <input type="text" name="bookid" v-model='id' :disabled='flag' v-focus>
                     <label for="bookname">名称：</label> <input type="text" name="bookname" v-model='name'>
-                    <input type="button" value="提交" @click='add'>
+                    <input type="button" value="提交" @click='add' :disabled='submitFlag'>
+                </div>
+                <div class="total">
+                    <span>图书总数：</span><span v-cloak>{{total}}</span>
                 </div>
                 <thead>
                     <tr>
@@ -74,11 +88,11 @@
                     <tr v-for="items in books" v-cloak>
                         <td>{{items.id}}</td>
                         <td>{{items.name}}</td>
-                        <td>{{items.date}}</td>
+                        <td>{{items.date | format('yyyy-MM-dd hh:mm:ss')}}</td>
                         <td>
                             <a href="" @click.prevent="toEdit(items.id)">修改</a>
                             <span>|</span>
-                            <a href="" @click.prevent>删除</a>
+                            <a href="" @click.prevent="deleteBooks(items.id)">删除</a>
                         </td>
                     </tr>
                 </tbody>
@@ -88,29 +102,61 @@
 
     <script src="js/vue.js"></script>
     <script>
+        //自定义指令
+        Vue.directive('focus', {
+            inserted: function(el) {
+                el.focus();
+            }
+        })
+
+        //格式化时间
+        Vue.filter('format', function(value, arg) {
+            function dateFormat(date, format) {
+                if (typeof date === "string") {
+                    var mts = date.match(/(\/Date\((\d+)\)\/)/);
+                    if (mts && mts.length >= 3) {
+                        date = parseInt(mts[2]);
+                    }
+                }
+                date = new Date(date);
+                if (!date || date.toUTCString() == "Invalid Date") {
+                    return "";
+                }
+                var map = {
+                    "M": date.getMonth() + 1, //月份 
+                    "d": date.getDate(), //日 
+                    "h": date.getHours(), //小时 
+                    "m": date.getMinutes(), //分 
+                    "s": date.getSeconds(), //秒 
+                    "q": Math.floor((date.getMonth() + 3) / 3), //季度 
+                    "S": date.getMilliseconds() //毫秒 
+                };
+                format = format.replace(/([yMdhmsqS])+/g, function(all, t) {
+                    var v = map[t];
+                    if (v !== undefined) {
+                        if (all.length > 1) {
+                            v = '0' + v;
+                            v = v.substr(v.length - 2);
+                        }
+                        return v;
+                    } else if (t === 'y') {
+                        return (date.getFullYear() + '').substr(4 - all.length);
+                    }
+                    return all;
+                });
+                return format;
+            }
+            return dateFormat(value, arg);
+        })
+
         var vue = new Vue({
             el: '.box',
             data: {
                 flag: false,
+                submitFlag: false,
                 id: '',
                 name: '',
-                books: [{
-                    id: 1,
-                    name: '西游记',
-                    date: '',
-                }, {
-                    id: 2,
-                    name: '三国演义',
-                    date: '',
-                }, {
-                    id: 3,
-                    name: '水浒传',
-                    date: '',
-                }, {
-                    id: 4,
-                    name: '红楼梦',
-                    date: '',
-                }],
+                books: [],
             },
             methods: {
                 //添加图书
@@ -150,7 +196,61 @@
                     this.name = book[0].name;
                     //禁止修改ID
                     this.flag = true;
+                },
+                deleteBooks: function(id) {
+                    //找到当前索引
+                    console.log(id);
+                    //方法一：找到索引后然后用splice进行删除操作
+                    // var book = this.books.findIndex(function(item) {
+                    //     return item.id == id;
+                    // });
+                    // this.books.splice(book, 1);
+                    //方法二：filter
+                    this.books = this.books.filter(function(item) {
+                        return item.id != id;
+                    });
+                },
+            },
+            computed: {
+                total: function() {
+                    return this.books.length;
                 }
+            },
+            watch: {
+                name: function(value) {
+                    var flag = this.books.some(function(item) {
+                        return item.name == value;
+                    });
+                    if (flag) {
+                        //图书名称存在
+                        this.submitFlag = flag;
+                    } else {
+                        //图书名称不存在
+                        this.submitFlag = flag;
+                    }
+                }
+            },
+            mounted: function() {
+                //该生命周期钩子函数被触发的时候，模板已经可以使用(从后台填充数据到模板中)
+                var data = [{
+                    id: 1,
+                    name: '西游记',
+                    date: 2525609975000
+                }, {
+                    id: 2,
+                    name: '三国演义',
+                    date: 2525609975000
+                }, {
+                    id: 3,
+                    name: '水浒传',
+                    date: 2525609975000
+                }, {
+                    id: 4,
+                    name: '红楼梦',
+                    date: 2525609975000
+                }];
+                //调入进去
+                this.books = data;
             }
         })
     </script>
