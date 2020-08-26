@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>props属性值-number类型</title>
+</head>
+
+<body>
+    <div class="box">
+        <div>{{msg}}</div>
+        <son :num='count'></son>
+    </div>
+
+    <script src="js/vue.js"></script>
+    <script>
+        //子组件
+        Vue.component('son', {
+                props: ['num'],
+                template: '<div>{{num}}</div>'
+            })
+            //父组件
+        var vue = new Vue({
+            el: '.box',
+            data: {
+                msg: '父组件里的内容',
+                count: 123456789,
+            }
+        })
+    </script>
+</body>
+
+</html>

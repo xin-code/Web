@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue子组件接收父组件传递过来的数据</title>
+</head>
+
+<body>
+    <div class="box">
+        <span>{{pmsg}}</span>
+        <hello-world passcontent='来自父组件的值'></hello-world>
+        <hello-world :passcontent='con'></hello-world>
+    </div>
+
+    <script src="js/vue.js"></script>
+    <script>
+        //子组件
+        Vue.component('hello-world', {
+            //接收父组件传递过来的属性props
+            props: ['passcontent'],
+            data: function() {
+                return {
+                    msg: '子组件本身的数据',
+                }
+            },
+            template: '<div>{{msg+"------"+passcontent}}</div>'
+        });
+        //父组件
+        var vue = new Vue({
+            el: '.box',
+            data: {
+                pmsg: '父组件中的内容',
+                con: '这个是动态绑定的属性'
+            }
+        })
+    </script>
+</body>
+
+</html>

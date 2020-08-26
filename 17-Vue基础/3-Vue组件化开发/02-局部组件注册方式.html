@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>局部组件注册方式</title>
+</head>
+
+<body>
+    <div class="box">
+        <hello-world></hello-world>
+    </div>
+
+    <script src="js/vue.js"></script>
+    <script>
+        var selfresign = {
+            data: function() {
+                return {
+                    msg: 'helllllllo',
+                }
+            },
+            template: '<button>{{msg}}</button>'
+        }
+
+        var vue = new Vue({
+            el: '.box',
+            data: {
+
+            },
+            components: {
+                'hello-world': selfresign,
+            }
+        })
+    </script>
+</body>
+
+</html>

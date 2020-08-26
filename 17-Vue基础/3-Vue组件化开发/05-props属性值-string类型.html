@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>props属性值-string类型</title>
+</head>
+
+<body>
+    <div class="box">
+        <hello-world :fatherpassrandom='fstr'>{{fstr}}</hello-world>
+    </div>
+
+    <script src="js/vue.js"></script>
+    <script>
+        //子组件
+        Vue.component('hello-world', {
+                props: ['fatherpassrandom'],
+                template: '<div>{{fatherpassrandom}}</div>'
+            })
+            //父组件
+        var vue = new Vue({
+            el: '.box',
+            data: {
+                fstr: 'hello'
+            }
+        })
+    </script>
+</body>
+
+</html>
