@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>组件插槽</title>
+</head>
+
+<body>
+    <div class="box">
+        <con>nihao</con>
+        <con>1</con>
+        <con>2</con>
+    </div>
+
+    <script src="js/vue.js"></script>
+    <script>
+        Vue.component('con', {
+            template: `
+            <div>
+            <span>error!</span>
+            <slot></slot>
+            </div>
+            `
+        })
+
+        var vue = new Vue({
+            el: '.box',
+            data: {
+
+            },
+        })
+    </script>
+</body>
+
+</html>

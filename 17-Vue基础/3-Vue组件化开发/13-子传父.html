@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>子传父</title>
+</head>
+
+<body>
+    <div class="box">
+        <div :style='{fontSize:font+"px"}'>{{msg}}</div>
+        <son @self='enlarge($event)'></son>
+    </div>
+
+    <script src="js/vue.js"></script>
+    <script>
+        //子
+        Vue.component('son', {
+            template: `<button @click='$emit("self",10)'>dianwo</button>`
+        });
+        //父
+        var vue = new Vue({
+            el: '.box',
+            data: {
+                msg: '123',
+                font: 11
+            },
+            methods: {
+                enlarge: function(val) {
+                    this.font += val;
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>子组件向父组件传递信息</title>
+</head>
+
+<body>
+    <div class="box">
+        <div :style='{fontSize:fontSize+"px"}'>{{msg}}</div>
+        <son @enlarge='add'></son>
+    </div>
+
+    <script src="js/vue.js"></script>
+    <script>
+        //子组件
+        Vue.component('son', {
+                template: `<button @click='$emit("enlarge")'>扩大父组件字体大小</button>`
+            })
+            //父组件
+        var vue = new Vue({
+            el: '.box',
+            data: {
+                msg: '看我是否变大了！',
+                fontSize: 10
+            },
+            methods: {
+                add: function() {
+                    this.fontSize += 5
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

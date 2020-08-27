@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>props属性值-obj类型</title>
+</head>
+
+<body>
+    <div class="box">
+        <son :showobj='obj.name'></son>
+    </div>
+
+    <script src="js/vue.js"></script>
+    <script>
+        //子组件
+        Vue.component('son', {
+            props: ['showobj'],
+            template: `<div>{{showobj}}</div>`
+        })
+
+        //父组件
+        var vue = new Vue({
+            el: ".box",
+            data: {
+                obj: {
+                    name: "zs",
+                    age: 18
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

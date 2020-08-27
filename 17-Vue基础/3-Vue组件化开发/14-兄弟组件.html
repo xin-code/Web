@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>兄弟组件</title>
+</head>
+
+<body>
+    <div class="box">
+        <test-one></test-one>
+        <test-two></test-two>
+    </div>
+
+    <script src="js/vue.js"></script>
+    <script>
+        //提供事件中心
+        var eventHub = new Vue();
+
+        //子1
+        Vue.component('test-one', {
+            data: function() {
+                return {
+                    num: 0
+                }
+            },
+            template: `
+                <div>
+                <div>ONE:{{num}}</div>
+                <div>
+                    <button @click='add'>点击</button>
+                </div>
+                </div>
+                `,
+            methods: {
+                add: function() {
+                    //点击后触发对方事件
+                    eventHub.$emit('two-event', 2)
+                }
+            },
+            mounted: function() {
+                //监听事件
+                eventHub.$on('one-event', (val) => {
+                    this.num += val;
+                })
+            },
+        });
+        //子2
+        Vue.component('test-two', {
+            data: function() {
+                return {
+                    num: 0
+                }
+            },
+            template: `
+            <div>
+                <div>TWO:{{num}}</div>
+                <div>
+                    <button @click='add'>点击</button>
+                </div>
+                </div>
+                `,
+            methods: {
+                add: function() {
+                    //点击后触发对方事件
+                    eventHub.$emit('one-event', 1)
+                }
+            },
+            mounted: function() {
+                //监听事件
+                eventHub.$on('two-event', (val) => {
+                    this.num += val;
+                })
+            },
+        });
+        //父
+        var vue = new Vue({
+            el: '.box',
+            data: {
+
+            }
+        })
+    </script>
+</body>
+
+</html>

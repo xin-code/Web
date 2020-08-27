@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>具名插槽</title>
+</head>
+
+<body>
+    <div class="box">
+        <spe>
+            <p slot="header">标题信息</p>
+        </spe>
+        <spe>
+            <p>XX</p>
+            <p>XX</p>
+        </spe>
+        <spe>
+            <p slot="footer">尾注</p>
+        </spe>
+    </div>
+
+    <script src="js/vue.js"></script>
+    <script>
+        Vue.component('spe', {
+            template: `
+        <div>
+            <header>
+            <slot name='header'></slot>
+            </header>
+            <main>
+            <slot></slot>
+            </main>
+            <footer>
+            <slot name='footer'></slot>
+            </footer>
+        </div>
+      `
+        });
+        var vue = new Vue({
+            el: ''
+        })
+    </script>
+</body>
+
+</html>

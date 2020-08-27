@@ -4,28 +4,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>props属性值-number类型</title>
+    <title>props属性值-Boolean类型</title>
 </head>
 
 <body>
     <div class="box">
-        <div>{{msg}}</div>
-        <son :num='count'></son>
+        <son></son>
+        <son :boolean='boo'></son>
+
     </div>
 
     <script src="js/vue.js"></script>
     <script>
-        //子组件显示父组件传过来的count
+        //子组件显示父组件传过来的boo
         Vue.component('son', {
-                props: ['num'],
-                template: '<div>{{num + 1}}</div>'
-            })
-            //父组件
+            props: ['boolean'],
+            template: '<div>{{boolean}}</div>'
+        });
+
+        //父组件
         var vue = new Vue({
             el: '.box',
             data: {
-                msg: '父组件里的内容',
-                count: 123456789,
+                boo: true,
             }
         })
     </script>
