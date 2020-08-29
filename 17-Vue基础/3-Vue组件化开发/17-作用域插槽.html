@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>作用域插槽</title>
+    <style>
+        .current {
+            color: yellowgreen;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <son :shuiguo='list'>
+            <template slot-scope='slotProps'>
+                <strong v-if='slotProps.des.id==3' class="current">{{slotProps.des.name}}</strong>
+                <strong v-else>{{slotProps.des.name}}</strong>
+            </template>
+        </son>
+    </div>
+
+    <script src="js/vue.js"></script>
+    <script>
+        //子
+        Vue.component('son', {
+                props: ['shuiguo'],
+                template: `
+            <div>
+                <li :key="items.id" v-for="items in shuiguo">
+                    <slot :des='items'>{{items.name}}</slot>
+                </li>
+            </div>
+            `
+            })
+            //父
+        var vue = new Vue({
+            el: '.box',
+            data: {
+                list: [{
+                    id: 1,
+                    name: 'apple'
+                }, {
+                    id: 2,
+                    name: 'orange'
+                }, {
+                    id: 3,
+                    name: 'banana'
+                }],
+            }
+        })
+    </script>
+</body>
+
+</html>
