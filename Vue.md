@@ -423,3 +423,51 @@ Vue.component('all',{		//全局组件
 })
 ```
 
+
+
+## 前后端交互
+
+### URL地址格式
+
+![](\00-常用文件\images\传统URL地址.JPG)
+
+![](\00-常用文件\images\Restful的URL地址.JPG)
+
+### Promise用法
+
+#### 异步调用
+
+1.  异步
+   - 定时任务（setTimeout、setInterval）
+   - Ajax
+   - 事件函数
+2. 多次异步调用
+   -  结果顺序不确定
+   - 异步调用结果如果存在依赖需要嵌套[回调地狱]
+
+`解决回调地狱—>Promise`
+
+- Promise是异步编程的一种解决方案
+
+- Promise是一个对象（构造函数）
+
+#### 基本用法
+
+1.  实例化Promise对象，构造函数中传递函数，该函数用于处理异步任务
+
+2. `resolve`和`reject`两个参数对应成功和失败情况，通过p.then获取处理结果
+
+   ```
+   var p = new Promise(function(resolve,reject){
+   	//成功时调用resolve()
+   	//失败时调用reject()
+   });
+   
+   p.then(function(suc){
+   	//成功时的结果
+   },function(err){
+   	//失败时的结果
+   })
+   ```
+
+   
