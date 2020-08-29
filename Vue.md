@@ -184,11 +184,11 @@ Vue.component('子组件名hello-world',{
 
 父组件：传递过去自己的属性值
 父组件内的值写在vue实例对象内
+
 方法一：固定值
-
 <子组件名hello-world 依据子组件中props的父组件传过来的属性名='父组件的数据(值)'></hello-world>
-方法二：动态
 
+方法二：动态
 <子组件名hello-world :依据子组件中props的父组件传过来的属性名='vue实例对象(父组件)内data属性的数据(值)'></hello-world>
 ```
 
@@ -196,15 +196,15 @@ Vue.component('子组件名hello-world',{
 
 
 
-### 2.  子组件—>父组件 利用自定义事件
+### 2.  子组件—>父组件 利用自定义事件$emit
 ```
 子组件通过自定义事件向父组件传递消息
-template:`<标签 @click='$emit("自定义事件名称",参数)'></标签>`		//子组件模板内这样写
+template:`<标签 @click='$emit("自定义事件名称",参数)'></标签>`	//子组件模板内这样写
 
 父组件监听子组件事件
 <div class="box">
-<标签 :改变的属性>{{msg}}</标签>										//msg指的是父组件内的data中msg
-<子组件名 @:自定义事件名称='函数名 参数的接收$event'></子组件名>
+<标签 :改变的属性>{{msg}}</标签>								//msg指的是父组件内的data中msg
+<子组件名 @:自定义事件名称='父组件中定义的函数名(参数的接收$event)'></子组件名>
 
 </div>
 
@@ -214,14 +214,55 @@ var vue = new Vue({
 		msg:'',
 	},
 	methods:{
-		函数名:function(value){									//接收的参数传入父级的函数内$event—>value
+		函数名:function(value){		//接收的参数传入父级的函数内$event—>value
 			//处理逻辑
 		}
 	}
 })
 ```
 
+
+
+```
+ $event
+ //模板template
+ template: `
+	<div v-for='item in array'>
+		//传递事件参数
+	 	<input type="text" @blur='changeNum(item.id,$event)'/>	//$event把事件对象传递
+	</div>
+  `
+  //方法methods
+  methods:{
+  	changeNum: function(id, event) {
+		console.log(id, event.target.value);	//当前输入域最新的值event.target.value
+	},
+  }
+```
+
+
+
+```
+自定义事件
+//子组件中自定义的事件change
+methods: {
+	changeNum: function(id, event) {
+		this.$emit('change',id);
+  	})
+},
+
+//父组件需要监听事件change
+<div class="box">
+	<son @change='父组件data值/方法($event接收穿过来的值)'></son>
+</div>
+```
+
+
+
+
+
 ### 3.  兄弟组件之间传值 利用事件中心
+
 通过`事件中心`管理组件进行通信
 
 ![](00-常用文件\images\Vue组件间的传值.PNG)
@@ -257,7 +298,7 @@ eventHub.$emit('自定义事件名称',参数)
    	template:`
    	<div>
    		<span>ERROR</span>
-   		<slot></slot>						//插槽位置在slot位置内 最后输出的结果为：ERROR+内容部分
+   		<slot></slot>		//插槽位置在slot位置内 最后输出的结果为：ERROR+内容部分
    	</div>
    	`
    });
@@ -293,17 +334,17 @@ Vue.component('子组件名', {
 
 方法一、
     <子组件名>
-      <p slot='header'>标题信息</p>				//根据名字匹配 <slot name='header'></slot>
+      <p slot='header'>标题信息</p>		//根据名字匹配 <slot name='header'></slot>
       
-      <p>主要内容1</p>							//无名字 则默认填充到无名字的内部 <slot></slot>
+      <p>主要内容1</p>			//无名字 则默认填充到无名字的内部 <slot></slot>
       <p>主要内容2</p>
       
-      <p slot='footer'>底部信息</p>			//根据名字匹配<slot name='footer'></slot>
+      <p slot='footer'>底部信息</p>		//根据名字匹配<slot name='footer'></slot>
     </子组件名>
     
 方法二、
  	<子组件名>
- 		<template slot='header'>		//固定写法 临时包裹信息，不会把template渲染到页面中
+ 		<template slot='header'>	//固定写法 临时包裹信息，不会把template渲染到页面中
  			<p>标题信息1</p>
  			<p>标题信息2</p>
  		</template>
@@ -311,7 +352,7 @@ Vue.component('子组件名', {
  			<p>XX</p>
  			<p>XX</p>
  		
- 		<template slot='footer'>		//固定写法
+ 		<template slot='footer'>	//固定写法
  			<p>底部信息1</p>
  			<p>底部信息2</p>
  		</template>
@@ -321,4 +362,64 @@ Vue.component('子组件名', {
 ### 作用域插槽 
 
 应用场景：**父组件对子组件的内容进行加工处理**
+
+```
+插槽定义
+
+在子组件template中
+template:`
+<div>
+	<li :key='items.id' v-for='items in 子组件中props的属性名)'>	//props父组件传过来的属性名(随便起)
+	
+	//作用域插槽 在li中间 把插值表达式插入slot标签内
+	<slot :自定义名字='items(遍历出来任意一项的值)'>{{items.name}}</slot>	//现在是定义好插槽
+	
+	</li>
+</div>
+`
+
+父组件进行填充插槽
+<son>
+	<template slot-scope='slotProps'>		//填充子组件需要使用slot-scope属性='slotProps'
+		<strong>{{slotProps.自定义名字.name}}</strong>	//父组件通过子组件中绑定的自定义名字获得数据，可以加工处理
+	</template>		
+</son>
+```
+
+## 组件化思想
+
+```
+<div class='.box'>
+	<all></all>
+</div>
+
+
+
+var one = {
+	template:``;
+}
+
+var two = {
+	template:``;
+}
+var three = {
+	template:``;
+}
+
+//需要写在最下面 因为上面的定义以后下面才会显示
+Vue.component('all',{		//全局组件
+	template:`
+		<div>				//需要容器包裹住
+			<son1></son1>
+			<son2></son2>
+			<son3></son3>
+		</div>
+	`,
+	components:{
+		'son1':one,	//子组件1
+		'son2':two,	//子组件2
+		'son3':three,//子组件3
+	}
+})
+```
 
