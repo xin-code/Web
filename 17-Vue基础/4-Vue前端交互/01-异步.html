@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>异步</title>
+    <script src="../../00-常用文件/jquery-3.5.1.min.js"></script>
+</head>
+
+<body>
+    <div>前后端交互</div>
+    <script>
+        // ---------------------------------
+        // var re = '------';
+        // $.ajax({
+        //     url: 'http://localhost:3000/data',
+        //     success: function(data) {
+        //         re = data;
+        //         console.log(re);
+        //     }
+        // });
+        // //输出的是----- 那就证明Ajax执行步骤是异步操作的
+        // // 执行到15行后，直接执行后面
+        // console.log(re);
+
+        // ---------------------------------
+        //结果顺序不确定
+        // $.ajax({
+        //     url: 'http://localhost:3000/data',
+        //     success: function(data) {
+        //         re = data;
+        //         console.log(re);
+        //     }
+        // });
+        // $.ajax({
+        //     url: 'http://localhost:3000/data1',
+        //     success: function(data) {
+        //         re = data;
+        //         console.log(re);
+        //     }
+        // });
+        // $.ajax({
+        //     url: 'http://localhost:3000/data2',
+        //     success: function(data) {
+        //         re = data;
+        //         console.log(re);
+        //     }
+        // });
+
+        // ---------------回调地狱------------------
+        $.ajax({
+            url: 'http://localhost:3000/data',
+            success: function(data) {
+                console.log(data);
+                $.ajax({
+                    url: 'http://localhost:3000/data1',
+                    success: function(data) {
+                        console.log(data);
+                        $.ajax({
+                            url: 'http://localhost:3000/data2',
+                            success: function(data) {
+                                console.log(data);
+                                $.ajax({
+                                    url: 'http://localhost:3000/data3',
+                                    success: function(data) {
+                                        console.log(data);
+                                    }
+                                });
+                            }
+                        });
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Promise基本用法</title>
+</head>
+
+<body>
+    <script>
+        var p = new Promise(function(resolve, reject) {
+            setTimeout(function() {
+                var flag = false;
+                if (flag) {
+                    //正常情况
+                    resolve('succ');
+                } else {
+                    //异常情况
+                    reject('error');
+                }
+            }, 100);
+        });
+        p.then(function(su) {
+            console.log(su);
+        }, function(er) {
+            console.log(er);
+        });
+    </script>
+</body>
+
+</html>
