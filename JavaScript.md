@@ -118,7 +118,7 @@ stringObject.toUpperCase()
 
 ## 数组方法
 
-##### some()
+### some()
 
 some() 方法用于检测数组中的元素是否满足指定条件（函数提供）。
 
@@ -133,6 +133,9 @@ some() 方法会依次执行数组的每个元素：
 
 ```
 array.some(function(currentValue,index,arr),thisValue)
+
+//中止遍历
+return true;
 ```
 
 | 参数                                | 描述                                                         |
@@ -140,7 +143,7 @@ array.some(function(currentValue,index,arr),thisValue)
 | *function(currentValue, index,arr)* | 必须。函数，数组中的每个元素都会执行这个函数 函数参数: 参数描述*currentValue*必须。当前元素的值*index*可选。当前元素的索引值*arr*可选。当前元素属于的数组对象 |
 | *thisValue*                         | 可选。对象作为该执行回调时使用，传递给函数，用作 "this" 的值。 如果省略了 thisValue ，"this" 的值为 "undefined" |
 
-##### findIndex()
+### findIndex()
 
 findIndex() 方法返回传入一个测试条件（函数）符合条件的数组第一个元素位置。
 
@@ -155,9 +158,27 @@ findIndex() 方法为数组中的每个元素都调用一次函数执行：
 
 ```
 array.findIndex(function(currentValue, index, arr), thisValue)
+
+//1、找到ID对应的索引
+var index = this.数组名.findIndex((items) => {
+    return items.id == id;
+});
+//2、删除
+this.数组名.splice(index, 1)
 ```
 
 | 参数                                | 描述                                                         |
 | :---------------------------------- | :----------------------------------------------------------- |
 | *function(currentValue, index,arr)* | 必须。数组每个元素需要执行的函数。 函数参数:参数描述*currentValue*必需。当前元素*index*可选。当前元素的索引*arr*可选。当前元素所属的数组对象 |
 | *thisValue*                         | 可选。 传递给函数的值一般用 "this" 值。 如果这个参数为空， "undefined" 会传递给 "this" 值 |
+
+### forEach数组遍历
+
+```
+array.forEach(item => {
+	
+})
+```
+
+
+
