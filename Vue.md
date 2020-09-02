@@ -812,3 +812,19 @@ axios.interceptors.response.use(function(res){
 });
 ```
 
+### async和await【ES7—>异步调用】
+
+- async关键字用于函数上(返回值是Promise实例对象)
+- await关键字用于async函数中
+
+```
+async function fun(id){
+	const A = await axios.get('/XX');
+	return A;
+}
+
+fun.then(B=>{
+	console.log(B);
+})
+```
+
