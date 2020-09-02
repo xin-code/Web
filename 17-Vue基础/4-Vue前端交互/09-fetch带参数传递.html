@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>fetch带参数传递</title>
+</head>
+
+<body>
+
+    <script>
+        fetch('http://localhost:3000/fetbooks?id=123', {
+            method: 'get',
+        }).then(function(data) {
+            return data.text();
+        }).then(function(data) {
+            console.log(data);
+        });
+    </script>
+</body>
+
+</html>

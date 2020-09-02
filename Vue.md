@@ -470,4 +470,188 @@ Vue.component('all',{		//全局组件
    })
    ```
 
-   
+#### 基于Promise处理的Ajax请求
+
+发送一次Ajax请求
+
+```
+ function queryData(url) {
+            var p = new Promise(function(resolve, reject) {
+                var xhr = new XMLHttpRequest();
+                xhr.onreadystatechange = function() {
+                    //当请求被发送到服务器时，我们需要执行一些基于响应的任务。
+                    //每当 readyState 改变时，就会触发 onreadystatechange 事件。
+                    if (xhr.readyState != 4) return;
+                    if (xhr.readyState == 4 && xhr.status == 200) {
+                        //正常情况
+                        resolve(xhr.responseText)
+                    } else {
+                        //处理错误信息
+                        reject('服务器错误')
+                    }
+                };
+                xhr.open('get', url);
+                xhr.send(null);
+            });
+            return p;
+        }
+queryData('http://localhost:3000/data').then(function(suc) {
+		//成功请求
+            console.log(suc);
+        }, function(err) {
+        //失败请求
+            console.log(err);
+        })
+```
+
+发送多次Ajax请求—>解决回调地狱的问题
+
+```
+queryData().then(function(data){
+	return queryData();		//返回的是一个新的Promise实例对象
+}).then(function(data){		//.then指的就是上一个return的
+	return queryData();
+}).then(function(data){
+	return queryData();
+}).then(function(data){
+	return queryData();
+})
+```
+
+#### then参数中的函数返回值
+
+1. 返回Promise实例对象
+   - 返回的实力对象会调用下一个then
+2. 返回一个普通值
+   - 直接传递给下一个then，通过then函数中的参数接收
+
+#### 常用API
+
+1.  实例方法
+   - p.then() 获取到异步任务的正确结果
+   - p.catch()获取异常信息
+   - p.finally()成功与否都会执行
+
+2.  对象方法
+   - Promise.all([数组1，数组2，数组3])		并发处理多个异步任务，所有任务都执行完，才能得到结果
+   - Promise.race()     并发处理多个异步任务，只要有一个任务完成就能得到结果(只显示最快输出的结果)
+
+## 接口调用
+
+### Fetch语法
+   - 传统Ajax(xhr)的升级版
+   - 基于Promise实现
+
+   ```
+   fetch(url).then(fn1)
+   		  .then(fn2)
+   		  .then(fn3)
+   		  	 ...
+   		  .then(fn)
+   		  //处理异常信息
+   		  .catch(fn)
+   ```
+
+   ```
+fetch('http://localhost:3000/fet').then(function(data) {
+		return data.text();	//text()是fetch的API一部分，返回一个Promise实例对象，用于获取后台数据
+}).then(function(data) {
+		console.log(data);
+})
+   ```
+
+   ### Fetch带参数传递
+
+- 常用配置选项
+  - method(String)：HTTP请求方法，默认为(GET、POST、PUT、DELETE)
+  - body(String)：HTTP请求参数
+  - headers(Object)：HTTP的请求头，默认为{}
+
+```
+fetch('url',{
+	method:,
+	body:,
+	headers:,
+}).then(fn2)
+  .then(fn3)
+    ...
+  .then(fn)
+  //处理异常信息
+  .catch(fn)
+```
+
+1. GET请求方式的参数传递(默认method是get方法)与`delete`一致（在服务器端变成 app.delete
+
+```
+//普通
+fetch('/name=a?psw=123').then(function(data){
+	return data.text();
+}).then(function(data){
+	console.log(data);
+});
+-----服务器端获取psw
+app.get('/fetbooks', (req, res) => {
+    res.send('传统URL传递参数' + req.query.id);		//【req.query.psw】
+});
+
+//利用Restful
+fetch('/name/123'),{
+	method:'get',
+}).then(function(data){
+	return data.text();
+}).then(function(data){
+	console.log(data);
+});
+-----服务器端获取psw
+app.get('/fetbooks/:psw', (req, res) => {			//:psw冒号后面可以自定义 指定需要的什么
+    res.send('restfulURL传递参数' + req.params.psw);	//【req.params.psw】
+});
+```
+
+2. POST请求传递参数【多出来body和header部】和`PUT`一样，也同样可以传递json数据格式
+
+```
+fetch('/address'),{
+	method:'post',
+	body:'uname=zs&psw=123',
+	【body:JSON.Stringify({
+		uname:'张三',
+		age:18
+	})】
+	headers:{
+		'Content-Type': 'application/x-www-form-urlencoded'
+		【'Content-Type': 'application/json'】
+	}
+}).then(function(data){
+	return data.text();
+}).then(function(data){
+	console.log(data);
+});
+-----服务器端获取psw
+【req.body.uname】
+```
+
+### Fetch响应结果
+
+- text()将返回体转换为字符串格式
+- json()==JSON.parse(responseText)
+
+```
+fetch('http://localhost:3000/json').then(function(data) {
+	//json()相当于JSON.parse(responseText) 对字符串进行转换成对象格式
+	return data.json();
+}).then(function(data) {
+	console.log(data);
+})
+```
+
+
+
+### axios语法
+
+```
+axios.get('/adata').then(A=>{
+	console.log(A.data);	//data属性名是固定的，用于获取后台响应数据
+})
+```
+

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>fetch带参数传递-post</title>
+</head>
+
+<body>
+
+    <script>
+        // fetch('http://localhost:3000/address', {
+        //     method: 'post',
+        //     body: 'uname=zs&psw=123',
+        //     headers: {
+        //         'Content-Type': 'application/x-www-form-urlencoded'
+        //     }
+        // }).then(function(data) {
+        //     return data.text();
+        // }).then(function(data) {
+        //     console.log(data);
+        // });
+
+        //设置成为JSON格式的
+        fetch(' http://localhost:3000/address', {
+            method: 'post',
+            body: JSON.stringify({
+                uname: 'zs',
+                psw: 123,
+            }),
+            headers: {
+                'Content-Type': 'application/json',
+            }
+        }).then(function(data) {
+            return data.text();
+        }).then(function(data) {
+            console.log(data);
+        });
+    </script>
+</body>
+
+</html>

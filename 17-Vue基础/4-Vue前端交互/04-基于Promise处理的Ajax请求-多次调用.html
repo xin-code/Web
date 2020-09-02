@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>基于Promise处理Ajax请求</title>
+    <title>基于Promise处理的Ajax请求-多次调用</title>
 </head>
 
 <body>
@@ -30,10 +30,15 @@
             });
             return p;
         }
-        queryData('http://localhost:3000/data').then(function(suc) {
-            console.log(suc);
-        }, function(err) {
-            console.log(err);
+        queryData('http://localhost:3000/data').then(function(data) {
+            //正常情况
+            console.log(data);
+            return queryData('http://localhost:3000/data1');
+        }).then(function(data) {
+            console.log(data);
+            return queryData('http://localhost:3000/data2');
+        }).then(function(data) {
+            console.log(data);
         })
     </script>
 </body>

@@ -11,7 +11,7 @@
 
     <script>
         function queryData(url) {
-            var p = new Promise(function(resolve, reject) {
+            return new Promise(function(resolve, reject) {
                 var xhr = new XMLHttpRequest();
                 xhr.onreadystatechange = function() {
                     //当请求被发送到服务器时，我们需要执行一些基于响应的任务。
@@ -28,12 +28,20 @@
                 xhr.open('get', url);
                 xhr.send(null);
             });
-            return p;
         }
-        queryData('http://localhost:3000/data').then(function(suc) {
-            console.log(suc);
-        }, function(err) {
-            console.log(err);
+        queryData('http://localhost:3000/data').then(function(data) {
+            console.log(data);
+            return new Promise(function(resolve, reject) {
+                setInterval(function() {
+                    resolve(123)
+                }, 1000)
+            })
+        }).then(function(data) {
+            console.log(data);
+        }).then(function(data) {
+            return 'abc'
+        }).then(function(data) {
+            console.log(data);
         })
     </script>
 </body>

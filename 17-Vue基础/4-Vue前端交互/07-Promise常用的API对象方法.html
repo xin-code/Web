@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Promise常用的API对象方法</title>
+</head>
+
+<body>
+
+    <script>
+        function api(url) {
+            return new Promise(function(resolve, reject) {
+                var xhr = new XMLHttpRequest();
+                xhr.onreadystatechange = function() {
+                    if (xhr.readyState != 4) return;
+                    if (xhr.readyState == 4 && xhr.status == 200) {
+                        resolve(xhr.responseText)
+                    }
+                };
+                xhr.open('get', url);
+                xhr.send(null)
+            });
+        };
+        var p1 = api('http://localhost:3000/1');
+        var p2 = api('http://localhost:3000/2');
+        var p3 = api('http://localhost:3000/3');
+        //并发处理多个异步任务，所有任务都执行完，才能得到结果
+        // Promise.all([p1, p2, p3]).then(function(data) {
+        //     console.log(data);
+        // });
+
+        //并发处理多个异步任务，只要有一个任务完成就能得到结果
+        Promise.race([p1, p2, p3]).then(function(data) {
+            console.log(data);
+        });
+    </script>
+</body>
+
+</html>

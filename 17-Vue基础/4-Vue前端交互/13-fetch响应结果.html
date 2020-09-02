@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>fetch响应结果</title>
+</head>
+
+<body>
+
+    <script>
+        fetch('http://localhost:3000/json').then(function(data) {
+            //json()相当于JSON.parse(responseText) 对字符串进行转换成对象格式
+            return data.json();
+        }).then(function(data) {
+            console.log(data);
+        })
+    </script>
+</body>
+
+</html>

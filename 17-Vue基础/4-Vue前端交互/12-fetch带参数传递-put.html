@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>fetch带参数传递-put</title>
+</head>
+
+<body>
+
+    <script>
+        //设置成为JSON格式的
+        fetch(' http://localhost:3000/address/put/123', {
+            method: 'put',
+            body: JSON.stringify({
+                uname: '李四',
+                psw: 456,
+            }),
+            headers: {
+                'Content-Type': 'application/json',
+            }
+        }).then(function(data) {
+            return data.text();
+        }).then(function(data) {
+            console.log(data);
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Promise常用API方法</title>
+</head>
+
+<body>
+
+    <script>
+        function fun() {
+            return new Promise(function(resolve, reject) {
+                setTimeout(function() {
+                    //成功
+                    resolve(123);
+                }, 1000);
+
+            })
+        }
+
+        fun()
+            .then(function(data) {
+                console.log(data);
+            })
+            .catch(function(data) {
+                console.log('错误了');
+            })
+            .finally(function(data) {
+                console.log('不管正确与否 都执行');
+            })
+    </script>
+</body>
+
+</html>
