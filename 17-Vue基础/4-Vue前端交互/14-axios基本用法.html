@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>axios基本用法</title>
+</head>
+
+<body>
+
+    <script src="js/axios.js"></script>
+    <script>
+        axios.get('http://localhost:3000/ax').then(function(ax) {
+            // data是固定的
+            console.log(ax.data);
+        })
+    </script>
+</body>
+
+</html>

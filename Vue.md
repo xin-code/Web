@@ -582,6 +582,18 @@ fetch('url',{
 
 1. GET请求方式的参数传递(默认method是get方法)与`delete`一致（在服务器端变成 app.delete
 
+### **★服务器端**
+
+   ```
+   body：请求体中的数据
+   
+   query：请求的参数，URL后面以？的形式，例：user?id
+   
+   params：请求的参数，URL后面以/的形式，例：user/:id
+   ```
+
+   
+
 ```
 //普通
 fetch('/name=a?psw=123').then(function(data){
@@ -649,9 +661,154 @@ fetch('http://localhost:3000/json').then(function(data) {
 
 ### axios语法
 
+axios：专门调用后台接口的JS库
+
 ```
 axios.get('/adata').then(A=>{
 	console.log(A.data);	//data属性名是固定的，用于获取后台响应数据
 })
+```
+
+### axios常用API
+
+1. get：查询数据
+2. delete：删除数据 用法与`get`一样
+
+- 通过URL地址传递参数
+
+```
+在URL地址后以?进行传参
+axios.get('/ax?id=123').then(A=>{
+	console.log(A.data);
+})
+
+----服务器端获取ID
+app.get('/axa', (req, res) => {
+    res.send('axa-get传递参数' + req.query.id)
+});
+```
+
+- 通过restful选项传递参数
+
+```
+在URL地址后以/进行传参
+axios.get('/ax/123').then(A=>{
+	console.log(A.data);
+})
+
+----服务器端获取ID
+app.get('/axa/:id', (req, res) => {
+    res.send('axa-get传递参数' + req.params.id)
+});
+```
+
+- 通过params选项传递参数
+
+```
+axios.get('/axa',{
+	params:{
+		id:123
+	}
+}).then(A=>{
+	console.log(A.data);
+})
+
+----服务器端口 还是调用的get请求方式
+app.get('/axa', (req, res) => {
+    res.send('axa-get-URL传递参数' + req.query.id)
+});
+```
+
+3. post：添加数据 
+4. put：修改数据与`post`类似【一般情况下url后面加上/ID】
+
+- ★通过选项传递参数（默认传递json格式的数据）
+
+```
+axios.post('/axa',{
+	uname:'张三',
+	psw:123
+	}).then(A=>{
+	console.log(A.data);
+})
+
+----服务器端
+app.post('/axa', (req, res) => {
+    res.send('axa-添加-put-通过选项传递参数' + req.body.uname + '----' + req.body.psw)
+});
+```
+
+- 通过URLSearchParams传递参数
+
+```
+const params = new URLSearchParams();
+params.append('参数1','值1');
+params.append('参数2','值2');
+
+axios.post('/axa',params).then(A=>{
+	console.log(A.data);
+})
+```
+### axios响应结果
+
+1. data：实际响应回来的数据
+2. headers：响应头信息
+3. status：响应状态码
+4. statusText：响应状态信息
+
+```
+axios.post('/axios-json').then(A=>{
+	console.log(A.data);
+})
+
+----服务器端
+app.get('/axios-json', (req, res) => {
+    res.json({
+        uname: 'zs',
+        age: 18
+    })
+});
+```
+
+### axios的全局配置
+
+- axios.defaults.timeout=3000;超时时间
+- axios.defaults.baseURL='http://localhost:3000/XX';默认地址
+- axios.defaults.headers['xx']='XXXXXXXXXXXXXXXX';设置请求头
+
+### axios拦截器
+
+1. 请求拦截器
+
+   - 在请求发送之前设置一些信息
+
+   ![](00-常用文件\images\axios请求拦截器.png)
+
+   ```
+   添加一个请求拦截器
+   axios.interceptors.request.use(function(config){
+   	//在请求发出之前进行一些信息设置
+   	return config;
+   },function(err){
+   	//响应错误信息
+   });
+   ```
+
+2. 响应拦截器
+
+   - 在获取数据之前对数据进行加工
+
+   
+
+   ![](00-常用文件\images\axios响应拦截器.png)
+
+```
+添加一个响应拦截器
+axios.interceptors.response.use(function(res){
+	//在请求发出之前进行一些信息设置
+	return res;
+},function(err){
+	//响应错误信息
+});
 ```
 

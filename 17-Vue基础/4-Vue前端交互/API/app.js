@@ -19,6 +19,8 @@ app.all('*', function(req, res, next) {
     res.header('Access-Control-Allow-Methods', 'PUT, GET, POST, DELETE, OPTIONS');
     res.header("Access-Control-Allow-Headers", "X-Requested-With");
     res.header('Access-Control-Allow-Headers', 'Content-Type');
+    res.header('Access-Control-Allow-Headers', 'mytoken');
+
     next();
 });
 
@@ -82,7 +84,7 @@ app.post('/address', (req, res) => {
 
 //fetch传递参数-put
 app.put('/address/put/:id', (req, res) => {
-    res.send('post中PUT的URL传递参数' + req.params.id + '---' + req.body.uname + '---' + req.body.psw);
+    res.send('post中PUT的URL传递参数' + req.body.uname + '---' + req.body.age);
 });
 
 //fetch响应结果
@@ -92,6 +94,66 @@ app.get('/json', (req, res) => {
         age: 18,
         sex: 'man'
     })
+});
+
+// axios基本用法
+app.get('/ax', (req, res) => {
+    res.send('Hello axios!')
+});
+
+// axios常用API-get-URL
+// axios常用API-params
+app.get('/axa', (req, res) => {
+    res.send('axa-get-URL传递参数' + req.query.id)
+});
+
+//删除-delete-URL
+//删除-delete-params
+app.delete('/axa', (req, res) => {
+    res.send('axa-delete-URL传递参数' + req.query.id)
+});
+
+// axios常用API-get-restful
+app.get('/axa/:id', (req, res) => {
+    res.send('axa-get-restful传递参数' + req.params.id)
+});
+
+//删除-delete-restful
+app.delete('/axa/:id', (req, res) => {
+    res.send('axa-get-restful传递参数' + req.params.id)
+});
+
+//添加-post-通过选项传递参数
+app.post('/postparams', (req, res) => {
+    res.send('添加-post-通过选项传递参数' + req.body.uname + '----' + req.body.psw)
+});
+
+//通过URLSearchParams传递参数
+app.post('/URLSearchParams', (req, res) => {
+    res.send('添加-post-通过URLSearchParams传递参数' + req.body.uname + '----' + req.body.age)
+});
+
+//修改-put-通过选项传递参数
+app.put('/putparams/:id', (req, res) => {
+    res.send('修改-put-通过选项传递参数' + req.params.id + '----' + req.body.uname + '----' + req.body.psw)
+});
+
+//axios响应结果
+app.get('/axios-json', (req, res) => {
+    res.json({
+        uname: 'zs',
+        age: 18
+    })
+});
+
+//axios请求拦截器
+app.get('/interceptors', (req, res) => {
+    res.send('拦截器')
+});
+
+//async
+app.get('/asy', (req, res) => {
+    res.send('asy')
 });
 
 // 监听端口

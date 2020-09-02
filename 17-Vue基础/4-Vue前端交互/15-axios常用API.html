@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>axios常用API</title>
+</head>
+
+<body>
+
+    <script src="js/axios.js"></script>
+    <script>
+        //get：查询数据
+        // 通过URL地址传递参数
+        // axios.get('http://localhost:3000/axa?id=123').then(A => {
+        //     console.log(A.data);
+        // });
+        //通过restful选项传递参数
+        // axios.get('http://localhost:3000/axa/666').then(A => {
+        //     console.log(A.data);
+        // });
+        //通过params选项传递参数
+        // axios.get('http://localhost:3000/axa', {
+        //     params: {
+        //         id: 123
+        //     }
+        // }).then(A => {
+        //     console.log(A.data);
+        // })
+
+        //delete：删除数据 用法与get一样
+        // 通过URL地址传递参数
+        // axios.delete('http://localhost:3000/axa?id=123').then(A => {
+        //     console.log(A.data);
+        // });
+        //通过restful选项传递参数
+        // axios.delete('http://localhost:3000/axa/666').then(A => {
+        //     console.log(A.data);
+        // });
+        //通过params选项传递参数
+        // axios.delete('http://localhost:3000/axa', {
+        //     params: {
+        //         id: 123
+        //     }
+        // }).then(A => {
+        //     console.log(A.data);
+        // })
+
+        //post：添加数据
+        //json格式
+        // axios.post('http://localhost:3000/postparams', {
+        //     uname: '张三',
+        //     psw: 123
+        // }).then(A => {
+        //     console.log(A.data);
+        // })
+        //通过URLSearchParams传递参数
+        // const params = new URLSearchParams();
+        // params.append('uname', 'zss');
+        // params.append('age', '123');
+
+        // axios.post('http://localhost:3000/URLSearchParams', params).then(A => {
+        //     console.log(A.data);
+        // })
+
+        //put：添加数据
+        //json格式
+        axios.put('http://localhost:3000/putparams/666', {
+            uname: '张三',
+            psw: 123
+        }).then(A => {
+            console.log(A.data);
+        })
+    </script>
+</body>
+
+</html>
