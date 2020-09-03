@@ -828,3 +828,17 @@ fun.then(B=>{
 })
 ```
 
+### async和await处理多个异步请求
+
+```
+async function fun() {
+	var info = await axios.get('async1');
+	var A = await axios.get('async2?info=' + info.data);
+	return A.data;
+}
+        
+fun().then(function(data) {
+	console.log(data);
+})
+```
+
