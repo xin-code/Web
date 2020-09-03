@@ -156,6 +156,18 @@ app.get('/asy', (req, res) => {
     res.send('asy')
 });
 
+app.get('/async1', (req, res) => {
+    res.send('hello')
+});
+
+app.get('/async2', (req, res) => {
+    if (req.query.info == 'hello1') {
+        res.send('world');
+    } else {
+        res.send('error')
+    }
+});
+
 // 监听端口
 app.listen(3000);
 // 控制台提示输出
