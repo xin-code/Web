@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue-router命名路由</title>
+</head>
+
+<body>
+    <div class="box">
+        <router-link to='/user/1'>user1</router-link>
+        <router-link to='/user/2'>user2</router-link>
+        <router-link :to='{name:"accept",params:{id:123}}'>命名路由</router-link>
+        <router-link to='/user/4'>user4</router-link>
+        <router-link to='/ser'>ser</router-link>
+
+        <router-view></router-view>
+    </div>
+
+    <script src="../../00-常用文件/vue.js"></script>
+    <script src="../../00-常用文件/vue-router.js"></script>
+    <script>
+        var user = {
+            props: ['id', 'uname', 'age'],
+            template: `<h1>hello{{id+'-----'+uname+'------'+age}}</h1>`
+        }
+        var ser = {
+            template: "<h1>world</h1>"
+        }
+
+        var router = new VueRouter({
+            routes: [{
+                path: '/',
+                redirect: '/user/1'
+            }, {
+                path: '/user/:id',
+                name: 'accept',
+                component: user,
+                props: router => ({
+                    uname: "zss",
+                    age: 188,
+                    id: router.params.id
+                })
+            }, {
+                path: '/ser',
+                component: ser
+            }, ]
+        });
+
+        var vue = new Vue({
+            el: '.box',
+            data: {},
+            router
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue-router路由重定向</title>
+</head>
+
+<body>
+    <div class="box">
+        <router-link to='/user'>User</router-link>
+        <router-link to='/register'>Register</router-link>
+
+        <router-view></router-view>
+    </div>
+
+    <script src="../../00-常用文件/vue.js"></script>
+    <script src="../../00-常用文件/vue-router.js"></script>
+    <script>
+        var user = {
+            template: `<h1>user组件</h1>`
+        }
+        var register = {
+            template: `<h1>register组件</h1>`
+        }
+
+        var router = new VueRouter({
+            //routes是所有路由规则数组
+            routes: [
+                //每个路由规则都是一个配置对象，至少包括path和component属性
+                //path表示路由规则匹配的hash地址
+                //component表示当前路由规则对应展示的组件
+                {
+                    path: '/',
+                    redirect: '/user'
+                }, {
+                    path: '/user',
+                    component: user
+                }, {
+                    path: '/register',
+                    component: register
+                }
+            ]
+        });
+        var vm = new Vue({
+            el: '.box',
+            data: {
+
+            },
+            router
+        })
+    </script>
+</body>
+
+</html>

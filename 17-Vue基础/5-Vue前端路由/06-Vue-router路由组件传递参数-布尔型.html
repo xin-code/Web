@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue-router路由组件传递参数-布尔型</title>
+</head>
+
+<body>
+    <div class="box">
+        <router-link to='/user/1'>user1</router-link>
+        <router-link to='/user/2'>user2</router-link>
+        <router-link to='/user/3'>user3</router-link>
+        <router-link to='/user/4'>user4</router-link>
+        <router-link to='/ser'>ser</router-link>
+
+        <router-view></router-view>
+    </div>
+
+    <script src="../../00-常用文件/vue.js"></script>
+    <script src="../../00-常用文件/vue-router.js"></script>
+    <script>
+        var user = {
+            props: ['id'],
+            template: `<h1>hello{{id}}</h1>`
+        }
+        var ser = {
+            template: "<h1>world</h1>"
+        }
+
+        var router = new VueRouter({
+            routes: [{
+                path: '/',
+                redirect: '/user/1'
+            }, {
+                path: '/user/:id',
+                component: user,
+                props: true
+            }, {
+                path: '/ser',
+                component: ser
+            }, ]
+        });
+
+        var vue = new Vue({
+            el: '.box',
+            data: {},
+            router
+        })
+    </script>
+</body>
+
+</html>

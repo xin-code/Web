@@ -842,3 +842,335 @@ fun().then(function(data) {
 })
 ```
 
+## Router
+
+`本质`：对应关系
+
+- 后端路由
+
+概念：根据不同的URL，返回不同的内容
+
+本质：URL请求地址与服务器资源之间的对应关系
+
+- 前端路由
+
+概念：根据不同的`用户事件`，显示不同的页面内容
+
+本质：`用户事件`与`事件处理函数`之间的对应关系
+
+<img src="00-常用文件\images\前端路由.png"/>
+
+1. SPA(Single Page Application)单页面应用程序
+
+2. 实现原理：基于URL地址的hash值
+
+3. 实现SPA—>前端路由
+
+
+
+**功能**：
+
+- 嵌套的路由/视图表
+- 模块化的、基于组件的路由配置
+- 路由参数、查询、通配符
+- 基于 Vue.js 过渡系统的视图过渡效果
+- 细粒度的导航控制
+- 带有自动激活的 CSS class 的链接
+- HTML5 历史模式或 hash 模式，在 IE9 中自动降级
+- 自定义的滚动条行为
+
+### 基本使用步骤
+
+#### 1. 引入相关库文件
+
+   ```
+    <script src="vue.js"></script>
+    <script src="vue-router.js"></script>
+   ```
+
+#### 2. 添加路由链接
+
+```
+<div class="box">
+	//router-link是vue提供的标签，默认被渲染为a标签
+	//to属性 默认渲染为href属性
+	//to属性的值 默认渲染为#开头的hash地址
+	<router-link to='/user'>User</router-link>
+	<router-link to='/register'>Register</router-link>
+</div>
+```
+
+#### 3. 添加路由填充位(路由占位符)
+
+```
+<div class="box">
+	//通过路由规则匹配到的组件都会渲染到router-view所在位置
+	<router-view></router-view>
+</div>
+```
+
+#### 4. 定义路由组件【路由链接对应路由组件】
+
+```
+<script>
+	var User = {
+		template:'<div>User组件</div>'
+	}
+		var Register = {
+		template:'<div>Register组件</div>'
+	}
+</script>
+```
+
+#### 5. ★配置路由规则并创建路由实例
+
+```
+var router = new VueRouter({
+	//routes是所有路由规则数组
+	routes:[
+		//每个路由规则都是一个配置对象，至少包括path和component属性
+		//path表示路由规则匹配的hash地址
+		//component表示当前路由规则对应展示的组件
+		//一一对应
+		{path:'/user',component:User},
+		{path:'/register',component:Register}
+	]
+})
+```
+
+#### 6. 把路由挂在到Vue根实例中
+
+```
+var vm = new Vue({
+	el: '.box',
+	data: {
+		},
+	router:路由名,
+})
+```
+
+### 路由重定向`redirect`
+
+访问地址A的时候，强制跳转到地址B，展示组件内容
+
+```
+var router = new VueRouter({
+	//routes是所有路由规则数组
+	routes:[
+		//从/原地址—>重定向到'/user'
+		{path:'/',redirect：'/user'},
+		{path:'/user',component:User},
+		{path:'/register',component:Register}
+	]
+})
+```
+
+### 嵌套路由
+
+```
+//父级组件
+<div class="box">
+	<router-link to='/fathera'>fathera</router-link>
+	<router-link to='/fatherb'>fatherb</router-link>
+
+	<router-view></router-view>
+</div>
+
+<script>
+var fathera = {
+	template: `<h1>fathera组件</h1>`
+}
+var fatherb = {
+	template:` <h1>fatherb组件</h1>`
+}
+	
+var router = new VueRouter({
+	//routes是所有路由规则数组
+	routes: [
+	{path: '/',redirect: '/fathera'}, 
+	{path: '/fathera',component: fathera}, 
+	{path: '/fatherb',component: fatherb,}
+	];
+});
+	var vm = new Vue({
+	el: '.box',
+	data: {},
+	//挂载
+	router:router,
+})
+```
+
+```
+//如果在father-b上面嵌套另外两个路由的话
+<div class="box">
+	<router-link to='/fathera'>fathera</router-link>
+	<router-link to='/fatherb'>fatherb</router-link>
+
+	<router-view></router-view>
+</div>
+
+<script>
+//定义路由组件
+var fathera = {
+	template: `<h1>fathera组件</h1>`
+}
+var fatherb = {	
+	//在father-b的模板上进行书写router-link和router-view
+	template:`
+	<div>
+	<router-link to='/fatherb/sona'>sona</router-link>
+	<router-link to='/fatherb/sonb'>sonb</router-link>
+
+	<router-view></router-view>
+	</div>`
+}
+//
+var sona = {
+	template: `<h2>sona</h2>`
+}
+var sonb = {
+	template: `<h2>sonb</h2>`
+}
+	
+var router = new VueRouter({
+	//routes是所有路由规则数组
+	routes: [
+	{path: '/',redirect: '/fathera'}, 
+	{path: '/fathera',component: fathera}, 
+	//配置路由规则children子路由规则
+	{path: '/fatherb',component: fatherb,children:[{
+		{path: '/fatherb/sona',component: sona},
+		{path: '/fatherb/sonb',component: sonb}
+	}]
+	];
+});
+	var vm = new Vue({
+	el: '.box',
+	data: {},
+	//挂载
+	router:router,
+})
+```
+
+### 动态路由匹配
+
+```
+//配置路由规则的时候，在路径path内输入'/:id'的话找相对应的组件名称
+var router = new VueRouter({
+	routes:[
+	{path:'/user/:id',component:User}
+	]
+});
+
+//定义路由组件的里面插入插值表达式
+const User = {
+	//获取:id里面的参数 所以$router.params.id
+	template:`<div>User:{{$router.params.id}}</div>`
+}
+```
+
+### 动态路由传递参数
+
+`$route`属性不够灵活
+
+1. props的值为布尔型
+
+```
+var router = new VueRouter({
+	routes:[
+	{path:'/user/:id',component:User,props:true}
+	]
+});
+
+//定义路由组件的里面插入插值表达式
+const User = {
+	//使用props获取ID
+	props:['id']
+	template:`<div>User用户ID:{{id}}</div>`
+}
+```
+
+2. props的值为对象类型
+
+```
+var router = new VueRouter({
+	routes:[
+	{path:'/user/:id',component:User,props:{uname:'zs',age:18}}
+	]
+});
+
+//定义路由组件的里面插入插值表达式
+const User = {
+	//使用props获取对象
+	props:['uname','age']
+	//id接收不到 就需要下面的props的值为函数类型
+	template:`<div>User用户:{{id+'----'+uname+'-----'+age}}</div>`
+}
+```
+
+3. ★props的值为函数类型
+
+```
+var router = new VueRouter({
+	routes:[
+	{path:'/user/:id',component:User,props:router=>({uname:'zs',age:18,id:router.params.id}})
+	]
+});
+
+//定义路由组件的里面插入插值表达式
+const User = {
+	//使用props获取对象
+	props:['uname','age','id']
+	//id接收不到 就需要下面的props的值为函数类型
+	template:`<div>User用户:{{id+'----'+uname+'-----'+age}}</div>`
+}
+```
+
+### 命名路由
+
+概念：为了方便表示路由的路径，给路由器起的别名
+
+```
+routes:[
+	{
+	path:'/user/:id',
+	//这个路由规则的名字为user
+	name:'user',
+	component:User
+	}
+]
+
+
+//需要绑定属性 :to
+<router-link :to="{name:'user',params:{id:123}}">内容</router-link>
+```
+
+### 编程式导航
+
+1. 声明式导航：通过`点击链接`实现的导航【<a></a>或Vue中<router-link></router-link>】
+2. 编程式导航：通过调用`JavaScript`形式的API实现的导航
+   - this.$router.push('hash地址')
+
+   - this.$router.go(n)
+
+```
+const User = {
+	template:'<div><button @click='goRegister'>跳转到注册页面</button></div>'
+	methods:{
+		goRegister:function(){
+			//编程式导航
+			this.$router.push('/register');
+		}
+	}
+}
+```
+```
+//字符串（路径名称）
+router.push('/home')
+//对象
+router.push({path:'/home'})
+//命名路由
+router.push({name:'/home',params:{id:123}})
+//带查询参数 /A?uname=zs
+router.push({path:'/A'},query:{uname:'zs'})
+```
