@@ -842,7 +842,7 @@ fun().then(function(data) {
 })
 ```
 
-## Router
+## Vue-Router
 
 `本质`：对应关系
 
@@ -1174,3 +1174,49 @@ router.push({name:'/home',params:{id:123}})
 //带查询参数 /A?uname=zs
 router.push({path:'/A'},query:{uname:'zs'})
 ```
+
+
+
+## 前端模块化
+
+**模块化**：就是把单独的一个功能封装到一个模块(文件)中，模块之间相互隔离，但是可以通过特定的接口公开内部成员，也可以依赖别的模块
+
+好处：方便代码的重用，提高开发效率，方便后期维护
+
+- 浏览器模块化规范
+
+![](E:\Git\Web\00-常用文件\images\浏览器端模块化规范.png)
+
+- 服务器端模块化规范
+
+![](E:\Git\Web\00-常用文件\images\服务器端模块化规范.png)
+
+### ES6模块化
+
+- ES6模块化规范—浏览器&服务器统一
+  - 每个js文件都是一个独立的模块
+  - 导入模块成员使用`import`关键字
+  - 暴露模块成员使用`export`关键字
+
+- Node.js中通过 `babel`体验ES6模块化
+
+1. npm install --save-dev @babel/core @babel/cli @babel/preset-env @babel/node
+2. npm install --save @babel/polyfill
+3. 项目根目录下创建文件babel.config.js
+4. 添加如下内容
+
+```
+const presets = [
+	["@babel/env",{
+	targets:{
+		edge:"17",
+		firefox:"60",
+		chrome:"67",
+		safari:"11.1"
+		}
+	}]
+];
+module.exports={presets};
+```
+
+5. 通过npx babel-node index.js执行代码
