@@ -1198,7 +1198,7 @@ router.push({path:'/A'},query:{uname:'zs'})
   - 导入模块成员使用`import`关键字
   - 暴露模块成员使用`export`关键字
 
-- Node.js中通过 `babel`体验ES6模块化
+- Node.js中通过`babel`体验ES6模块化
 
 1. npm install --save-dev @babel/core @babel/cli @babel/preset-env @babel/node
 2. npm install --save @babel/polyfill
@@ -1220,3 +1220,35 @@ module.exports={presets};
 ```
 
 5. 通过npx babel-node index.js执行代码
+
+### ES6模块化基本语法
+
+1. 默认导出语法（**！！只允许一次export default！！**）
+
+```
+export default {
+	成员变量,
+	成员函数,
+}
+```
+
+2. 默认导入语法
+
+```
+import 接收的名称(任意取) from './模块标识符(路径)'
+```
+
+3. 按需导出
+
+```
+export let A =10;
+export let B =20;
+export let C =30;
+```
+
+4. 按需导入
+
+```
+import {接收的名字(与导出的名称一一对应) from './模块标识符(路径)'}
+```
+
