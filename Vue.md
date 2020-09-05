@@ -1264,3 +1264,370 @@ for(let i = 1;i<3;i++){
 //直接导入
 import './地址'
 ```
+
+
+
+## webpack
+
+1. 提供友好的模块化支持
+2. 代码压缩混淆
+3. 处理js兼容问题
+4. 性能优化
+
+### 基本使用
+
+1. 新建项目空白目录，并运行`npm init -y`初始化管理配置文件package.json
+2. 右键新建src源代码目录（以后所有的文件都存放在这个文件中）
+3. 在src文件夹中新建index.html首页文件
+4. 编写index.html
+5. 安装`jQuery` :npm install jquery -s
+
+### 在项目中安装和配置webpack
+
+1. 安装webpack相关的包
+   - npm install webpack webpack-cli -D
+2. 在根目录下创建`webpack.config.js`配置文件
+3. 编辑`webpack.config.js`文件，进行初始化操作
+
+```
+module.exports = {
+	//编译模式 development开发模式(代码不会压缩)
+			  production产品模式(上线，进行压缩)
+	mode:'development'
+}
+```
+
+4. `package.json`的`script`节点下，新增dev脚本
+
+```
+"script":{
+	"dev":"webpack"	//可以通过npm run 执行
+}
+```
+
+5. 在终端执行`npm run dev`启动webpack进行打包
+
+
+### 手动配置打包的入口与出口
+
+   - 默认打包的是src下的index.js
+   
+   - 默认输出的是dist文件下的main.js
+
+修改`webpack.config.js`配置打包的入口与出口
+
+```
+const path = require('path')	//导入路径模块
+
+module.exports={
+	entry:path.join(__dirname,'./src/index.js'),//打包入口
+	output:{
+		path:path.join(__dirname,'./dist'),	//存放路径
+		filename:'bundle.js'	//输出文件名称
+	}
+}
+```
+
+     ### 自动打包
+
+1. 运行`npm install webpack-dev-server -D`安装项目自动打包的工具
+2. 修改`package.json`中`scripts`的`dev`：
+
+```
+"scripts":{
+	"dev":"webpack-dev-server"
+}
+```
+
+3. 再此之前一定要`"dev":"webpack"`的时候npm run dev一下
+4. 将src中的index.html中的script的引用路径为src='/bundle.js'【该文件是虚拟的，放在了内存】
+5. 运行`npm run dev`
+6. 在浏览器http://localhost:8080 查看自动打包结果
+
+### 生成预览页面html-webpack-plugin
+
+1. 运行 `npm install html-webpack-plugin -D`,安装生成预览页面插件
+2. 修改`webpack.config.js`文件
+
+```
+//引入插件
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+
+//创建实例
+const htmlPlugin = new HtmlWebpackPlugin({	//创建实例对象
+	template:'./src/index.html',	//指定用到的模板文件
+	filename:'index.html'		//指定生成的文件，放在内存中，不显示
+})
+
+//export
+module.exports = {
+	plugins:[htmlPlugin]	//数组是webpack打包期间用到的插件列表
+}
+```
+
+3. 重新执行`npm run dev`
+
+- 配置完成后，`npm run dev`之后能直接弹出网址
+
+  1. 在`package.json`配置
+
+  ```
+  //--open 打包完成后自动打开浏览器页面
+  //--host 配置IP地址
+  //--prot 配置端口
+  
+  "scripts":{
+  	"dev","webpack-dev-server --open --host 127.0.0.1 --port 8888"
+  }
+  ```
+
+  
+
+## webpack加载器loader
+
+通过loader打包非js模块
+- webpack默认只能打包`.js`的模块文件
+- 非js模块文件需要调用loader加载器
+
+![](00-常用文件\images\webpack打包处理文件模块.png)
+
+### 打包处理css文件
+
+1. 运行`npm install style-loader css-loader -D`安装处理css文件的loader
+2. 在`webpack.config.js`中`module`的`rules`数组中添加规则
+
+```
+module.exports = {
+//所有第三方文件模块的匹配规则
+	module:{
+		rules:[
+		{test:/\.css$,use:['style-loader','css-loader']}
+		]
+	}
+}
+```
+
+- test表示匹配文件的类型 /正则表达式$/ $:表示以css结尾 
+- use表示对应要调用的loader
+
+3. 运行`npm run dev`
+   - 注意：
+     - use数组中指定的loader顺序是固定的 'style-loader','css-loader'
+     - 多个loader的调用顺序是：从后往前调用
+4. 在`index.js`中导入css
+
+```
+import './css/index.css'
+```
+
+
+
+### 打包处理less文件
+
+1. 运行`npm install less-loader less -D`
+2. 在`webpack.config.js`中`module`的`rules`数组中添加规则
+
+```
+module.exports = {
+//所有第三方文件模块的匹配规则
+	module:{
+		rules:[
+		{test:/\.less$,use:['style-loader','css-loader','less-loader']}
+		]
+	}
+}
+```
+
+3. 在`index.js`中导入less
+
+```
+import './css/index.less'
+```
+
+### 打包处理scss文件
+
+1. 运行`npm install sass-loader node-sass -D`
+2. 在`webpack.config.js`中`module`的`rules`数组中添加规则
+
+   - **loader名为【sass】**
+   - **文件名后缀为【scss】**
+
+```
+module.exports = {
+//所有第三方文件模块的匹配规则
+	module:{
+		rules:[
+		{test:/\.scss$,use:['style-loader','css-loader','sass-loader']}
+		]
+	}
+}
+```
+
+3. 在`index.js`中导入scss
+
+```
+import './css/index.scss'
+```
+
+### 配置postCSS自动添加css兼容前缀
+
+1. 运行`npm install postcss-loader autoprefixer -D`
+2. 在项目根目录中创建配置文件`postcss.config.js`
+
+```
+//导入插件
+const autoprefixer = require('autoprefixer')
+
+module.exports={
+	plugins:[autoprefixer]	//挂在插件
+}
+```
+
+3. 在`webpack.config.js`中`module`的`rules`中添加：
+
+```
+module.exports = {
+//所有第三方文件模块的匹配规则
+	module:{
+		rules:[
+		{test:/\.css$,use:['style-loader','css-loader','postcss-loader']}
+		]
+	}
+}
+```
+
+### 打包样式表内的图片和字体文件
+
+1. 运行`npm install url-loader file-loader -D`插件
+2. 在`webpack.config.js`中`module`的`rules`中添加：
+
+```
+module.exports = {
+//所有第三方文件模块的匹配规则
+	module:{
+		rules:[
+		{test:/\.jpg|png|gif|bmp|ttf|eot|svg|woff|woff2$/,use:['url-loader?limit=16490']}
+		]
+	}
+}
+```
+
+- ?之后的是loader的参数项
+- limit用来指定图片的大小，单位是字节（ byte）
+
+### 打包处理js的高级语法
+
+1. 运行`npm install babel-loader @babel/core @babel/runtime -D`babel的转换器相关的包
+2. 安装babel语法插件相关的包 `npm install @babel/preset-env @babel/plugin-transform-runtime @babel/plugin-proposal-class-properties -D`
+3. 在根目录中，创建配置文件`babel.config.js`
+
+```
+module.exports = {
+    presets: ['@babel/preset-env'],
+    plugins: ['@babel/plugin-transform-runtime', '@babel/plugin-proposal-class-properties']
+}
+```
+
+4. 在`webpack.config.js`中`module`的`rules`中添加：
+
+```
+module.exports = {
+//所有第三方文件模块的匹配规则
+	module:{
+		rules:[
+		{test:/\.js$/,use:'babel-loader',exclude:/node_modules/}
+		]
+	}
+}
+```
+
+## Vue单文件组件
+
+- template：组件的模板区域
+- script：业务逻辑区域
+- style：样式区域
+
+```
+<template>
+	模板
+</template>
+
+<script>
+	业务逻辑
+	导出
+	export default{
+		data:(){return{}},	//私有数据
+		methods:{}	//处理函数
+	}
+</script>
+
+<style scoped>
+	样式区域
+</style>
+```
+
+### webpack中配置Vue组件的加载器
+
+1. 运行`npm install vue-loader vue-template-compiler -D`
+2. 在`webpack.config.js`中添加`vue-loader`配置：
+
+```
+const VueLoaderPlugin = require('vue-loader/lib/plugin')
+
+module.exports = {
+//所有第三方文件模块的匹配规则
+	module:{
+		rules:[
+		{test:/\.vue$/,loader:'vue-loader'}
+		]
+	},
+
+	plugins:[
+	//插件
+	new VueLoaderPlugin();//引入插件
+	]
+}
+```
+
+### 在webpack项目中使用Vue
+
+1. 运行`npm install vue -s`安装Vue
+2. 在`src`中`index.js`入口文件中通过
+
+```
+import Vue from 'vue' //导入vue构造函数
+```
+
+3. 创建vue的实例对象，指定el区域
+4. 通过render函数渲染根组件
+
+```
+//1.导入Vue构造函数
+import Vue from 'vue'
+//2.导入App根组件(App这个名字可以随便起) 特指某一个组件
+import App from './components/app.vue'
+
+//3.实例对象
+const vm = new Vue({
+    //el是控制的区域
+    el: '#app',
+    //通过render函数渲染根组件 特指App组件
+    render: h => h(App)
+})
+```
+
+## webpack打包发布
+
+通过`webpack.json`文件配置打包命令
+
+```
+"scripts":{
+	//用于打包的命令
+	"build":"webpack -p",
+	//用于开发调试的命令
+	"dev":"webpack-dev-server --open --host 127.0.0.1 --port 8888",
+}
+```
+
+- 运行打包程序 `npm run build`
+  - 此时会生成`dist`目录文件
