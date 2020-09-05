@@ -1631,3 +1631,68 @@ const vm = new Vue({
 
 - 运行打包程序 `npm run build`
   - 此时会生成`dist`目录文件
+
+
+
+## Vue脚手架
+
+**Vue脚手架**：快速生成Vue项目的基础架构
+
+### 使用步骤
+
+安装3.x版本Vue脚手架
+
+- `npm install -g @vue/cli`
+
+### 创建Vue项目
+
+1. 基于`交互式命令行`的方式，创建新版Vue项目
+
+   ```
+   vue create [my-project]项目名称
+   ```
+
+2. 基于`图形化界面`的方式，创建新版Vue项目
+
+   ```
+   vue ui
+   ```
+
+### Vue脚手架生成的项目结构分析
+
+![](00-常用文件\images\Vue脚手架生成的项目结构分析.png)
+
+### Vue脚手架—自定义配置
+
+1. 想要自动打开Vue项目，并且更改端口
+
+- 第一种（不推荐）
+
+   - 打开`package.json`文件中的最底部添加`vue`
+
+```
+{
+	...,
+	"vue":{
+		"devServer":{
+			"port":8888,	//端口号
+			"open":true		//自动打开
+		}
+	}
+}
+```
+
+- ★第二种（推荐）
+  - 单独定义到`vue.config.js`中
+    - 在项目的根目录中创建`vue.config.js`
+    - 在该文件进行配置
+
+```
+module.exports={
+	devServer:{
+		port:6666,
+		open:true
+	}
+}
+```
+
