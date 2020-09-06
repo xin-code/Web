@@ -1690,9 +1690,30 @@ const vm = new Vue({
 ```
 module.exports={
 	devServer:{
-		port:6666,
+		port:8878,
 		open:true
 	}
 }
 ```
 
+## Element-UI
+
+### 基本使用
+
+1. 基于命令行手动安装
+
+   - 安装依赖包`npm install element-ui -s`
+   - 打开`src`中的`main.js`(打包入口文件)，导入Element-UI相关资源
+
+   ```
+   //导入组件库
+   import ElementUI from 'element-ui'
+   //导入组件相关样式
+   import 'element-ui/lib/theme-chalk/index.css'
+   //配置Vue插件
+   Vue.use(ElementUI)
+   ```
+
+   
+
+2. 
