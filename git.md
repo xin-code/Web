@@ -1,4 +1,14 @@
-# git 撤销本地未push的commit记录
+## 基本命令
+
+查看所有分支：git branch
+
+创建分支：git branch 分支名
+
+切换分支：git checkout 分支名
+
+创建分支并且换：git checkout -b 新分支名字
+
+## git 撤销本地未push的commit记录
 
 1. git log 查看当前分支的历史记录
 2. 找到你想恢复到的ID，然后 git reset ID *------> 注意：不要加上 --hard ！！！ *
