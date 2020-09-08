@@ -1599,7 +1599,7 @@ import Vue from 'vue' //导入vue构造函数
 ```
 
 3. 创建vue的实例对象，指定el区域
-4. 通过render函数渲染根组件
+4. 通过**render**函数渲染根组件
 
 ```
 //1.导入Vue构造函数
@@ -1664,28 +1664,13 @@ const vm = new Vue({
 
 ### Vue脚手架—自定义配置
 
-1. 想要自动打开Vue项目，并且更改端口
+想要自动打开Vue项目，并且更改端口
 
-- 第一种（不推荐）
+★（推荐）
 
-   - 打开`package.json`文件中的最底部添加`vue`
-
-```
-{
-	...,
-	"vue":{
-		"devServer":{
-			"port":8888,	//端口号
-			"open":true		//自动打开
-		}
-	}
-}
-```
-
-- ★第二种（推荐）
-  - 单独定义到`vue.config.js`中
-    - 在项目的根目录中创建`vue.config.js`
-    - 在该文件进行配置
+- 单独定义到`vue.config.js`中
+  - 在项目的根目录中创建`vue.config.js`
+  - 在该文件进行配置
 
 ```
 module.exports={
@@ -1722,3 +1707,21 @@ module.exports={
    - 点击`插件`—>`添加插件`
    - 搜索`vue-cli-plugin-element`并安装
    - 配置插件
+
+
+
+
+
+
+
+## VS格式化和ESlint冲突解决方法
+
+在根目录创建`.prettierrc`
+
+```
+{
+	"semi":false,
+	"singleQuote":true
+}
+```
+
