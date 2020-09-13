@@ -27,7 +27,8 @@ import {
   Tag,
   Tree,
   Select,
-  Option
+  Option,
+  Cascader
 } from 'element-ui'
 import TreeTable from 'vue-table-with-tree-grid'
 
@@ -57,6 +58,7 @@ Vue.use(Tag)
 Vue.use(Tree)
 Vue.use(Select)
 Vue.use(Option)
+Vue.use(Cascader)
 Vue.component('tree-table', TreeTable)
 Vue.prototype.$message = Message
 Vue.prototype.$confirm = MessageBox.confirm

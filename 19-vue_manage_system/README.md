@@ -405,8 +405,8 @@ this.$router.push('/login')
       addUser () {
         this.$refs.addFormRef.validate(valid => {
           console.log(valid)
-          if (!valid) return this.$message.error('提交失败！')
-          this.$message.success('提交成功')
+          if (!valid) return this.$message.error('预验证失败！')
+          this.$message.success('预验证成功')
         })
       }
    }
@@ -1036,7 +1036,7 @@ role.children = res.data
   </script>
   ```
 
-- 渲染分页管理（完整版）
+- 渲染分页管理（完整分页版）
 
 ```
 <el-pagination @size-change="handleSizeChange"					//监听pagesize改变
