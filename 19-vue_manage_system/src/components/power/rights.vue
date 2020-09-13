@@ -11,7 +11,7 @@
       <el-table :data="rightsList"
                 border
                 stripe
-                :header-cell-style="{background:'#eef1f6'}">>
+                :header-cell-style="{background:'#eef1f6'}">
         <el-table-column type="index"
                          label="#"></el-table-column>
         <el-table-column prop="authName"
