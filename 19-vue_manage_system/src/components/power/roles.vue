@@ -55,7 +55,6 @@
                 </el-row>
               </el-col>
             </el-row>
-            <div>{{scope.row}}</div>
           </template>
         </el-table-column>
         <!-- 索引列 -->
@@ -212,7 +211,6 @@ export default {
       const { data: res } = await this.$http.get('roles')
       this.roleList = res.data
       if (res.meta.status !== 200) return this.$message.error('获取角色列表失败！')
-      this.$message.success('获取角色列表成功！')
     },
     // 显示与隐藏添加用户的Dialog
     addRoleDialog () {
