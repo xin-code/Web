@@ -988,4 +988,64 @@ role.children = res.data
    const { data: res } = await this.$http.post(`roles/${this.roleId}/rights`, { rids: idStr })
   ```
 
+
+
+#### 4.商品分类
+
+- 面包屑导航
+
+- 新的插件`vue-table-with-tree-grid` 与`<el-table>`类似
+
+  ```
+  //引入
+  import TreeTable from 'vue-table-with-tree-grid'
+  Vue.component('tree-table', TreeTable)		//tree-table 这个名字可以自己起 就是后来在这个模板内进行的定义
   
+  //使用
+   <tree-table :data="catList"
+                    :columns="columns"
+                    :show-index="true"
+                    index-text="#"
+                    :selection-type="false"
+                    :expand-type="false"
+                    class="treetable">
+  <!-- 自定义模板渲染__是否有效 -->
+          <template slot="isok"
+                    slot-scope="scope">
+            <i class="el-icon-success"
+               style="color:lightgreen"
+               v-if="scope.row.cat_deleted===false"></i>
+            <i class="el-icon-error"
+               style="color:red"
+               v-else></i>
+          </template>
+          
+  //在<script>中的表现
+  <script>
+  export default {
+    data () {
+      return {
+        columns: [{
+          label: '是否有效',			//该列的标签名
+          prop: 'cat_deleted',	  //绑定到的数据属性名
+          type: 'template',		  //类型 模板类型
+          template: 'isok'		  // 表示模板的名称	
+        }
+    }
+  }
+  </script>
+  ```
+
+- 渲染分页管理（完整版）
+
+```
+<el-pagination @size-change="handleSizeChange"					//监听pagesize改变
+                     @current-change="handleCurrentChange"		//监听pagenum改变
+                     :current-page="queryInfo.pagenum"			//当前页
+                     :page-sizes="[5, 10, 15, 20]"				//每页的多少
+                     :page-size="queryInfo.pagesize"			//当前页面的大小pagesize
+                     layout="total, sizes, prev, pager, next, jumper"
+                     :total="total">
+</el-pagination>
+```
+
