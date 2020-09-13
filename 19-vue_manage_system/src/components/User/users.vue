@@ -29,7 +29,8 @@
       <el-table :data="userList"
                 style="width: 100%"
                 border
-                stripe>
+                stripe
+                :header-cell-style="{background:'#eef1f6'}">>
         <el-table-column type="index"
                          label="#">
         </el-table-column>
@@ -55,7 +56,8 @@
             </el-switch>
           </template>
         </el-table-column>
-        <el-table-column label="操作">
+        <el-table-column label="操作"
+                         width="180px">
           <template slot-scope="scope">
             <!-- 修改 -->
             <el-tooltip effect="dark"

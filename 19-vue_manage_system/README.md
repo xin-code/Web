@@ -524,7 +524,7 @@ this.$router.push('/login')
 
 - 删除用户
 
-  - 弹出dialog对话框
+  - 弹出MessageBox 弹框
   - 取消按钮，取消删除操作 确认按钮，进行删除操作(对删除按钮添加事件 并且注册方法)
 
   ```
@@ -665,8 +665,327 @@ export default {
 
 ![](..\00-常用文件\images\vue用户列表操作.png)
 
+- 操作很多按钮的时候，要在`template`中实现
 - `slot-scope`作用域插槽
+
+```
+<template slot-scope="scope">
+<!-- 修改 -->
+              <el-button type="primary"
+                         icon="el-icon-edit"></el-button>
+<!-- 删除 -->
+              <el-button type="danger"
+                         icon="el-icon-delete"></el-button>
+<!-- 设置 -->
+              <el-button type="warning"
+                         icon="el-icon-setting"></el-button>
+</template>
+```
 
 ##### 2.5 分页
 
 - Element-UI套入
+
+#### 3.权限管理
+
+##### 3.1权限列表
+
+- tag标签 通过不同的level进行不同的选择
+
+```
+v-if=
+v-else if=
+v-else
+```
+
+```
+<template slot-scope="scope">
+	<el-tag v-if="scope.row.level === '0'">一级</el-tag>
+	<el-tag type="success" v-else-if="scope.row.level==='1'">二级</el-tag>
+	<el-tag type="warning" v-else>三级</el-tag>
+</template>
+```
+
+![](..\00-常用文件\images\vue角色列表操作.png)
+
+- 在操作很多按钮的时候 要在`template`中实现
+- `slot-scope`作用域插槽
+
+```
+<template slot-scope="scope">
+	<el-button icon="el-icon-edit"
+				type="primary">编辑</el-button>
+	<el-button icon="el-icon-delete"
+				type="danger">删除</el-button>
+	<el-button icon="el-icon-setting"
+				type="warning">分配权限</el-button>
+</template>
+```
+
+- ★修改长度应该在`el-table-column`表头进行统一设置 width=“300px”
+
+##### 3.2添加用户
+
+- 调试Element-UI
+
+  - 1. 添加点击事件`@click="AddRoleDialog"`
+
+    2. 在`el-dialog`中的`:visible.sync="showAddRoleDialog"`是用来接收初始（布尔值）值的。
+
+    3. 定义一个`data`值 默认为关闭状态—>**false**
+
+       ```
+       data () {
+           return {
+             // 控制添加角色对话框的显示与隐藏
+             showAddRoleDialog: false
+         }
+       }
+       ```
+
+    4. 点击事件对应的是`methods`方法，调用`data`属性变为显示状态—>**true**
+
+       ```
+       AddRoleDialog () {
+             this.showAddRoleDialog = true
+       }
+       ```
+
+    5. 在弹出框的`确定`和`取消`两个按钮中，`data`中的`showAddRoleDialog`还变成关闭状态—>**false**
+
+       ```
+       <el-button @click="showAddRoleDialog = false">取 消</el-button>
+       <el-button type="primary"
+       			@click="showAddRoleDialog = false">确 定</el-button>
+       ```
+
+       
+
+```
+<el-button type="primary"
+			@click="AddRoleDialog">添加角色</el-button>		
+                     
+<!-- 添加角色 -->
+<el-dialog title="提示"
+			:visible.sync="showAddRoleDialog"
+			width="50%">
+<span>这是一段信息</span>
+<span slot="footer"
+class="dialog-footer">
+<el-button @click="showAddRoleDialog = false">取 消</el-button>
+<el-button type="primary"
+			@click="showAddRoleDialog = false">确 定</el-button>
+</span>
+</el-dialog>
+
+
+<script>
+export default {
+  data () {
+    return {
+      // 控制添加角色对话框的显示与隐藏
+      showAddRoleDialog: false
+    }
+  },
+  methods: {
+    AddRoleDialog () {
+      this.showAddRoleDialog = true
+    }
+  }
+}
+</script>
+```
+
+- 表单预验证
+
+```
+this.$refs.addRoleRefs.validate(async valid => {
+if (!valid) return this.$message.error('输入的格式不正确，请验证后重新输入!')	//验证不通过
+	//验证通过继续下面的代码
+}
+```
+
+##### 3.3删除用户
+
+- 弹出MessageBox 弹框
+- 取消按钮，取消删除操作 确认按钮，进行删除操作(对删除按钮添加事件 并且注册方法)
+
+```
+//在element.js中导入Element-UI
+import { MessageBox } from 'element-ui'
+Vue.prototype.$confirm = MessageBox.confirm
+
+//在methods方法内添加方法：
+removeRoleById () {
+	this.$confirm('此操作将永久删除该文件, 是否继续?', '提示', {
+		confirmButtonText: '确定',
+        cancelButtonText: '取消',
+        type: 'warning'
+	})
+}
+
+<!-- 删除 -->
+<el-button type="danger"
+		icon="el-icon-delete"
+		size="mini"
+		@click="removeUserById(scope.row.id)">//获取这个需要删除的ID值
+</el-button>
+
+// 继续编辑方法，删除数据
+async removeRoleById (id) {
+	const confirmResult = await this.$confirm('此操作将永久删除该文件, 是否继续?', '提示', {
+	confirmButtonText: '确定',
+	cancelButtonText: '取消',
+	type: 'warning'
+}).catch(err => err) // .catch用来捕获之前的所有错误
+// 用户确认删除 返回值为confirm
+// 用户取消删除 返回值为报错信息.catch(err=>err) 这个捕获到错误信息后，并且return回去，留下的只有cancel
+if (confirmResult !== 'confirm') return this.$message.info('用户取消了删除操作')
+const { data: res } = await this.$http.delete('users/' + id)
+if (res.meta.status !== 200) return this.$message.error('删除信息失败！')
+this.$message.success('成功删除！')
+this.getUserList()
+}
+```
+
+##### 3.4展开行操作
+
+- 通过作用域插槽`slot-scope="scope"`实现
+
+```
+<template slot-scope="scope">
+
+</template>
+```
+
+- 通过三次for循环渲染出来一级、二级、三级权限
+
+  - 先确定位置 左边为一级权限 右边为二级三级权限 `栅格系统`[总共24格]
+
+    ```
+    <!-- 栅格系统 -->
+    <el-row>
+    	<!-- 一级权限 -->
+    	<el-col :span="5"></el-col>
+    	<!-- 二级、三级权限 -->
+    	<el-col :span="19"></el-col>
+    </el-row>
+    ```
+
+![](..\00-常用文件\images\循环渲染.png)
+
+- 循环一级权限
+
+  ```
+  // v-for
+  <li v-for="(item, index) in items">
+  	
+  </li>
+  
+  // 案例
+  <!-- 栅格系统 -->
+  <el-row v-for="(item1,index1) in scope.row.children"
+  			:key="item1.id">
+  <!-- 一级权限 -->
+  <el-col :span="5">
+  	<el-tag>{{item1.authName}}</el-tag>
+  </el-col>
+  ```
+
+- 类名按需导入`:class="['bdbuttom',index===0?'bdtop':'']"`
+
+```
+<el-row :class="['bdbuttom',index1===0?'bdtop':'']"//绑定类名 按需绑定 看index是否为第一个孩子是的话显示类 不是的话为空
+			v-for="(item1,index1) in scope.row.children"
+			:key="item1.id">
+```
+
+- 防止页面刷新 导致展开的合上
+
+```
+// 更新列表 防止每次调用数据更新页面
+// 用最新的data值赋值给role.children属性
+role.children = res.data
+```
+
+##### 3.5分配权限（树形结构）
+
+- 展开：树形结构进行分配权限
+
+- 导入树形结构,在element.js中注册组件
+
+```
+ <el-tree :data="rightList"
+               :props="treeProps"
+               show-checkbox>		//添加复选框
+</el-tree>
+```
+
+- 在每个复选框选中的时候 选中的是他的ID—>`node-key="id"`
+
+```
+ <el-tree node-key="id"></el-tree>
+```
+
+- 默认展开所有节点
+
+```
+ <el-tree default-expand-all></el-tree>
+```
+
+- 通过`:default-checked-keys="defkey"`把默认勾选的节点的 defkey的数组在点击`分配权限` 按钮的时候渲染到defkey数组中(只需要三级节点)
+
+- 定义一个递归函数【递归函数：调用自己】
+
+  - 把角色信息传递到递归函数中(node为节点，arr为数组)
+
+  - 通过递归的形式 把三级节点的ID保存在`defkey`中
+
+    ```
+    methods:{
+    	getAllInfo(node,arr){
+    		if(!node.children){			//如果不存在node.children属性，则就是三级节点
+    			return arr.push(node.id)	//把所有的id放在arr数组中
+    		}
+    		//如果此时没有return 则表示现在不是三级节点，继续循环 调用递归函数进行获取三级节点
+    		//循环node中的所有数组
+    		node.children.forEach(item => this.getAllInfo(item,arr))
+    	}
+    }
+    ```
+
+    - foreach循环
+
+    ```
+    arr.forEach(callback(currentValue [, index [, array]])[, thisArg])
+    
+    //每个孩子进行foreach循环，每拿到一项item 则继续调用函数
+    node.children.forEach(item => this.getAllInfo(item,arr))
+    ```
+
+  - 修复BUG 每次关闭分配权限的时候，把`defkey`清空
+
+- 分配权限 把勾选的权限赋值给同步到数据库内
+
+  - 选中，半选中状态下，把所有的数据传递给一个数组
+  - 需要调用方法`getCheckedKeys`和`getHalfCheckedKeys` 需要引用下才能调用方法
+  - 获取到所有的keys后得到这样的结构 可以展示出来`[105, 116, 101, 104]`
+
+  ```
+  const keys = [...this.$refs.treeRefs.getCheckedKeys(), 		//展开运算符
+  				...this.$refs.treeRefs.getHalfCheckedKeys()]
+  ```
+
+  - 以`,`分割
+
+  ```
+  const idStr = keys.join(',')
+  ```
+
+  - 进行传递参数
+
+  ```
+   const { data: res } = await this.$http.post(`roles/${this.roleId}/rights`, { rids: idStr })
+  ```
+
+  
