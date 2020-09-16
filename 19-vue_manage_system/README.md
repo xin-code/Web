@@ -613,7 +613,7 @@ export default {
 
 ![](..\00-常用文件\images\vue用户列表数据改造true对应开关.png)
 
-- `slot-scope`作用域插槽
+###### ★`slot-scope`作用域插槽是用来传递这个作用域内的数据
 
 ```
 <el-table-column prop="mg_state" label="状态">
@@ -796,16 +796,16 @@ export default {
 </script>
 ```
 
-- 表单预验证
+###### ★表单预验证
 
 ```
-this.$refs.addRoleRefs.validate(async valid => {
+this.$refs.addRoleRefs.validate(valid => {
 if (!valid) return this.$message.error('输入的格式不正确，请验证后重新输入!')	//验证不通过
 	//验证通过继续下面的代码
 }
 ```
 
-##### 3.3删除用户
+##### ★3.3删除用户(MessageBox弹框)
 
 - 弹出MessageBox 弹框
 - 取消按钮，取消删除操作 确认按钮，进行删除操作(对删除按钮添加事件 并且注册方法)
@@ -1047,5 +1047,22 @@ role.children = res.data
                      layout="total, sizes, prev, pager, next, jumper"
                      :total="total">
 </el-pagination>
+```
+
+##### ★Tag标签内输入框自动获得焦点 
+
+- `$nextTick`就是当页面内重新渲染元素的之后，才会调用的回调函数
+
+```
+      // 自动焦点到输入文本框
+      this.$nextTick(_ => {
+        this.$refs.saveTagInput.$refs.input.focus()
+      })
+```
+
+- 去除字符串两端的空格`trim`
+
+```
+arr.trim()
 ```
 
