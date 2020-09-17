@@ -14,14 +14,16 @@
         <el-form-item prop="username">
           <el-input placeholder="用户名"
                     prefix-icon="iconfont icon-user"
-                    v-model="loginForm.username"></el-input>
+                    v-model="loginForm.username"
+                    @change="login"></el-input>
         </el-form-item>
         <!-- 密码 -->
         <el-form-item prop="password">
           <el-input placeholder="密码"
                     prefix-icon="iconfont icon-3702mima"
                     v-model="loginForm.password"
-                    type="password"></el-input>
+                    type="password"
+                    @change="login"></el-input>
         </el-form-item>
         <!-- 按钮区域 -->
         <el-form-item class="btns">
