@@ -976,7 +976,7 @@ role.children = res.data
   				...this.$refs.treeRefs.getHalfCheckedKeys()]
   ```
 
-  - 以`,`分割
+  - 以`,`分割为字符串
 
   ```
   const idStr = keys.join(',')
@@ -1064,5 +1064,248 @@ role.children = res.data
 
 ```
 arr.trim()
+```
+
+#### 5.商品列表
+
+##### ★5.1过滤器设置时间
+
+- 在main.js中注册一个全局过滤器
+
+```
+// 第一个参数dateFormate为过滤器的名字，后面为过滤器的处理函数(需要处理的数据)
+Vue.filter('dateFormate', function(originDate) {
+  const dt = new Date(originDate)
+  const year = dt.getFullYear()
+  //字符串的方法 padStart(总共几位，不足的情况下就补什么字符串)Start在开始的位置补
+  const month = (dt.getMonth() + 1 + '').padStart(2, '0')
+  const date = (dt.getDate() + 1 + '').padStart(2, '0')
+
+  const hours = (dt.getHours() + 1 + '').padStart(2, '0')
+  const minutes = (dt.getMinutes() + 1 + '').padStart(2, '0')
+  const seconds = (dt.getSeconds() + 1 + '').padStart(2, '0')
+
+  return `${year}-${month}-${date} ${hours}:${minutes}:${seconds}`
+})
+```
+
+- 调用过滤器 
+
+```
+<el-table-column prop="add_time"
+                         label="创建时间">
+          <template slot-scope="scope">
+            {{scope.row.add_time | dateFormate}}
+          </template>
+        </el-table-column>
+```
+
+##### 5.2路由导航 去别的页面
+
+- 可以直接跳转页面`http://localhost:8080/#/goods/add`
+
+```
+// 添加商品 通过路由导航去别的页面
+goAddGoodPage () {
+	this.$router.push('goods/add')
+}
+```
+
+- 路由
+
+```
+import addGoods from '../components/goods/add.vue'
+ { path: '/goods/add', component: addGoods }
+```
+
+##### 5.3 步骤条与tab栏互联
+
+- 设置基本的步骤条
+
+```
+<!-- 步骤条 -->
+<el-steps :space="200"
+		  :active="activeIndex"		//需要绑定一个data属性的值 能够随时发生变化
+		  finish-status="success">
+	<el-step title="基本信息"></el-step>
+				···
+	<el-step title="完成"></el-step>
+</el-steps>
+```
+
+- 设置基本的tab栏设置为左边 需要`:tab-position="'left'"`中间为`'left'`字符串格式
+
+```
+<!-- 左侧tab栏 -->
+<el-tabs :tab-position="'left'"
+		  v-model="activeIndex">
+	<el-tab-pane label="基本信息">基本信息</el-tab-pane>
+						···
+	<el-tab-pane label="商品内容">商品内容</el-tab-pane>
+</el-tabs>
+```
+
+- 联动【共用一个数据项`activeIndex`】
+
+```
+<!-- 步骤条 -->
+<el-steps :space="200"
+		  :active="activeIndex - 0"		//变成数字 隐式转换
+		  finish-status="success">
+     		···
+</el-steps>
+
+<!-- 左侧tab栏 -->
+<el-tabs :tab-position="'left'"
+		  v-model="activeIndex">			//连接data属性内的activeIndex
+	<el-tab-pane 
+		  name="0"	//自动与el-tabs中的v-model建立链接会把name中的值传入进去
+		  name="1"
+		  ···
+		  name="9"
+		  name="10"
+	</el-tab-pane>
+</el-tabs>
+
+
+<script>
+export default {
+  data () {
+    return {
+      // 步骤条-到第几步
+      activeIndex: '0'			//变成接收的字符串格式
+    }
+  },
+  </script>
+```
+
+- 整个tabs为一个表单所包裹
+
+```
+<el-form>
+	<el-tabs>
+		<el-tab-pane>
+			···
+		</el-tab-pane>
+	</el-tabs>
+</el-form>
+```
+
+- Tag标签页切换触发的函数`before-leave`
+
+```
+<el-tabs :before-leave="beforeLeaveChange"> 	</el-tabs>
+
+methods:{
+    // 判断标签页进行切换
+    beforeLeaveChange (activeName, oldActiveName) {
+      console.log('即将离开的标签页为：' + oldActiveName)
+      console.log('即将进入的标签页为：' + activeName)
+      return false //就不能前往下一个标签页
+    }
+}
+```
+
+- 把字符串 分割 变成数组 
+  - 每一次循环都能得到一个item项，这个item元素项的attr_vals是需要变化的字符串
+  - 三元表达式 如果是空 就返回空数组 则以空格分割为数组
+
+```
+res.data.forEach(item => {
+          item.attr_vals = item.attr_vals === 0 ? [] : item.attr_vals.split(' ')
+})
+```
+
+#### 6. 上传图片
+
+- `action`是对应的文档API地址
+- 手动指定`headers`
+
+```
+ <el-upload :action="uploadURL"			//上传地址
+			:on-preview="imgPreview"	//预览图片
+			:on-remove="imgRemove"		//删除图片
+			list-type="picture"			//以略缩图可操作模式进行展示
+			:headers="headerObj"		//请求头属性
+</el-upload>
+
+data(){
+	return{
+	  // 图片上传地址
+      uploadURL: 'http://127.0.0.1:8888/api/private/v1/upload',
+        // 请求头地址
+      headerObj: {
+        Authorization: window.sessionStorage.getItem('token')
+      }
+	}
+}
+                       
+```
+
+- 上传成功 应该把该文件保存在需要整体打包上传的form表单中
+
+```
+<el-upload :action="uploadURL"
+			:on-preview="imgPreview"
+			:on-remove="imgRemove"
+			list-type="picture"
+			:headers="headerObj"
+			:on-success="imgUploadSuccess">
+</el-upload>
+
+
+<script>
+    // 图片上传成功
+    imgUploadSuccess (response) {
+      const imgInfo = { pic: response.data.tmp_path }
+      this.addForm.pics.push(imgInfo)
+      console.log(this.addForm)
+    }
+</script>
+```
+
+- 删除图片操作
+
+  - 1、获取要删除的临时地址
+  - 2、从pics数组中，找到这个图片对应的索引
+  - 3、调用splice方法，移除
+
+  ```
+      imgRemove (file) {
+        console.log(file)
+        // 1、获取要删除的临时地址
+        const removeImgAddress = file.response.data.tmp_path
+        console.log(removeImgAddress)
+        // 2、从pics数组中，找到这个图片对应的索引
+        const index = this.addForm.pics.findIndex(item =>
+          item.pic === removeImgAddress
+        )
+        // 3、调用splice方法，移除
+        this.addForm.pics.splice(index, 1)
+        console.log(this.addForm)
+      },
+  ```
+
+- 整合提交表单信息
+
+★loadsh进行深拷贝
+
+- join是数组—>字符串
+
+```
+array.join(',')
+```
+
+- split字符串—>数组
+
+```
+str.split(' ')
+```
+
+- 通过编程式导航跳转到goods页面
+
+```
+// 编程式导航跳转到goods页面
+this.$router.push('/goods')
 ```
 
