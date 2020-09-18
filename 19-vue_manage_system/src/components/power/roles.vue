@@ -254,7 +254,7 @@ export default {
     },
     // 删除按钮 删除本条数据
     async removeRoleById (id) {
-      const confirmResult = await this.$confirm('此操作将永久删除该数据, 是否继续?', '提示', {
+      const confirmResult = await this.$confirm('此操作将永久删除该角色, 是否继续?', '提示', {
         confirmButtonText: '确定',
         cancelButtonText: '取消',
         type: 'warning'
@@ -267,12 +267,12 @@ export default {
     },
     // 点击Tag进行删除权限的操作
     async removeRolesTagById (role, rightID) {
-      const tagResult = await this.$confirm('此操作将永久删除该数据, 是否继续?', '提示', {
+      const tagResult = await this.$confirm('此操作将永久删除该权限, 是否继续?', '提示', {
         confirmButtonText: '确定',
         cancelButtonText: '取消',
         type: 'warning'
       }).catch(err => err)
-      if (tagResult !== 'confirm') return this.$message.info('用户取消了删除！')
+      if (tagResult !== 'confirm') return this.$message.info('用户取消了删除操作！')
       const { data: res } = await this.$http.delete(`roles/${role.id}/rights/${rightID}`)
       if (res.meta.status !== 200) this.$message.error('取消权限失败！')
       // 更新列表 防止每次调用数据更新页面
