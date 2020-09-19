@@ -40,6 +40,8 @@ import {
   Image
 } from 'element-ui'
 import TreeTable from 'vue-table-with-tree-grid'
+import Timeline from './timeline/index.js'
+import TimelineItem from './timeline-item/index.js'
 
 Vue.use(Button)
 Vue.use(Form)
@@ -77,6 +79,8 @@ Vue.use(CheckboxGroup)
 Vue.use(Checkbox)
 Vue.use(Upload)
 Vue.use(Image)
+Vue.use(Timeline)
+Vue.use(TimelineItem)
 
 Vue.component('tree-table', TreeTable)
 Vue.prototype.$message = Message
