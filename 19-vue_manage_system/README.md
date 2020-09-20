@@ -1309,3 +1309,24 @@ str.split(' ')
 this.$router.push('/goods')
 ```
 
+#### 7.进度条
+
+- 安装运行依赖`nprogress`
+- 配置`main.js`
+
+```
+import NProgress from 'nprogress'
+import 'nprogress/nprogress.css' // import styles
+
+// 拦截器
+axios.interceptors.request.use((config) => {
+  NProgress.start()
+  config.headers.Authorization = window.sessionStorage.getItem('token')
+  return config
+})
+axios.interceptors.response.use((config) => {
+  NProgress.done()
+  return config
+})
+```
+
