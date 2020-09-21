@@ -1330,3 +1330,241 @@ axios.interceptors.response.use((config) => {
 })
 ```
 
+#### 8.项目优化
+
+##### 8.1 build 编译的时候 取消所有的console
+
+- 安装开发依赖`babel-plugin-transform-remove-console`
+- 在`babel.config.js`中设置
+
+```
+// 发布阶段用到的移除所有console的插件
+const prodPlugins = []
+if (process.env.NODE_ENV === 'production') {
+  prodPlugins.push('transform-remove-console')
+}
+
+
+module.exports = {
+  presets: ['@vue/cli-plugin-babel/preset'],
+  plugins: [
+    ...prodPlugins
+  ]
+}
+
+```
+
+
+
+##### 8.2 生成打包报告
+
+- 命令行格式
+
+```
+vue-cli-service build --report
+```
+
+- UI 运行`build`
+
+##### 8.3 通过`vue.config.js`修改webpack的默认配置
+
+```
+  // 基础格式
+module.exports = {
+  // 选项...
+}
+```
+
+- 因为开发和发布模式 公用一个main.js文件 所以需要分离
+  - 开发模式的入口文件 src/mian-dev.js
+  - 发布模式的入口文件 src/main-prod.js
+    - 采用分离的方式：`configureWebpack`和`chainWebpack`
+    - configureWebpack：通过`操作对象`的形式
+    - chainWebpack：通过`链式编程`的形式
+- 通过chainWebpack自定义打包入口
+
+```
+module.exports = {
+  chainWebpack: (config) => {
+    config.when(process.env.NODE_ENV === 'production', (config) => {
+      config
+        .entry('app')
+        .clear()
+        .add('./src/main-prod.js')
+    })
+    config.when(process.env.NODE_ENV === 'development', (config) => {
+      config
+        .entry('app')
+        .clear()
+        .add('./src/main-dev.js')
+    })
+  }
+}
+```
+
+##### 8.4 通过external加载外部CDN资源
+
+- 因为默认通过import语法导入的第三方依赖包，最终会打包合并到同一个文件中，导致过大
+
+- 通过Webpack的externals节点，配置加载外部CND资源，配置的externals不会被打包
+  - 在`vue.config.js` 发布模式中粘贴
+
+  ```
+        config.set('externals', {
+          vue: 'Vue',
+          'vue-router': 'VueRouter',
+          axios: 'axios',
+          lodash: '_',
+          echarts: 'echarts',
+          nprogress: 'NProgress',
+          'vue-quill-editor': 'VueQuillEditor'
+        })
+  ```
+
+  - 在发布模式的js文件中 删除默认引入的样式表.css
+
+  - 在`publi/index.html`头部引用CND
+
+  ```
+        <!-- nprogress 的样式表文件 -->
+        <link rel="stylesheet" href="https://cdn.staticfile.org/nprogress/0.2.0/nprogress.min.css" />
+        <!-- 富文本编辑器 的样式表文件 -->
+        <link rel="stylesheet" href="https://cdn.staticfile.org/quill/1.3.4/quill.core.min.css" />
+        <link rel="stylesheet" href="https://cdn.staticfile.org/quill/1.3.4/quill.snow.min.css" />
+        <link rel="stylesheet" href="https://cdn.staticfile.org/quill/1.3.4/quill.bubble.min.css" />
+        <script src="https://cdn.staticfile.org/vue/2.5.22/vue.min.js"></script>
+        <script src="https://cdn.staticfile.org/vue-router/3.0.1/vue-router.min.js"></script>
+        <script src="https://cdn.staticfile.org/axios/0.18.0/axios.min.js"></script>
+      <script src="https://cdn.staticfile.org/lodash.js/4.17.11/lodash.min.js"></script>
+        <script src="https://cdn.staticfile.org/echarts/4.1.0/echarts.min.js"></script>
+      <script src="https://cdn.staticfile.org/nprogress/0.2.0/nprogress.min.js"></script>
+        <!-- 富文本编辑器的 js 文件 -->
+      <script src="https://cdn.staticfile.org/quill/1.3.4/quill.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/vue-quill-editor@3.0.4/dist/vue-quill-editor.js"></script>
+  ```
+  
+  - 配置Element-UI
+  
+    - 在main-prod.js中 注释掉按需导入的代码
+    - 在index.html头部区域，通过CDN加载Element-UI的JS和样式.
+  
+    ```
+          <!-- element-ui 的样式表文件 -->
+          <link rel="stylesheet" href="https://cdn.staticfile.org/element-ui/2.8.2/theme-chalk/index.css" />
+          <!-- element-ui 的 js 文件 -->
+          <script src="https://cdn.staticfile.org/element-ui/2.8.2/index.js"></script>
+    ```
+  
+    
+  
+##### 8.5 首页内容的定制
+
+  - 在`chainWebpack`进行定制
+
+  ```
+  module.exports = {
+      chainWebpack:config=>{
+          config.when(process.env.NODE_ENV === 'production',config=>{
+              ......
+              
+              //使用插件
+              config.plugin('html').tap(args=>{
+                  //添加参数isProd
+                  args[0].isProd = true
+                  return args
+              })
+          })
+  
+          config.when(process.env.NODE_ENV === 'development',config=>{
+              config.entry('app').clear().add('./src/main-dev.js')
+  
+              //使用插件
+              config.plugin('html').tap(args=>{
+                  //添加参数isProd
+                  args[0].isProd = false
+                  return args
+              })
+          })
+      }
+  ```
+
+  - 在页面中 根据 `isProd`的值，渲染页面结构
+
+  ```
+   <title><%= htmlWebpackPlugin.options.isProd ? '' : 'dev - ' %>电商后台管理系统</title>
+   
+    <% if(htmlWebpackPlugin.options.isProd){ %>
+      <!-- nprogress 的样式表文件 -->
+      <link rel="stylesheet" href="https://cdn.staticfile.org/nprogress/0.2.0/nprogress.min.css" />
+      ........
+      <!-- element-ui 的 js 文件 -->
+      <script src="https://cdn.staticfile.org/element-ui/2.8.2/index.js"></script>
+      <% } %>
+    </head>
+  ```
+
+  
+
+##### 8.6 路由懒加载
+
+- 安装开发依赖`@babel/plugin-syntax-dynamic-import`包
+- 在`babel.config.js`配置文件中声明该插件
+
+```
+module.exports = {
+  presets: ['@vue/cli-plugin-babel/preset'],
+  plugins: [
+	···
+    ···,
+    '@babel/plugin-syntax-dynamic-import'
+  ]
+}
+
+```
+
+
+
+- 将路由改为按需加载
+
+  - 这个组名就是：’login_home_welcome‘
+
+```
+const Login = () => import(/* webpackChunkName:"login_home_welcome" */ './components/Login.vue')
+```
+
+
+
+```
+// import orders from '../components/order/orders.vue'
+const orders = () => import(/* webpackChunkName:"orders_reports" */ '../components/order/orders.vue')
+// import reports from '../components/report/reports.vue'
+const reports = () => import(/* webpackChunkName:"orders_reports" */ '../components/report/reports.vue')
+// import goods from '../components/goods/goods.vue'
+const goods = () => import(/* webpackChunkName:"goods_addGoods" */ '../components/goods/goods.vue')
+// import addGoods from '../components/goods/add.vue'
+const addGoods = () => import(/* webpackChunkName:"goods_addGoods" */ '../components/goods/add.vue')
+// import categories from '../components/goods/categories.vue'
+const categories = () => import(/* webpackChunkName:"categories_params" */ '../components/goods/categories.vue')
+// import params from '../components/goods/params.vue'
+const params = () => import(/* webpackChunkName:"categories_params" */ '../components/goods/params.vue')
+// import rights from '../components/power/rights.vue'
+const rights = () => import(/* webpackChunkName:"users_rights_roles" */ '../components/power/rights.vue')
+// import roles from '../components/power/roles.vue'
+const roles = () => import(/* webpackChunkName:"users_rights_roles" */ '../components/power/roles.vue')
+// import users from '../components/user/users.vue'
+const users = () => import(/* webpackChunkName:"users_rights_roles" */ '../components/user/users.vue')
+// import welcome from '../components/welcome.vue'
+const welcome = () => import(/* webpackChunkName:"login_home_welcome" */ '../components/welcome.vue')
+// import home from '../components/home.vue'
+const home = () => import(/* webpackChunkName:"login_home_welcome" */ '../components/home.vue')
+// import login from '../components/login.vue'
+const login = () => import(/* webpackChunkName:"login_home_welcome" */ '../components/login.vue')
+```
+
+
+
+​    
+
+
+
+#### 9.项目上线

@@ -62,13 +62,12 @@ export default {
   async mounted () {
     // 3. 基于准备好的dom，初始化echarts实例
     var myChart = echarts.init(document.getElementById('main'))
-
     const { data: res } = await this.$http.get('reports/type/1')
     if (res.meta.status !== 200) { return this.$message.error('获取折线图数据失败！') }
 
     // 4.准备配置项和数据
     const allData = _.merge(res.data, this.options)
-
+    console.log(allData)
     // 5.使用刚指定的配置项和数据显示图表。
     myChart.setOption(allData)
   },
