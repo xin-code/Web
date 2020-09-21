@@ -1568,3 +1568,107 @@ const login = () => import(/* webpackChunkName:"login_home_welcome" */ '../compo
 
 
 #### 9.项目上线
+
+- 通过node创建web服务器
+
+  - 创建node项目(创建一个新的server服务器)
+
+    ![](..\00-常用文件\images\项目上线-创建node.png)
+
+    
+
+  - 打开19-vue_manage_system_server 初始化包管理
+
+    ```
+    npm init -y
+    ```
+
+  - 安装express
+
+    ```
+    npm install express -S
+    ```
+
+  - 把dist目录复制到服务器中
+
+  - 新建一个入口文件app.js
+
+    - 初始化app文件
+
+    ```
+    const express = require('express')
+    const app = express()
+    
+    app.use (express.static('./dist'))
+    
+    app.listen(80,()=>{
+      console.log('成功运行！');
+    })
+    ```
+
+  - 运行 node app.js 如果出现`运行成功！`则表示服务器启动成功【http://127.0.0.1】
+
+- 开启gzip配置
+
+  - 减小文件体积，传输速度更快
+
+    - 安装包
+
+    ```
+    npm install compression -D
+    ```
+
+    - 导入包（在app.js中
+
+    ```
+    const express = require('express')
+    const compression = require('compression')
+    const app = express()
+    
+    // 一定要写在静态托管之前
+    app.use(compression())
+    app.use (express.static('./dist'))
+    
+    app.listen(80,()=>{
+      console.log('成功运行！');
+    })	
+    ```
+
+    
+
+    - 启用中间件
+
+- 配置https服务
+
+  - http协议传输都是明文传输，不安全
+
+  - https对传输协议进行加密，可以防止被中间人窃取，使用更安全
+
+    - 申请SSL证书（https://freessl.cn/）
+
+      ① 进入 https://freessl.cn/ 官网，输入要申请的域名并选择品牌。
+      ② 输入自己的邮箱并选择相关选项。
+      ③ 验证 DNS（在域名管理后台添加 TXT 记录）。
+      ④ 验证通过之后，下载 SSL 证书（ full_chain.pem 公钥；private.key 私钥）。
+
+      ```
+       const https = require('https'); 
+        const fs = require('fs'); 
+        const options = { 
+            cert: fs.readFileSync('./full_chain.pem'), 
+            key: fs.readFileSync('./private.key') 
+        } 
+        https.createServer(options, app).listen(443); 
+      ```
+
+      
+
+- 使用pm2管理应用
+
+  ①在服务器中安装 pm2：npm i pm2 -g
+  ② 启动项目：pm2 start 脚本 --name 自定义名称
+  ③ 查看运行项目：pm2 ls
+  ④ 重启项目：pm2 restart 自定义名称
+  ⑤ 停止项目：pm2 stop 自定义名称
+  ⑥ 删除项目：pm2 delete 自定义名称
+
