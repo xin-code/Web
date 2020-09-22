@@ -5,7 +5,7 @@
       <div>
         <img src="../assets/logo.jpg"
              class="logo">
-        <span>Vue实现的管理系统</span>
+        <span>后台管理系统</span>
       </div>
       <el-button type="info"
                  @click='exit'>退出</el-button>
@@ -109,6 +109,7 @@ export default {
   width: 60px;
   height: 60px;
   border-radius: 50%;
+  margin-left: 5px;
 }
 .el-header {
   background-color: #373d41;
