@@ -1,13 +1,17 @@
 <template>
   <div>
-    <!-- 路由占位符 -->
-    <router-view></router-view>
+    <h1>SPA</h1>
+    <span>{{msg}}</span>
   </div>
 </template>
 
 <script>
 export default {
-
+  data () {
+    return {
+      msg: '单页面传值'
+    }
+  }
 }
 </script>
 

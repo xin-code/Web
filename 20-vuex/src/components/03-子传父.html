@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>子传父</title>
+  </head>
+  <body>
+    <div id="app">
+      <div :style="{fontSize:fontsize+'px'}">{{message}}</div>
+      <son @enlarge="handle"></son>
+    </div>
+  </body>
+
+  <script src="../00-常用文件/vue.js"></script>
+  <script>
+    // 子组件
+    Vue.component('son', {
+      props: ['fruit'],
+      template: `
+      <div>
+      <ul>
+        <li :key="index" v-for="(item,index) in fruit">{{item}}</li>
+      </ul>
+        <button @click="$emit('enlarge')">点击扩大字体</button>
+    </div>`,
+    })
+    // 父组件
+    var vm = new Vue({
+      el: '#app',
+      data: {
+        message: '父组件的内容',
+        fontsize: 10,
+      },
+      methods: {
+        handle: function () {
+          this.fontsize += 5
+        },
+      },
+    })
+  </script>
+</html>
