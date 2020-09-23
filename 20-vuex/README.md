@@ -293,10 +293,10 @@ export default {
    Vue.use(Vuex)
    ```
 
-3. 创建store对象
+3. 创建store对象(出现单独文件夹store文件夹，配置index.js)
 
    ```
-   const store new Vuex.Store({
+   export default new Vuex.Store({
    	//state 中存放的就是全局共享的数据
    	state:{ count:0 }
    })
@@ -313,4 +313,256 @@ export default {
    })
    ```
 
-   
+## 核心概念
+
+安装Vuex时，默认出现的store中`index.js`的配置
+
+```
+export default new Vuex.Store({
+  state: {},
+  mutations: {},
+  actions: {},
+  modules: {}
+})
+```
+
+### 1. State
+
+**作用：提供公共数据源，所有共享数据统一放到 Store的State中进行存储**
+
+```
+export default new Vuex.Store({
+  state: {
+  	count:0
+  },
+})
+```
+
+- 组件访问State中数据的方式
+
+  - :one: 第一种调用方式[根组件]
+
+    **在`template`中this是可以省略的**
+
+    ```
+    this.$store.state.全局数据名称
+    ```
+
+  - :two: 第二种调用方式[子组件]
+
+    - 从vuex中按需导入`mapState`函数
+
+    ```
+    import { mapState } from 'vuex'
+    ```
+
+    - 通过刚才导入的mapState函数，映射为:sunny:computed计算
+
+    ```
+    computed:{
+    	...mapState(['count'])
+    }
+	  
+    <template>
+    	<div>
+    		<h1>当前最新的count值为：{{count}}</h1>		// 直接渲染出来
+    	</div>
+    </template>
+    ```
+  
+  
+
+
+### 2. Mutations
+
+**作用：用来变更State中的数据**
+
+```
+mutations:{
+	add(state){
+		// 变更状态
+		state.count++
+	}
+}
+```
+
+- 在子组件中通过methods方法进行调用mutations
+  - :one: 调用mutations的第一种方法：
+
+    ```
+methods:{
+			handle() {
+		        this.$store.commit('add')
+			}
+}
+    ```
+  
+  - :two: 调用mutations的第二种方法：
+    - 从vuex中按需导入mapMutations
+  
+    ```
+  import { mapMutations } from 'vuex'
+    ```
+    
+    - 通过刚才导入的mapMutations函数，映射为:star:**methods**方法
+    
+    ```
+    methods:{
+    	...mapMutations(['add']),
+    	handle(){
+    	this.add()
+    	}
+    }
+    ```
+    
+  
+- 传递参数
+
+  ```
+  // store 中 index.js配置
+  mutations:{
+  	add(state,step){
+  		// 变更状态
+  		state.count+=step
+  	}
+  }
+  
+  //子组件中的配置
+  methods:{
+  	handle() {
+  		this.$store.commit('add',5)		//传递参数
+  	}
+  }
+  ```
+  
+
+### 3. Actions
+
+**作用：执行异步任务** 同样也是使用`commit`进行修改State中的值
+
+- :one:第一种方法：
+
+```
+// store 中 index.js配置
+actions:{
+	addAsync(context){
+		setTimeout(()=>{				//延迟一秒进行操作
+			context.commit('add')
+		},1000)
+	}
+}
+//子组件中的配置
+methods:{
+	handle() {
+		this.$store.dispatch('addAsync')		//调用actions
+	}
+}
+```
+
+- 传递参数
+
+```
+actions:{
+	addAsync(context,step){				//接收参数
+		setTimeout(()=>{				//延迟一秒进行操作
+			context.commit('addN', step)
+		},1000)
+	}
+}
+//子组件中的配置
+methods:{
+	handle() {
+		this.$store.dispatch('addAsync',5)		//调用actions,传递参数5
+	}
+}
+```
+
+- :two:第二种方法：
+
+  - 从vuex中按需导入mapActions
+
+  ```
+  import { mapActions } from 'vuex'
+  ```
+
+  - 通过刚才导入的mapActions函数，映射为:star: **methods**方法
+
+  ```
+  // store中index.js的actions
+  actions:{
+  subAsyncD (context) {
+  	setTimeout(() => {
+  		context.commit('sub')
+  	}, 1000)
+  },
+  subAsyncND (context, step) {
+  	setTimeout(() => {
+  		context.commit('subN', step)
+  	}, 1000)
+  }
+  
+  
+  methods:{
+  	// 此处定义的数组内的为store中index.js中actions中的名字
+   	...mapActions(['subAsyncD', 'subAsyncND']),
+  	// 定义的方法subNumD 然后调用方法
+  	subNumD () {
+        this.subAsyncD()
+      },
+  	subNumND () {
+        this.subAsyncND(5)
+      }
+  }
+  ```
+  
+
+
+### 4. Getters
+
+**作用：对store中的数据进行加工处理变成新的数据 **
+
+- store中index.js中的getters
+
+```
+export default new Vuex.Store({
+  state: {
+    count: 0
+  },
+  getters: {
+    showNum (state) {
+      return '当前的值为：[+"state.count"+]'
+    }
+  }
+})
+```
+
+- :one: 调用getters的第一种方法：
+
+```
+this.$store.getters.名称(showNum)
+```
+
+- :two:调用getters的第二种方法：
+
+  - 从vuex中按需导入mapGetters
+
+    ```
+    import {mapGetters} from 'vuex'
+    ```
+
+  - 通过刚才导入的mapGetters函数，映射为:sunny: **computed**计算
+
+    ```
+    computed:{
+    	// 此处定义的数组内的为store中index.js中getters中的名字
+     	...mapActions(['showNum'])
+    }
+    
+    
+    <template>
+      <div>
+        <h1>{{showNum}}</h1>		// 直接渲染出来
+      </div>
+    </template>
+    ```
+
