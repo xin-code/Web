@@ -8,11 +8,13 @@ import sonToFatherSon from '../components/sonToFatherSon.vue'
 import father from '../components/father.vue'
 import brotherone from '../components/brotherone.vue'
 import brothertwo from '../components/brothertwo.vue'
+import index from '../components/index.vue'
 
 Vue.use(VueRouter)
 
 const routes = [
-  { path: '/', redirect: '/fatherToSonFather' },
+  { path: '/', redirect: '/index' },
+  { path: '/index', component: index },
   { path: '/fatherToSonFather', component: fatherToSonFather },
   { path: '/fatherToSonSon', component: fatherToSonSon },
   { path: '/singlePageApplication', component: singlePageApplication },
