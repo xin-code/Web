@@ -9,6 +9,9 @@ import father from '../components/father.vue'
 import brotherone from '../components/brotherone.vue'
 import brothertwo from '../components/brothertwo.vue'
 import index from '../components/index.vue'
+import add from '../components/add.vue'
+import sub from '../components/sub.vue'
+import compute from '../components/05-compute.vue'
 
 Vue.use(VueRouter)
 
@@ -22,7 +25,10 @@ const routes = [
   { path: '/sonToFatherSon', component: sonToFatherSon },
   { path: '/father', component: father },
   { path: '/brotherone', component: brotherone },
-  { path: '/brothertwo', component: brothertwo }
+  { path: '/brothertwo', component: brothertwo },
+  { path: '/add', component: add },
+  { path: '/sub', component: sub },
+  { path: '/compute', component: compute }
 ]
 
 const router = new VueRouter({
