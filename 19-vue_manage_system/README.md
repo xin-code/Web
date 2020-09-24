@@ -36,9 +36,41 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 
 :rainbow:前端：Vue的SPA(Single-Page Application)项目
 
-:rainbow:技术栈：Vue+Vue-router+Element-UI+Axios+Echarts
+:rainbow:技术栈：Vue+Vue-router+Element-UI+Axios+Echarts+富文本(quill-editor)
 
+# 项目截图
 
+#### 1.登录页
+
+![登陆页面](E:\Git\Web\19-vue_manage_system\public\login.png)
+
+#### 2.欢迎页
+
+![欢迎页](E:\Git\Web\19-vue_manage_system\public\home.png)
+
+#### 3.用户管理
+
+![用户列表](E:\Git\Web\19-vue_manage_system\public\user.png)
+
+#### 4.权限管理
+
+![角色列表](E:\Git\Web\19-vue_manage_system\public\role.png)
+
+![权限列表](E:\Git\Web\19-vue_manage_system\public\right.png)
+
+#### 5.商品管理
+
+![添加商品](E:\Git\Web\19-vue_manage_system\public\addgoods.png)
+
+![商品分类](E:\Git\Web\19-vue_manage_system\public\goods.png)
+
+#### 6.订单管理
+
+![订单列表](E:\Git\Web\19-vue_manage_system\public\order.png)
+
+#### 7.数据统计
+
+![数据报表](E:\Git\Web\19-vue_manage_system\public\report.png)
 
 ## 前台初始化项目
 
