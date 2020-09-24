@@ -3,7 +3,7 @@
     <div class="login_box">
       <!-- 头像 -->
       <div class="img_box">
-        <img src="../assets/logo.png">
+        <img src="../assets/logo.jpg">
       </div>
       <!-- 登陆 -->
       <el-form class="login_form"
@@ -42,8 +42,8 @@ export default {
   data () {
     return {
       loginForm: {
-        username: '',
-        password: ''
+        username: 'admin',
+        password: '123456'
       },
       loginFormRules: {
         username: [
