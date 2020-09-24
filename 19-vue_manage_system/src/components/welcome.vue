@@ -7,7 +7,7 @@
     </el-breadcrumb>
 
     <el-card>
-      <h1>welcome</h1>
+      <h1>你好！admin 管理员！</h1>
     </el-card>
   </div>
 </template>
