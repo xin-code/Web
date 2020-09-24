@@ -1,0 +1,51 @@
+<!--pages/home/home.wxml-->
+<view class="v1">
+  绘制一个占屏幕一般的盒子
+</view>
+
+<image src="/assets/images/logo.jpg" mode="aspectFit"></image>
+<image src="https://wx.qlogo.cn/mmhead/Q3auHgzwzM5d1Ztqs6wmh5Fjqvay5f0hiaqtOx1NXhic30acWOVFK4ng/0"></image>
+
+<input type="text" placeholder="Hello Wechat!" />
+<input type="text" value="Hello Wechat!" />
+<input type="password" value="123456" />
+<input type="text" disabled value="chat" />
+<input type="text" maxlength="-1" />
+<view>
+  <button>默认大小按钮</button>
+  <button size="mini">我可以改变大小</button>
+  <button size="mini" type="primary">primary</button>
+  <button size="mini" type="warn">warn</button>
+  <button size="mini" type="primary" plain>镂空</button>
+  <button size="mini" disabled>禁用</button>
+  <button size="mini" loading>加载</button>
+</view>
+<view>
+  <text selectable="true">我才是真正的首页！</text>
+</view>
+<view>
+  <text space="ensp">1    1</text>
+</view>
+<view>
+  <text space="emsp">2    2</text>
+</view>
+<view>
+  <text space="nbsp">3    3</text>
+</view>
+<view>
+  <text>44</text>
+</view>
+<view>
+  <text decode>&nbsp;</text>
+</view>
+<view hover-class="clicktopink">
+  点我出现粉色
+</view>
+<view hover-class="clicktopink" hover-start-time="0" hover-stay-time="1000">
+  点我马上出现粉色，并且持续1秒
+</view>
+<view hover-class="clicktoyellow">
+  <view hover-class="clickblue" hover-stop-propagation="true">
+    点我出现蓝色
+  </view>
+</view>

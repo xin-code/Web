@@ -1,0 +1,9 @@
+{
+  "usingComponents": {},
+ "navigationBarBackgroundColor": "#999",
+ "navigationBarTextStyle": "black",
+ "navigationBarTitleText": "这是练习页面",
+ "backgroundColor": "#999",
+ "backgroundTextStyle": "dark",
+ "enablePullDownRefresh": true
+}

@@ -1,0 +1,21 @@
+/* pages/home/home.wxss */
+@import '../../assets/css/global.wxss';
+.clicktopink {
+  background-color: pink;
+}
+.clicktoyellow {
+  background-color: yellow;
+  width: 400px;
+  height: 400px;
+}
+.clickblue {
+  background-color: blue;
+  width: 100px;
+  height: 100px;
+}
+
+.v1 {
+  width: 375rpx;
+  height: 375rpx;
+  background-color: violet;
+}
