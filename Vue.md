@@ -265,7 +265,7 @@ methods: {
 
 通过`事件中心`管理组件进行通信
 
-![](00-常用文件\images\Vue组件间的传值.PNG)
+![](00-常用文件/images/Vue组件间的传值.PNG)
 
 ```
 创建一个新的实例对象 在eventHub就是事件中心
@@ -290,7 +290,7 @@ eventHub.$emit('自定义事件名称',参数)
 
 1.  父组件内容向子组件传递内容，最终呈现出来
 
-   ![](00-常用文件\images\组件插槽.jpg)
+   ![](00-常用文件/images/组件插槽.jpg)
 
    ```
    插槽位置：位于子组件中
@@ -429,9 +429,9 @@ Vue.component('all',{		//全局组件
 
 ### URL地址格式
 
-![](\00-常用文件\images\传统URL地址.JPG)
+![](00-常用文件/images/传统URL地址.JPG)
 
-![](\00-常用文件\images\Restful的URL地址.JPG)
+![](00-常用文件/images/Restful的URL地址.JPG)
 
 ### Promise用法
 
@@ -782,7 +782,7 @@ app.get('/axios-json', (req, res) => {
 
    - 在请求发送之前设置一些信息
 
-   ![](00-常用文件\images\axios请求拦截器.png)
+   ![](00-常用文件/images/axios请求拦截器.png)
 
    ```
    添加一个请求拦截器
@@ -798,9 +798,8 @@ app.get('/axios-json', (req, res) => {
 
    - 在获取数据之前对数据进行加工
 
-   
+   ![](00-常用文件/images/axios响应拦截器.png)
 
-   ![](00-常用文件\images\axios响应拦截器.png)
 
 ```
 添加一个响应拦截器
@@ -858,7 +857,7 @@ fun().then(function(data) {
 
 本质：`用户事件`与`事件处理函数`之间的对应关系
 
-<img src="00-常用文件\images\前端路由.png"/>
+![](00-常用文件/images/前端路由.png)
 
 1. SPA(Single Page Application)单页面应用程序
 
@@ -1185,11 +1184,11 @@ router.push({path:'/A'},query:{uname:'zs'})
 
 - 浏览器模块化规范
 
-![](E:\Git\Web\00-常用文件\images\浏览器端模块化规范.png)
+![](00-常用文件/images/浏览器端模块化规范.png)
 
 - 服务器端模块化规范
 
-![](E:\Git\Web\00-常用文件\images\服务器端模块化规范.png)
+![](00-常用文件/images/服务器端模块化规范.png)
 
 ### ES6模块化
 
@@ -1389,7 +1388,7 @@ module.exports = {
 - webpack默认只能打包`.js`的模块文件
 - 非js模块文件需要调用loader加载器
 
-![](00-常用文件\images\webpack打包处理文件模块.png)
+![](00-常用文件/images/webpack打包处理文件模块.png)
 
 ### 打包处理css文件
 
@@ -1660,7 +1659,7 @@ const vm = new Vue({
 
 ### Vue脚手架生成的项目结构分析
 
-![](00-常用文件\images\Vue脚手架生成的项目结构分析.png)
+![](00-常用文件/images/Vue脚手架生成的项目结构分析.png)
 
 ### Vue脚手架—自定义配置
 
