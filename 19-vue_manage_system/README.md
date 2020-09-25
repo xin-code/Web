@@ -42,35 +42,35 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 
 #### 1.登录页
 
-![](\public\login.png)
+![](./public/login.png)
 
 #### 2.欢迎页
 
-![](\public\home.png)
+![](./public/home.png)
 
 #### 3.用户管理
 
-![](\public\user.png)
+![](./public/user.png)
 
 #### 4.权限管理
 
-![](\public\role.png)
+![](./public/role.png)
 
-![](\public\right.png)
+![](./public/right.png)
 
 #### 5.商品管理
 
-![](\public\addgoods.png)
+![](./public/addgoods.png)
 
-![](\public\goods.png)
+![](./public/goods.png)
 
 #### 6.订单管理
 
-![](\public\order.png)
+![](./public/order.png)
 
 #### 7.数据统计
 
-![](\public\report.png)
+![](./public/report.png)
 
 ## 前台初始化项目
 
