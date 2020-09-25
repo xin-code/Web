@@ -42,35 +42,35 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 
 #### 1.登录页
 
-![](E:\Git\Web\19-vue_manage_system\public\login.png)
+![](\public\login.png)
 
 #### 2.欢迎页
 
-![](E:\Git\Web\19-vue_manage_system\public\home.png)
+![](\public\home.png)
 
 #### 3.用户管理
 
-![](E:\Git\Web\19-vue_manage_system\public\user.png)
+![](\public\user.png)
 
 #### 4.权限管理
 
-![](E:\Git\Web\19-vue_manage_system\public\role.png)
+![](\public\role.png)
 
-![](E:\Git\Web\19-vue_manage_system\public\right.png)
+![](\public\right.png)
 
 #### 5.商品管理
 
-![](E:\Git\Web\19-vue_manage_system\public\addgoods.png)
+![](\public\addgoods.png)
 
-![](E:\Git\Web\19-vue_manage_system\public\goods.png)
+![](\public\goods.png)
 
 #### 6.订单管理
 
-![](E:\Git\Web\19-vue_manage_system\public\order.png)
+![](\public\order.png)
 
 #### 7.数据统计
 
-![](E:\Git\Web\19-vue_manage_system\public\report.png)
+![](\public\report.png)
 
 ## 前台初始化项目
 
