@@ -22,7 +22,7 @@ const bookSchema = mongoose.Schema({
     // 固定格式
     type:mongoose.Schema.Types.ObjectId,
     // 从哪个表单引用(★是表单名 不是构造函数名)
-    refs:'authorInfo'
+    ref:'authorInfo'
   },
   publish:Number
 })

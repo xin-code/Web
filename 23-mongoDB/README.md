@@ -267,8 +267,8 @@ const bookSchema = mongoose.Schema({
   author:{
     // 固定格式
     type:mongoose.Schema.Types.ObjectId,
-    // 从哪个表单引用(★是表单名 不是构造函数名)
-    refs:'authorInfo'
+    // 从哪个表单引用ref(★是表单名 不是构造函数名)
+    ref:'authorInfo'
   },
   publish:Number
 })
@@ -322,11 +322,44 @@ book.find().populate('author').then(result=>console.log(result))
 
   - 连接数据库
 
-  ```
-  mongoose.connect('mongodb://localhost/simple_manage',{ useNewUrlParser: true, useUnifiedTopology: true  })
-          .then(()=>console.log('连接数据库成功！'))
-          .catch(()=>console.log('连接数据库失败！'))
-  ```
+    - 默认连接端口是`27017`
+
+    ```
+    mongoose.connect('mongodb://localhost/simple_manage',{ useNewUrlParser: true, useUnifiedTopology: true  })
+            .then(()=>console.log('连接数据库成功！'))
+            .catch(()=>console.log('连接数据库失败！'))
+    ```
+
+    - 创建规则
+
+    ```
+    // 创建规则
+    const spmSchema = mongoose.Schema({
+      name:{
+        type:String,
+        require:true,
+      },
+      age:type:Number,
+      password:type:String,
+      email:String,
+      hobbies:[String]
+    })
+    ```
+
+    - 应用规则
+
+    ```
+    // 应用规则
+    const simple_manage = mongoose.model('spmList',spmSchema)
+    ```
+
+    - 把数据导入数据库内
+
+    ```
+    PS E:\simple_manage> mongoimport -d simple_manage -c spmLists --file ./user.json
+    2020-09-30T08:59:12.243+0800    connected to: localhost
+    2020-09-30T08:59:12.454+0800    imported 6 documents
+    ```
 
 - 当用户访问/list时，将所有用户信息查询出来
 
@@ -335,8 +368,10 @@ book.find().populate('author').then(result=>console.log(result))
     - 获取请求方式：
 
       ```
-      // 获取请求方式
+      app.on('request',async (req,res)=>{
+      // 获取请求方式require 请求
       const method = req.method;
+    })
       ```
 
     - 获取请求地址：
@@ -344,25 +379,46 @@ book.find().populate('author').then(result=>console.log(result))
       :star:`req.url`存储的是带GET请求参数的请求地址
 
       获得纯粹的请求地址使用：:one:导入url模块:two:`url.parse(req.url)`进行处理，返回一个对象，进行结构赋值
-
+    
       ```
       const url = require('url')
       
       // 获取请求地址 pathname
+    const { pathname } = url.parse(req.url)
+      ```
+
+    - （路由功能）进行请求地址的判断
+    
+      ```
+      // 为服务器对象添加请求事件
+      app.on('request', async (req,res)=>{
+      
+        // 获取请求方式
+        const method = req.method;
+    
+        // 请求地址
       const { pathname } = url.parse(req.url)
-      ```
-
-    - 进行判断
-
-      ```
+        
+        //（路由功能）进行请求地址的判断
       if(method == 'GET'){
-      	// 呈现列表页面
-      	if(pathname == '/list'){
-      	
-      	}
-      }else if(method == 'POST')
+      
+          // 判断是否是/list列表
+          if(pathname == '/list'){
+          	// 所有数据
+            const allInfo = await simple_manage.find();
+            console.log(allInfo);
+            
+            // 打开http://localhost:3000/list可以进行查看
+            const list = `模板字符串 把网页源代码复制进来`
+            res.end(list);
+      	  }
+      }else if(method =='POST'){
+      
+       }
+          
+      })
       ```
-
+      
       
 
   ```
