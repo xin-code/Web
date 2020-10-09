@@ -38,16 +38,40 @@
 11.  ajax查询
 
 ##  JS的基本数据类型有哪些？
-基本数据类型：Number、String、Boolean、Null、 Undefined、Symbol（ES6）bigInt（ES10），这些类型可以直接操作保存在变量中的实际值。
+基本数据类型：Number、String、Boolean、Null、 Undefined、Symbol（ES6，表示独一无二的值）bigInt（ES10），这些类型可以直接操作保存在变量中的实际值。
 
 引用数据类型：Object（在JS中除了基本数据类型以外的都是对象，数据是对象，函数是对象，正则表达式是对象）
 
 ## 面向对象和面向过程的区别
-面向过程：为了把大象装进冰箱，需要3个过程。1) 把冰箱门打开（得到打开门的冰箱）2) 把大象装进去（打开门后，得到里面装着大象的冰箱）3) 把冰箱门关上（打开门、装好大象后，获得关好门的冰箱）每个过程有一个阶段性的目标，依次完成这些过程，就能把大象装进冰箱。
-面向对象：了把大象装进冰箱，需要做三个动作(行为)每个动作有一个执行者，它就是对象。
-1:冰箱.开门()冰箱.装进(大象)冰箱.关门()
+**面向过程：**
+
+1. 把冰箱门打开（得到打开门的冰箱）
+
+2. 把大象装进去（打开门后，得到里面装着大象的冰箱）
+
+3. 把冰箱门关上（打开门、装好大象后，获得关好门的冰箱）
+
+每个过程有一个阶段性的目标，依次完成这些过程，就能把大象装进冰箱。
+
+**面向对象：**
+
+把大象装进冰箱，需要做三个动作(行为)每个动作有一个执行者，它就是对象。
+
+1. 冰箱.开门（）
+
+2. 冰箱.装进（大象）
+
+3. 冰箱.关门（）
 
 ## 如何实现一个promise
+
+用来解决多层回调嵌套（回调地狱）的解决方案
+
+## 异步编程
+
+1. 拆解function，将各步拆解为单个function
+2. Promise
+3. async / await
 
 ## 事件流
 
@@ -55,16 +79,31 @@
 
 ## 原型链
 
+原型：一个函数可以看成一个类，原型是所有类都有的一个属性，原型的作用就是给这个类的每一个对象都添加一个统一的方法
+
+原型链：每个对象都有一个`__proto__`，它指向它的prototype原型对象，而prototype原型对象又具有一个自己的原型对象，就这样层层向上直到一个对象的原型prototype为`null` 这个查询的路径就是原型链
+
+1. 每个构造函数内部都有一个`prototype`指向原型对象
+
+![](00-常用文件/images/原型链-1.png)
+
+2. 该原型对象有一个`constructor`指回构造函数本身，
+
+![](00-常用文件/images/原型链-2.png)
+
+3.每一个构造函数new出来的实例person也天生带有`__proto__`属性，指向原型对象
+
+![](00-常用文件/images/原型链-3.png)
+
+4. 总览图
+
 ![](00-常用文件/images/原型链.png)
 
-## 内存泄漏
 
-## JavaScript内存回收机制
 
-## 作用域
 
-## TCP三次握手
-## 四次挥手
+
+
 
 ## https 和 http 的不同之处
 
@@ -93,31 +132,13 @@
 ### 增强型表单
 
 1.  新的input type 如：**number**、**url**、**email**、**range**、**color**、**date**
-
-2.  新的表单元素
-```html5
-<input><textarea><select><option>....
-<datalist>：数据列表，为input提供输入建议列表
-<progress>：进度条，展示连接/下载进度
-<meter>：刻度尺/度量衡，描述数据所处的阶段，红色(危险)=>黄色(警告)=>绿色(优秀)
-<output>：输出内容，语义上表示此处的数据是经过计算而输出得到的
-```
-
-3.  表单元素的新属性
-
+2.  表单元素的新属性
 - 通用属性：
   - placeholder：占位提示文字
   -  mutiple：是否允许多个输入
   - autofocus：自动获得输入焦点
   - form：指定输入元素所从属的表单，可以实现输入框放在表单外部并能被提交的效果
 
-- 验证属性(了解即可)：
-  -  required：输入框内容不能为空
-  - min：允许输入的数字最小值
-  -   max：允许输入的数字最大值
-  - minlength：允许输入的字符串最小长度
-  - maxlength：允许输入的字符串最大长度
-  -  pattern：输入框内容必须符合的正则表达式
 
 ### 视频和音频
 
@@ -156,23 +177,7 @@ Canvas与SVG的不同：
 (4)Canvas内容不方便绑定事件处理；SVG内容方便进行事件绑定
 ```
 
-### 拖放API
-
-| 拖动生命周期 | 属性名      | 描述                                           |
-| ------------ | ----------- | ---------------------------------------------- |
-| 拖动开始     | ondragstart | 在拖动操作开始时执行脚本                       |
-| 拖动过程中   | ondrag      | 只要脚本在被拖动就运行脚本                     |
-| 拖动过程中   | ondragenter | 当元素被拖动到一个合法的防止目标时，执行脚本   |
-| 拖动过程中   | ondragover  | 只要元素正在合法的防止目标上拖动时，就执行脚本 |
-| 拖动过程中   | ondragleave | 当元素离开合法的防止目标时                     |
-| 拖动结束     | ondrop      | 将被拖动元素放在目标元素内时运行脚本           |
-| 拖动结束     | ondragend   | 在拖动操作结束时运行脚本                       |
-
--  注意：拖放API事件句柄中所有的事件对象都有一个dataTransfer属性（数据运输对象），用于在源对象和目标对象间传递数据。
-  -   源对象：event.dataTransfer.setData(key, value)
-  -   目标对象：var value = event.dataTransfer.getData(key)
-
-### WebStorage
+## WebStorage
 
  **(1)服务器端存储**
 
@@ -239,23 +244,6 @@ CSS3盒子模型:box-sizing: border-box;
         div[class*="ccoonn"] {
             color: green;
         }
-    </style>
-</head>
-
-<body>
-    <button>提交</button>
-    <button>提交</button>
-    <button disabled="disabled">提交</button>
-    <button disabled="disabled">提交</button>
-    <input type="text" name="" id="" value="请输入文字">
-    <input type="text" name="" id="" value="请输入文字">
-    <input type="text" name="" id="" value="请输入文字">
-    <div class="icon1">图标1</div>
-    <div class="icon2">图标2</div>
-    <div class="icon3">图标3</div>
-    <div class="1iccoonn">图标4</div>
-    <div class="2iccoonn">图标4</div>
-    <div class="3iccoonn">图标4</div>
 ```
 
 ### 伪类选择器
@@ -265,15 +253,7 @@ CSS3盒子模型:box-sizing: border-box;
        ul li:first-child {
             background-color: pink;
         }
-        
-        ul li:last-child {
-            background-color: purple;
-        }
-        
-        ul li:nth-child(5) {
-            background-color: blue;
-        }
-        
+
         ul li:nth-child(2n) {
             background-color: black;
         }
@@ -461,3 +441,74 @@ for(var key in obj){
 
 ### class
 
+
+
+
+
+## 清除浮动的方法
+
+1. 空div标签 结尾处添加 clear:both
+
+2. 父级div添加height
+
+3. 父级div添加overflow:hidden
+
+4. 父级div定义伪类
+
+   ```
+   .clearfix:after{
+   	content:"";
+   	display:block;
+   	visibility:hidden;
+   	height:0;
+   	line-height:0;
+   	clear:both;
+   }
+   .clearfix{
+   	zoom:1
+   }
+   ```
+
+5. 双伪类元素法
+
+   ```
+   .clearfix:befor,
+   .clearfix:after{
+   	content:"";
+   	display:block;
+   	clear:both;
+   }
+   .clearfix{
+   	zoom:1
+   }
+   ```
+
+   
+
+## 水平居中的方法
+
+1. 子绝父相+转换transform
+
+   ```
+   .father{
+   	display:relative
+   }
+   .son {
+   	display:absolute
+   	left:50%
+   	top:50%
+   	transform:translate(-50%,-50%)
+   }
+   ```
+
+2. flex+justify-content+align-items
+
+   ```
+   .father{
+   	display:flex;
+   	justify-content:center;	//主轴
+   	align-items:center;		//侧轴
+   }
+   ```
+
+   
