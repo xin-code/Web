@@ -1,9 +1,9 @@
 {
   "usingComponents": {},
- "navigationBarBackgroundColor": "#999",
- "navigationBarTextStyle": "black",
- "navigationBarTitleText": "这是练习页面",
- "backgroundColor": "#999",
+ "navigationBarBackgroundColor": "#000",
+ "navigationBarTextStyle": "white",
+ "navigationBarTitleText": "联系我们",
+ "backgroundColor": "#ccc",
  "backgroundTextStyle": "dark",
  "enablePullDownRefresh": true
 }
