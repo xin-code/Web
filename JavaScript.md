@@ -110,6 +110,30 @@ string.trim()
 arr.join(',')	//用逗号拼接
 ```
 
+## call()和apply()
+
+call()和apply()方法的作用相同，但是接收参数方法不同
+
+**call()方法**第一个参数是this值没有变化，变化的是其余参数都直接传递给函数
+
+```
+function add(c, d){ 
+return this.a + this.b + c + d; 
+} 
+var o = {a:1, b:3}; 
+add.call(o, 5, 7); // 1 + 3 + 5 + 7 = 16 
+```
+
+**apply()方法**第一个参数是this值没有变化，变化的是其余参数【数组】
+
+```
+function add(c, d){ 
+return this.a + this.b + c + d; 
+} 
+var o = {a:1, b:3}; 
+add.apply(o, [10, 20]); // 1 + 3 + 10 + 20 = 34 
+```
+
 
 
 ## 数组转字符串
