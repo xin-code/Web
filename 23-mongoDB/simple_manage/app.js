@@ -1,4 +1,5 @@
 // 引入模块
+const { Int32 } = require('bson')
 const http = require('http')
 const mongoose = require('mongoose')
 const url = require('url')
@@ -49,11 +50,11 @@ app.on('request', async (req,res)=>{
     // 判断是否是/list列表
     if(pathname == '/list'){
       // 所有的用户信息
-      const all = await allInfo.find()
+      let all = await allInfo.find()
       console.log(all);
 
       // 头部信息-模板字符串
-      const list = `
+      let list = `
       <!DOCTYPE html>
       <html lang="en">
       <head>
