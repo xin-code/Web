@@ -42,35 +42,35 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 
 #### 1.登录页
 
-![](./public/login.png)
+![](../00-常用文件/images/Vue管理系统/login.png)
 
 #### 2.欢迎页
 
-![](./public/home.png)
+![](../00-常用文件/images/Vue管理系统/home.png)
 
 #### 3.用户管理
 
-![](./public/user.png)
+![](../00-常用文件/images/Vue管理系统/user.png)
 
 #### 4.权限管理
 
-![](./public/role.png)
+![](../00-常用文件/images/Vue管理系统/role.png)
 
-![](./public/right.png)
+![](../00-常用文件/images/Vue管理系统/right.png)
 
 #### 5.商品管理
 
-![](./public/addgoods.png)
+![](../00-常用文件/images/Vue管理系统/addgoods.png)
 
-![](./public/goods.png)
+![](../00-常用文件/images/Vue管理系统/goods.png)
 
 #### 6.订单管理
 
-![](./public/order.png)
+![](../00-常用文件/images/Vue管理系统/order.png)
 
 #### 7.数据统计
 
-![](./public/report.png)
+![](../00-常用文件/images/Vue管理系统/report.png)
 
 ## 前台初始化项目
 
