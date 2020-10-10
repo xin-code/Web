@@ -1176,6 +1176,59 @@ router.push({path:'/A'},query:{uname:'zs'})
 
 
 
+### 路由守卫导航
+
+登陆按钮的方法
+```
+    loginbtn () {
+      // 预校验
+      this.$refs.loginRef.validate(async (valid) => {
+        // console.log(valid)
+        if (!valid) { return }
+        // 数据解构
+        const { data: res } = await this.$http.post('/login', this.loginForm)
+        console.log(res)
+        if (res.meta.status !== 200) return this.$message.error('登陆失败')
+        this.$message.success('恭喜您，登陆成功！')
+        // 保存token值 到 sessionStorage 中
+        window.sessionStorage.setItem('token', res.data.token)
+        // 编程式导航 转到index页面
+        this.$router.push('/index')
+      })
+    },
+```
+
+通过`token`值的有无进行判断是否正常登录
+
+
+
+![](00-常用文件/images/路由导航守卫.png)
+
+
+
+
+
+在`router文件`中
+
+```
+// 挂载路由导航守卫
+router.beforeEach((to, from, next) => {
+  // 如果正常登录 直接放行
+  if (to.path === '/login') return next()
+  // 从SessionStroage中获取到token值
+  const tokenStr = window.sessionStorage.getItem('token')
+  // 没有token值 强制跳转
+  if (!tokenStr) return next('/login')
+  next()
+})
+```
+
+
+
+
+
+
+
 ## 前端模块化
 
 **模块化**：就是把单独的一个功能封装到一个模块(文件)中，模块之间相互隔离，但是可以通过特定的接口公开内部成员，也可以依赖别的模块
