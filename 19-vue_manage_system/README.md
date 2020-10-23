@@ -104,7 +104,10 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 - 字体引用
 
 ```
-不管做怎么，首先需要导入到main.js中import './assets/fonts/iconfont.css'
+首先需要导入到main.js中
+
+import './assets/fonts/iconfont.css'
+
 <el-input prefix-icon="iconfont icon-user"></el-input>
 ```
 
@@ -116,7 +119,6 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 <el-button @click="reset">重置</el-button>
 <el-form>
 
-行为
 <script>
 export default {
   methods: {
@@ -159,7 +161,7 @@ if (res.meta.status !== 200) return this.$message.error('登陆失败')
 this.$message.success('恭喜您，登陆成功！')
 ```
 
-- 登录成功过后的tokenb保存在客户端的SessionStorage中
+- 登录成功过后的token保存在客户端的SessionStorage中
 
 ```
 window.sessionStorage.setItem('token', res.data.token)
@@ -230,6 +232,25 @@ this.$router.push('/login')
   justify-content: space-between;(左右贴边对齐)
   align-items: center;(上下居中对齐)
   ```
+  
+- 嵌套Flex布局
+
+  - 图片在el-header中已经进行flex布局，已经进行左右贴边对齐justify-content: space-between;
+  - 文字旁边的文字，想要达到与图片居中对齐，可以设置字体span标签的flex布局 在跟一个align-items: center; 居中对齐
+
+  ```
+  .el-header {
+    display: flex;
+    justify-content: space-between;(左右贴边对齐)
+    align-items: center;
+    > div {
+      display: flex;
+      align-items: center;
+    }
+  }
+  ```
+
+  
 
 #### 1. 左侧菜单布局
 
@@ -253,13 +274,13 @@ this.$router.push('/login')
 
 - 通过接口获取菜单数据
 
-  - 通过axios请求拦截器添加token
+  - 通过axios请求拦截器添加token，在挂载之前进行预处理
 
-    需要授权API，请求头中使用authorization字段提供token
+    需要授权API，请求头中使用authorization字段提供token【在请求的时候，进行预处理】
 
   ```
   //axios预处理
-  //[interceptors]拦截器[request]请求拦截器[use]挂在函数
+  //拦截器[interceptors]请求拦截器[request]挂在函数[use]
   axios.interceptors.request.use(config=>{
   	//添加token验证的authorization字段
   	config.headers.Authorization = window.sessionStorage.getItem('token')
@@ -268,7 +289,7 @@ this.$router.push('/login')
   ```
 
   - 获取所有菜单
-  
+
   ```
   <script>
   export default {
@@ -292,42 +313,255 @@ this.$router.push('/login')
     }
   }
   ```
-  
+
   - UI绘制（双重for循环）
-  
+
   ```
-  //一级菜单
+  //外层for循环渲染一级菜单
   <el-submenu :index="item.id+''" v-for="item in menuList" :key="item.id">
   <span>{{item.authName}}</span>
   
-  //二级菜单
+  //内层for循环渲染二级菜单
   <el-menu-item :index="subitem.id+''" v-for="subitem in item.children" :key="subitem.id">
   <span>{{subitem.authName}}</span>
   ```
-  
+
+  - 每一个一级菜单 文字前面的图标不同
+
+    - 解决方案：
+      1. 因为每个一级菜单是通过for循环自动生成，修改图标 是利用对象的键值对来解决
+      2. 每一项的id作为key，值作为图标
+
+    ```
+    // 一级菜单图标动态变化
+      <i :class="iconList[item.id]"></i>
+    
+    data () {
+        return {
+          // 导航栏数据
+          menuList: [],
+          iconList: {
+            125: 'iconfont icon-user',
+            103: 'iconfont icon-tijikongjian',
+            101: 'iconfont icon-shangpin',
+            102: 'iconfont icon-danju',
+            145: 'iconfont icon-baobiao'
+          }
+        }
+      },
+    ```
+
+  - 每个边框线没有对齐，有瑕疵
+
+    - 用调试工具查看，可以看到是el-menu有边框的问题，变成none即可
+
+      ```
+      .el-menu {
+        border: none;
+      }
+      ```
+
+  - 字间距：
+
+    ```
+    letter-spacing:0.2em
+    ```
+
+  - SPA，单页面模式，在指定的区域显示不同的内容（路由占位符）
+
+    - 在父路由（index）下设置一个children子路由规则，嵌套显示一个（Welcome）组件
+
+    - 新建一个Welcome的vue文件
+
+    - 在router的index.js中设置 :star:children属性是一个**数组**
+
+      ```
+      const routes = [
+        {
+          path: '/index',
+          component: index,
+          redirect: '/welcome',
+          children:
+          [{ path: '/welcome', component: welcome }]
+        }
+      ]
+      ```
+
+    - 在index父级文件中填写路由占位符 <router-view></router-view>
+
   - 为每一个菜单增加点击router事件
+
     - 为整个侧边栏开启路由模式[是否使用 vue-router 的模式，启用该模式会在激活导航时以 index 作为 path 进行路由跳转]
-  
+
   ```
   <el-menu :router="true"></el-menu>
   ```
 
 #### 2.用户列表
 
-- 通过开启路由模式给每个菜单栏都可以进行跳转
-
 - 建立自己的文件夹
+
 - 导入路由，放在`home`下（子路由）
+
+- :star:解决高亮显示的BUG
+
+  - 再点击每个二级菜单的时候不能显示激活状态
+
+    - 把对应的地址保存到相对应的SessionStorage中 刷新页面的时候 从SessionStroage中取值 处在激活状态
+
+    ```
+    // 一级菜单
+    <el-menu  :default-active="activePath">
+    
+    // 二级菜单
+    <el-menu-item :index="'/'+subItem.path"
+    			 @click="saveNavState('/'+subItem.path)">
+    </el-menu-item>
+    
+    
+    <script>
+    export default {
+      created () {
+        this.activePath = window.sessionStorage.getItem('activePath')
+      },
+      data () {
+        return {
+          // 当前激活状态
+          activePath: ''
+        }
+      },
+      methods: {
+        // 保存当前激活状态
+        saveNavState (activePath) {
+          window.sessionStorage.setItem('activePath', activePath)
+      this.activePath = activePath
+        }
+      }
+    }
+    </script>
+    ```
+    
+    
 ##### 2.1 搜索框&添加用户按钮
 
-- Element-UI套入
+- 用Element-UI模板
+- 面包屑导航
+
+```
+    <!-- 面包屑导航 -->
+    <el-breadcrumb separator-class="el-icon-arrow-right">
+      <el-breadcrumb-item :to="{ path: '/index' }">首页</el-breadcrumb-item>
+      <el-breadcrumb-item>用户管理</el-breadcrumb-item>
+      <el-breadcrumb-item>用户列表</el-breadcrumb-item>
+    </el-breadcrumb>
+```
+
+- 用:span 进行划分栅格
+
+```
+<el-row :gutter="20">
+	<el-col :span="8">
+		XXX
+	</el-col>
+	<el-col :span="4">
+		XXX
+	</el-col>
+</el-row>
+```
+
+- 为表格渲染数据
+
+```
+	<!-- 表格 -->
+<el-table :data="userList"
+		   stripe
+		   border
+		   style="width: 100%">
+		   
+	// index索引列
+	<el-table-column type="index">
+	</el-table-column>
+	// 姓名列
+	<el-table-column prop="username"
+	label="姓名"></el-table-column>
+      
+</el-table>
+      
+      
+<script>
+export default {
+  data () {
+    return {
+      queryInfo: {
+        query: '',
+        pagenum: 1,
+        pagesize: 20
+      },
+      userList: [],
+      total: 0
+
+    }
+  },
+  created () {
+    // 页面加载的时候调用函数
+    this.getUserList()
+  },
+  methods: {
+    async getUserList () {
+      const { data: res } = await this.$http.get('users', { params: this.queryInfo })
+      console.log(res)
+      if (res.meta.status !== 200) return this.$message.error(res.meta.msg)
+      this.$message.success(res.meta.msg)
+      this.userList = res.data.users
+      this.total = res.data.total
+    }
+  }
+}
+</script>
+```
+
+- 渲染true和false为按钮
+
+  - 采用作用域插槽
+
+    ```
+    <!-- 状态列 -->
+    	<el-table-column prop="mg_state"
+    					 label="状态">
+    					 
+    		<!-- 作用域插槽 -->
+    		<template slot-scope="scope">
+    			<el-switch v-model="scope.row.mg_state" @change="switchChange(scope.row)">
+                </el-switch>
+    		</template>
+    		
+    </el-table-column>
+    ```
+
+  - 把switch改变值的传入到数据库内的方法：
+
+    ```
+     methods: {
+    // Switch改变的时候
+        async switchChange (newScope) {
+          console.log(newScope)
+          const { data: res } = await this.$http.put(`users/${newScope.id}}/state/${newScope.mg_state}`)
+          console.log(res)
+          if (res.meta.status !== 200) return this.$message.error(res.meta.msg)
+          this.$message.success(res.meta.msg)
+        }
+      }
+    }
+    </script>
+    ```
+
 - 搜索框进行数据的筛选
 
 ```
 <el-input placeholder="请输入内容"
 			v-model="queryInfo.query"	//双向数据绑定v-model
 			clearable					//清空属性
-			@clear="getUserList">		//点击清空时，调用的事件
+			@clear="getUserList">		//点击清空时，调用的事件就是获取用户列表事件
 <el-button slot="append"
 			icon="el-icon-search"
 			@click="getUserList"></el-button>	//点击事件后获取数据
@@ -350,9 +584,9 @@ this.$router.push('/login')
 </el-form>
 ```
 
-- 自定义校验规则（邮箱、手机号）
+- :star:自定义校验规则（邮箱、手机号）
 
-  - 第一步：定义一个箭头函数
+  - 第一步：定义一个箭头函数  `在data内的return之前`
   - 第二步：在具体规则rules中[{validator:指向箭头函数名，trigger:'blur'(触发时机)} ]
   - 验证是否符合校验规则（正则表达式.test(value)）
 
@@ -363,7 +597,7 @@ this.$router.push('/login')
       // 验证邮箱的规则(规则，待校验的值，回调函数)
       var checkEmail = (rule, value, callback) => {
         // 通过正则表达式
-        const regEmail = /^([a-zA-Z0-9_-])+@(a-zA-Z0-9_-)+(\.a-zA-Z0-9_-)+/
+        const regEmail = /^[a-zA-Z0-9_.-]+@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*\.[a-zA-Z0-9]{2,6}$/
         if (regEmail.test(value)) {
           return callback()// 校验成功
         }
@@ -379,17 +613,19 @@ this.$router.push('/login')
         }
         callback(new Error('请输入合法的手机号'))
       }
+      
+      return {
         // 添加用户表单
         addForm: {
-          username: '',
-          password: '',
           email: '',
           phone: ''
         },
         // 验证规则
         addFormRules: {
-          email: [{ required: true, message: '请输入邮箱', triggle: 'blur' }, { validator: checkEmail, triggle: 'blur' }],
-          phone: [{ required: true, message: '请输入邮箱', triggle: 'blur' }, { validator: checkPhone, triggle: 'blur' }]
+          email: [{ required: true, message: '请输入邮箱', triggle: 'blur' }, 
+          { validator: checkEmail, triggle: 'blur' }],
+          phone: [{ required: true, message: '请输入邮箱', triggle: 'blur' }, 
+          { validator: checkPhone, triggle: 'blur' }]
   
         }
       }
@@ -448,6 +684,8 @@ this.$router.push('/login')
 
   - 点击弹出dialog
   - 绑定事件
+    - 在模板template中 `slot-scope="scope"` 传递给方法一个ID值
+    - 根据 ID查询用户信息 有API 根据API获取信息
   - 添加事件、规则
 
   ```
@@ -557,12 +795,19 @@ this.$router.push('/login')
 - 删除用户
 
   - 弹出MessageBox 弹框
+  
+  - Vue项目刷新弹出空白框
+  
+    ```
+    其中 Message组件与MessageBox组件全局使用比较频繁，挂在到Vue的原型上比较方便，不要使用use。
+    ```
+  
+    
+  
   - 取消按钮，取消删除操作 确认按钮，进行删除操作(对删除按钮添加事件 并且注册方法)
-
+  
   ```
   //挂载$confirm
-  this.$confirm('此操作将永久删除该文件, 是否继续?', '提示'{})
-  
   //导入Element-UI
   import { MessageBox } from 'element-ui'
   Vue.prototype.$confirm = MessageBox.confirm
@@ -588,14 +833,14 @@ this.$router.push('/login')
   }).catch(err => err) // .catch用来捕获之前的所有错误
   // 用户确认删除 返回值为confirm
   // 用户取消删除 返回值为报错信息.catch(err=>err) 这个捕获到错误信息后，并且return回去，留下的只有cancel
-  if (confirmResult !== 'confirm') return this.$message.info('用户取消了删除操作')
+if (confirmResult !== 'confirm') return this.$message.info('用户取消了删除操作')
   const { data: res } = await this.$http.delete('users/' + id)
   if (res.meta.status !== 200) return this.$message.error('删除信息失败！')
   this.$message.success('成功删除！')
   this.getUserList()
   }
   ```
-
+  
   
 
 ##### 2.2 用户列表数据
@@ -1341,7 +1586,87 @@ str.split(' ')
 this.$router.push('/goods')
 ```
 
-#### 7.进度条
+
+
+
+
+#### 7. :bar_chart:Echarts
+
+##### 7.1 安装运行依赖
+
+​	在运行依赖中安装`echarts`
+
+7.2 在Vue项目中配置Echarts
+
+- 1. 【导入Echarts】在Script中导入Echarts
+
+  ```
+  <script>
+  import echarts from 'echarts'
+  </script>
+  ```
+
+- 2. 【为Echarts准备一个大小合适的容器】
+
+  ```
+  <template>
+  <div>
+  	
+  	 <div id="main" style="width: 600px;height:400px;"></div>
+  
+  </div>
+  </tempalte>
+  ```
+
+- 3. 初始化Echarts实例(在DOM元素渲染完毕后进行初始化实例Mounted)
+
+     :star:下面的所有数据都放在Mounted数据下
+
+  ```
+  mounted(){
+  	// 基于准备好的dom，初始化echarts实例
+  	var myChart = echarts.init(document.getElementById('main'));
+  }
+  ```
+
+- 4. 准备配置项和数据部分
+
+     ```
+      // 指定图表的配置项和数据
+             var option = {
+                 title: {
+                     text: 'ECharts 入门示例'
+                 },
+                 tooltip: {},
+                 legend: {
+                     data:['销量']
+                 },
+                 xAxis: {
+                     data: ["衬衫","羊毛衫","雪纺衫","裤子","高跟鞋","袜子"]
+                 },
+                 yAxis: {},
+                 series: [{
+                     name: '销量',
+                     type: 'bar',
+                     data: [5, 20, 36, 10, 10, 20]
+                 }]
+             };
+     ```
+
+- 5. 展示数据
+
+  ```
+   // 使用刚指定的配置项和数据显示图表。
+          myChart.setOption(option);	//(option)是数据来源区域
+  ```
+
+  
+
+
+
+
+
+#### 8.进度条
 
 - 安装运行依赖`nprogress`
 - 配置`main.js`
@@ -1362,9 +1687,9 @@ axios.interceptors.response.use((config) => {
 })
 ```
 
-#### 8.项目优化
+#### 9.项目优化
 
-##### 8.1 build 编译的时候 取消所有的console
+##### 9.1 build 编译的时候 取消所有的console
 
 - 安装开发依赖`babel-plugin-transform-remove-console`
 - 在`babel.config.js`中设置
@@ -1388,7 +1713,7 @@ module.exports = {
 
 
 
-##### 8.2 生成打包报告
+##### 9.2 生成打包报告
 
 - 命令行格式
 
@@ -1398,7 +1723,7 @@ vue-cli-service build --report
 
 - UI 运行`build`
 
-##### 8.3 通过`vue.config.js`修改webpack的默认配置
+##### 9.3 通过`vue.config.js`修改webpack的默认配置
 
 ```
   // 基础格式
@@ -1434,7 +1759,7 @@ module.exports = {
 }
 ```
 
-##### 8.4 通过external加载外部CDN资源
+##### 9.4 通过external加载外部CDN资源
 
 - 因为默认通过import语法导入的第三方依赖包，最终会打包合并到同一个文件中，导致过大
 
@@ -1489,7 +1814,7 @@ module.exports = {
   
     
   
-##### 8.5 首页内容的定制
+##### 9.5 首页内容的定制
 
   - 在`chainWebpack`进行定制
 
@@ -1537,7 +1862,7 @@ module.exports = {
 
   
 
-##### 8.6 路由懒加载
+##### 9.6 路由懒加载
 
 - 安装开发依赖`@babel/plugin-syntax-dynamic-import`包
 - 在`babel.config.js`配置文件中声明该插件
@@ -1599,7 +1924,7 @@ const login = () => import(/* webpackChunkName:"login_home_welcome" */ '../compo
 
 
 
-#### 9.项目上线
+#### 10.项目上线
 
 - 通过node创建web服务器
 
