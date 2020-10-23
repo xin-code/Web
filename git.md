@@ -15,7 +15,7 @@
 ## git 撤销本地未push的commit记录
 
 1. git log 查看当前分支的历史记录
-2. 找到你想恢复到的ID，然后 git reset ID *------> 注意：不要加上 --hard ！！！ *
+2. 找到你想恢复到的ID，然后 git reset `*********`-----> 注意：不要加上 --hard ！
 3. git log查看发现没有了commit记录，git status可以看到你的修改记录了
 
 ## github删除已经push到服务器上的commit的方法
@@ -62,6 +62,39 @@ git remote set-url 别名 新地址
 
 【Git】升级方法
 输入git update-git-for-windows
+
+
+
+## git不同模块上传代码
+
+
+
+1. **首先查看是否是在提交代码的分支**  git status
+
+   查看分支 git branch 
+
+   切换分支 git checkout 分支名 
+
+2. 然后进行git add .
+
+   git commit -m 'XXXX' 提交的信息是存储在提交代码的分支上面
+
+3. 合并到总分支
+
+   - 切换到主分支 git checkout master
+   - merge 合并分支 git merge login
+   - 上传代码 git push gitee master
+   - 上传代码 git push github master
+
+4. 上传分支
+
+   - 切换分支 git checkout login
+     - 新建分支 需要-u
+   - 上传代码 git push -u gitee 分支名
+   - 上传代码 git push -u github 分支名
+     - 修改代码提交
+   - 上传代码 git push gitee 分支名
+   - 上传代码 git push github 分支名
 
 ## 问题
 -------------------------------------------------------------------------------------
